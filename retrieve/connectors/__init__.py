@@ -1,6 +1,7 @@
 """
-this module contains the connectors for the different retrieval systems
-each one a class that implements the same interface
+Connectors for different data sources.
+
+This module provides connectors to retrieve data from various APIs and sources.
 """
 
 from .base import (
@@ -14,12 +15,14 @@ from .base import (
     PureConnector,
 )
 
-__all__: list[Connector] = [
-    OpenAlexConnector,
-    OpenAIREConnector,
-    CrossrefConnector,
-    DataCiteConnector,
-    PureConnector,
-    PubMedConnector,
-    ORCIDConnector,
+__all__ = [
+    "BaseConnector",
+    "Connector",
+    "CrossrefConnector",
+    "DataCiteConnector",
+    "OpenAIREConnector",
+    "OpenAlexConnector",
+    "ORCIDConnector",
+    "PubMedConnector",
+    "PureConnector",
 ]

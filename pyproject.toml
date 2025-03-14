@@ -19,11 +19,15 @@ dependencies = [
     "loguru",
     "python-dotenv",
     "pymupdf4llm",
+    "altair>=5.5.0",
+    "sqlglot>=26.10.1",
+    "pydantic>=2.10.6",
+    "vegafusion>=2.0.2",
+    "black>=25.1.0",
 ]
 
 [project.optional-dependencies]
 lint = ["ruff"]
-test = ["pytest", "pytest-randomly"]
 
 [tool.uv.pip]
 generate-hashes = true

@@ -1,16 +1,7 @@
 """
-This module defines global constants used throughout the application.
-e.g., file paths, API keys, etc.
-sensitive info will be imported from a .env file / environment variables at runtime.
-Some specific constants will be split into separate files for better organization, e.g. data definitions, CERIF structure, etc
+Global constants for the MEEWI application.
 
-guidelines:
-- store key-value pairs as enums
-- use uppercase for constants
-- use descriptive names for constants
-- prefix constants with a short identifier for their use, e.g., "API_" for API keys
-- use pathlib instead of os for file paths and operations wherever possible
-- use dotenv to load environment variables from a .env file
+This module defines constants that are used throughout the application.
 """
 
 from pathlib import Path
@@ -35,3 +26,29 @@ except Exception:
             raise FileNotFoundError(
                 f"No .env file found in root directory {Path(__file__).parent}. A template .env has been created at {Path(__file__).parent / '.env'}. Please open the file, fill in the required variables and rerun the script."
             ) from None
+
+# Application paths
+APP_ROOT = Path(__file__).parent.parent
+DATA_DIR = APP_ROOT / "data"
+EXPORT_DIR = APP_ROOT / "exports"
+CACHE_DIR = APP_ROOT / "cache"
+LOG_DIR = APP_ROOT / "logs"
+
+# Default export format
+DEFAULT_EXPORT_FORMAT = "json"
+
+
+# Supported export formats
+EXPORT_FORMATS: list[str] = ["json", "csv", "bibtex", "bib", "parquet", "cerif"]
+
+# Retry settings
+MAX_RETRIES = 3
+RETRY_BACKOFF_FACTOR = 0.5
+RETRY_STATUS_CODES = [429, 500, 502, 503, 504]
+
+# Caching settings
+CACHE_ENABLED = True
+CACHE_TTL_DAYS = 30  # Time-to-live for cached data in days
+
+# Publication types mapping
+# Maps various publication type values from different sources to our standard types
