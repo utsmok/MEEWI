@@ -1,0 +1,18 @@
+[project]
+name = "meewi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13.2"
+dependencies = [
+    "httpx",
+    "polars",
+    "marimo",
+    "duckdb",
+    "nameparser",
+    "pyalex",
+    "srsly",
+    "loguru",
+    "python-dotenv",
+    "pymupdf4llm"
+]

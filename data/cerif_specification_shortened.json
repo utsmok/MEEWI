@@ -1,0 +1,5709 @@
+{
+  "metadata": {
+    "original_file": "cerif_specification.rdf",
+    "creation_date": "2025-03-14T12:18:28.941336",
+    "description": "Shortened CERIF specification with essential elements for schema construction"
+  },
+  "entities": {
+    "cfAbstr": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfAbstract": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfAcro": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfAcronym": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfAddressline": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfAddrline": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfAltName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfAlternateName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfAmount": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfApprovDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfApprovalDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfAvailability": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfBirthdate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCV": {
+      "attributes": [
+        "cfCVDoc",
+        "cfCVId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfCV_Class"
+        }
+      ]
+    },
+    "cfCVDoc": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCVId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCitation": {
+      "attributes": [
+        "cfCitationIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfCitation_Classification"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfCitation_Medium"
+        }
+      ]
+    },
+    "cfCitationIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCite": {
+      "attributes": [
+        "cfCiteId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfCite_Class"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfCite_Medium"
+        }
+      ]
+    },
+    "cfCiteId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCityTown": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfClass": {
+      "attributes": [
+        "cfClassEntity",
+        "cfClassId",
+        "cfClassScheme",
+        "cfClassSchemeId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfClass_Class"
+        }
+      ]
+    },
+    "cfClassEntity": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfClassId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfClassScheme": {
+      "attributes": [
+        "cfClassSchemeId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfClassScheme_Class"
+        },
+        {
+          "related_to": "ClassScheme",
+          "through": "cfClassScheme_ClassScheme"
+        },
+        {
+          "related_to": "OrgUnit",
+          "through": "cfClassScheme_OrgUnit"
+        }
+      ]
+    },
+    "cfClassSchemeId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfClassification": {
+      "attributes": [
+        "cfClassificationIdentifier",
+        "cfClassificationScheme",
+        "cfClassificationSchemeIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfClassification_Classification"
+        }
+      ]
+    },
+    "cfClassificationIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfClassificationScheme": {
+      "attributes": [
+        "cfClassificationSchemeIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfClassificationScheme_Classification"
+        },
+        {
+          "related_to": "ClassificationScheme",
+          "through": "cfClassificationScheme_ClassificationScheme"
+        },
+        {
+          "related_to": "OrganisationUnit",
+          "through": "cfClassificationScheme_OrganisationUnit"
+        }
+      ]
+    },
+    "cfClassificationSchemeIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfConditions": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCopyright": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCount": {
+      "attributes": [
+        "cfCountFloatPChange",
+        "cfCountFloatingPointChange",
+        "cfCountInt",
+        "cfCountIntChange",
+        "cfCountInteger",
+        "cfCountIntegerChange"
+      ],
+      "relationships": []
+    },
+    "cfCountFloatPChange": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCountFloatingPointChange": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCountInt": {
+      "attributes": [
+        "cfCountIntChange"
+      ],
+      "relationships": []
+    },
+    "cfCountIntChange": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCountInteger": {
+      "attributes": [
+        "cfCountIntegerChange"
+      ],
+      "relationships": []
+    },
+    "cfCountIntegerChange": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCountry": {
+      "attributes": [
+        "cfCountryCode"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfCountry_Class"
+        },
+        {
+          "related_to": "Classification",
+          "through": "cfCountry_Classification"
+        }
+      ]
+    },
+    "cfCountryCode": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCurrCode": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCurrency": {
+      "attributes": [
+        "cfCurrencyCode"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfCurrency_Class"
+        },
+        {
+          "related_to": "Classification",
+          "through": "cfCurrency_Classification"
+        }
+      ]
+    },
+    "cfCurrencyCode": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCurriculumVitae": {
+      "attributes": [
+        "cfCurriculumVitaeDoc",
+        "cfCurriculumVitaeIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfCurriculumVitae_Classification"
+        }
+      ]
+    },
+    "cfCurriculumVitaeDoc": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfCurriculumVitaeIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDC": {
+      "attributes": [
+        "cfDCAudience",
+        "cfDCContributor",
+        "cfDCCoverage",
+        "cfDCCoverageSpatial",
+        "cfDCCoverageTemporal",
+        "cfDCCreator",
+        "cfDCDate",
+        "cfDCDateBegin",
+        "cfDCDateEnd",
+        "cfDCDescription",
+        "cfDCEndDate",
+        "cfDCFormat",
+        "cfDCId",
+        "cfDCLangTag",
+        "cfDCLanguage",
+        "cfDCProvenance",
+        "cfDCPublisher",
+        "cfDCRelation",
+        "cfDCResourceIdentifier",
+        "cfDCResourceType",
+        "cfDCRightsHolder",
+        "cfDCRightsMM",
+        "cfDCRightsMMAccessRights",
+        "cfDCRightsMMLicense",
+        "cfDCScheme",
+        "cfDCSchemeURI",
+        "cfDCSource",
+        "cfDCStartDate",
+        "cfDCSubject",
+        "cfDCTitle",
+        "cfDCTrans",
+        "cfDCType",
+        "cfDCValue"
+      ],
+      "relationships": []
+    },
+    "cfDCAudience": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCContributor": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCCoverage": {
+      "attributes": [
+        "cfDCCoverageSpatial",
+        "cfDCCoverageTemporal"
+      ],
+      "relationships": []
+    },
+    "cfDCCoverageSpatial": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCCoverageTemporal": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCCreator": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCDate": {
+      "attributes": [
+        "cfDCDateBegin",
+        "cfDCDateEnd"
+      ],
+      "relationships": []
+    },
+    "cfDCDateBegin": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCDateEnd": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCEndDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCFormat": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCLangTag": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCLanguage": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCProvenance": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCPublisher": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCRelation": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCResourceIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCResourceType": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCRightsHolder": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCRightsMM": {
+      "attributes": [
+        "cfDCRightsMMAccessRights",
+        "cfDCRightsMMLicense"
+      ],
+      "relationships": []
+    },
+    "cfDCRightsMMAccessRights": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCRightsMMLicense": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCScheme": {
+      "attributes": [
+        "cfDCSchemeURI"
+      ],
+      "relationships": []
+    },
+    "cfDCSchemeURI": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCSource": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCStartDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCSubject": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCTitle": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCTrans": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCType": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDCValue": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDateTime": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDef": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDefinition": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDescr": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCore": {
+      "attributes": [
+        "cfDublinCoreAudience",
+        "cfDublinCoreContributor",
+        "cfDublinCoreCoverage",
+        "cfDublinCoreCoverageSpatial",
+        "cfDublinCoreCoverageTemporal",
+        "cfDublinCoreCreator",
+        "cfDublinCoreDate",
+        "cfDublinCoreDateBegin",
+        "cfDublinCoreDateEnd",
+        "cfDublinCoreDescription",
+        "cfDublinCoreEndDate",
+        "cfDublinCoreFormat",
+        "cfDublinCoreIdentifier",
+        "cfDublinCoreLanguage",
+        "cfDublinCoreLanguageTag",
+        "cfDublinCoreProvenance",
+        "cfDublinCorePublisher",
+        "cfDublinCoreRelation",
+        "cfDublinCoreResourceIdentifier",
+        "cfDublinCoreResourceType",
+        "cfDublinCoreRightsHolder",
+        "cfDublinCoreRightsManagement",
+        "cfDublinCoreRightsManagementAccessRights",
+        "cfDublinCoreRightsManagementLicense",
+        "cfDublinCoreScheme",
+        "cfDublinCoreSchemeUniformResourceIdentifier",
+        "cfDublinCoreSource",
+        "cfDublinCoreStartDate",
+        "cfDublinCoreSubject",
+        "cfDublinCoreTitle",
+        "cfDublinCoreTranslation",
+        "cfDublinCoreType",
+        "cfDublinCoreValue"
+      ],
+      "relationships": []
+    },
+    "cfDublinCoreAudience": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreContributor": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreCoverage": {
+      "attributes": [
+        "cfDublinCoreCoverageSpatial",
+        "cfDublinCoreCoverageTemporal"
+      ],
+      "relationships": []
+    },
+    "cfDublinCoreCoverageSpatial": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreCoverageTemporal": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreCreator": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreDate": {
+      "attributes": [
+        "cfDublinCoreDateBegin",
+        "cfDublinCoreDateEnd"
+      ],
+      "relationships": []
+    },
+    "cfDublinCoreDateBegin": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreDateEnd": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreEndDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreFormat": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreLanguage": {
+      "attributes": [
+        "cfDublinCoreLanguageTag"
+      ],
+      "relationships": []
+    },
+    "cfDublinCoreLanguageTag": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreProvenance": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCorePublisher": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreRelation": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreResourceIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreResourceType": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreRightsHolder": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreRightsManagement": {
+      "attributes": [
+        "cfDublinCoreRightsManagementAccessRights",
+        "cfDublinCoreRightsManagementLicense"
+      ],
+      "relationships": []
+    },
+    "cfDublinCoreRightsManagementAccessRights": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreRightsManagementLicense": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreScheme": {
+      "attributes": [
+        "cfDublinCoreSchemeUniformResourceIdentifier"
+      ],
+      "relationships": []
+    },
+    "cfDublinCoreSchemeUniformResourceIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreSource": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreStartDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreSubject": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreTitle": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreTranslation": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreType": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfDublinCoreValue": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEAddr": {
+      "attributes": [
+        "cfEAddrId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfEAddr_Class"
+        }
+      ]
+    },
+    "cfEAddrId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEBLong": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEastBoundLongitude": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEdition": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfElectronicAddress": {
+      "attributes": [
+        "cfElectronicAddressIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfElectronicAddress_Classification"
+        }
+      ]
+    },
+    "cfElectronicAddressIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEndDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEndPage": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEntName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEntityName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEquip": {
+      "attributes": [
+        "cfEquipId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfEquip_Class"
+        },
+        {
+          "related_to": "Equip",
+          "through": "cfEquip_Equip"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfEquip_Event"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfEquip_Fund"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfEquip_Indic"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfEquip_Meas"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfEquip_Medium"
+        },
+        {
+          "related_to": "PAddr",
+          "through": "cfEquip_PAddr"
+        },
+        {
+          "related_to": "Srv",
+          "through": "cfEquip_Srv"
+        }
+      ]
+    },
+    "cfEquipId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEquipment": {
+      "attributes": [
+        "cfEquipmentDescription",
+        "cfEquipmentIdentifier",
+        "cfEquipmentKeywords",
+        "cfEquipmentName"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfEquipment_Classification"
+        },
+        {
+          "related_to": "Equipment",
+          "through": "cfEquipment_Equipment"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfEquipment_Event"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfEquipment_Funding"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfEquipment_Indicator"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfEquipment_Measurement"
+        },
+        {
+          "related_to": "Measurment",
+          "through": "cfEquipment_Measurment"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfEquipment_Medium"
+        },
+        {
+          "related_to": "PostAddress",
+          "through": "cfEquipment_PostAddress"
+        },
+        {
+          "related_to": "Service",
+          "through": "cfEquipment_Service"
+        }
+      ]
+    },
+    "cfEquipmentDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEquipmentIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEquipmentKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEquipmentName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEvent": {
+      "attributes": [
+        "cfEventDescription",
+        "cfEventId",
+        "cfEventIdentifier",
+        "cfEventKeywords",
+        "cfEventName"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfEvent_Class"
+        },
+        {
+          "related_to": "Classification",
+          "through": "cfEvent_Classification"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfEvent_Event"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfEvent_Fund"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfEvent_Funding"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfEvent_Indic"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfEvent_Indicator"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfEvent_Meas"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfEvent_Measurement"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfEvent_Medium"
+        }
+      ]
+    },
+    "cfEventDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEventId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEventIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEventKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEventName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfEx": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfExample": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfExpSkills": {
+      "attributes": [
+        "cfExpSkillsId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfExpSkills_Class"
+        }
+      ]
+    },
+    "cfExpSkillsId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfExpertiseAndSkills": {
+      "attributes": [
+        "cfExpertiseAndSkillsDescription",
+        "cfExpertiseAndSkillsIdentifier",
+        "cfExpertiseAndSkillsKeywords",
+        "cfExpertiseAndSkillsName"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfExpertiseAndSkills_Classification"
+        }
+      ]
+    },
+    "cfExpertiseAndSkillsDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfExpertiseAndSkillsIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfExpertiseAndSkillsKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfExpertiseAndSkillsName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCEndDateTime": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCPrecision": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCPriceConstraint": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCPrivacyConstraint": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCRightsConstraint": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCRightsMMPricing": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCRightsMMPrivacy": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCRightsMMRights": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCRightsMMSecurity": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCSecurityConstraint": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCStartDateTime": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCTrans": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCXCoordinate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCYCoordinate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFDCZCoordinate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFacil": {
+      "attributes": [
+        "cfFacilId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfFacil_Class"
+        },
+        {
+          "related_to": "Equip",
+          "through": "cfFacil_Equip"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfFacil_Event"
+        },
+        {
+          "related_to": "Facil",
+          "through": "cfFacil_Facil"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfFacil_Fund"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfFacil_Indic"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfFacil_Meas"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfFacil_Medium"
+        },
+        {
+          "related_to": "PAddr",
+          "through": "cfFacil_PAddr"
+        },
+        {
+          "related_to": "Srv",
+          "through": "cfFacil_Srv"
+        }
+      ]
+    },
+    "cfFacilId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFacility": {
+      "attributes": [
+        "cfFacilityDescription",
+        "cfFacilityIdentifier",
+        "cfFacilityKeywords",
+        "cfFacilityName"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfFacility_Classification"
+        },
+        {
+          "related_to": "Equipment",
+          "through": "cfFacility_Equipment"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfFacility_Event"
+        },
+        {
+          "related_to": "Facility",
+          "through": "cfFacility_Facility"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfFacility_Funding"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfFacility_Indicator"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfFacility_Measurement"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfFacility_Medium"
+        },
+        {
+          "related_to": "PostAddress",
+          "through": "cfFacility_PostAddress"
+        },
+        {
+          "related_to": "Service",
+          "through": "cfFacility_Service"
+        }
+      ]
+    },
+    "cfFacilityDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFacilityIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFacilityKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFacilityName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFamilyNames": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFedId": {
+      "attributes": [
+        "cfFedIdId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfFedId_Class"
+        },
+        {
+          "related_to": "Srv",
+          "through": "cfFedId_Srv"
+        }
+      ]
+    },
+    "cfFedIdId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFederateIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFederatedIdentifier": {
+      "attributes": [
+        "cfFederatedIdentifierIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfFederatedIdentifier_Classification"
+        },
+        {
+          "related_to": "Service",
+          "through": "cfFederatedIdentifier_Service"
+        }
+      ]
+    },
+    "cfFederatedIdentifierIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFeeOrFree": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFirstNames": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreEndDateTime": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCorePrecision": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCorePriceConstraint": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCorePrivacyConstraint": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreRightsConstraint": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreRightsManagementPricing": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreRightsManagementPrivacy": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreRightsManagementRights": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreRightsManagementSecurity": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreSecurityConstraint": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreStartDateTime": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreTranslation": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreXCoordinate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreYCoordinate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFormalisedDublinCoreZCoordinate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFraction": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFund": {
+      "attributes": [
+        "cfFundId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfFund_Class"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfFund_Fund"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfFund_Indic"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfFund_Meas"
+        }
+      ]
+    },
+    "cfFundId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFunding": {
+      "attributes": [
+        "cfFundingDescription",
+        "cfFundingIdentifier",
+        "cfFundingKeywords",
+        "cfFundingName"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfFunding_Classification"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfFunding_Funding"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfFunding_Indicator"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfFunding_Measurement"
+        }
+      ]
+    },
+    "cfFundingDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFundingIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFundingKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfFundingName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfGender": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfGeoBBox": {
+      "attributes": [
+        "cfGeoBBoxId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfGeoBBox_Class"
+        },
+        {
+          "related_to": "GeoBBox",
+          "through": "cfGeoBBox_GeoBBox"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfGeoBBox_Meas"
+        }
+      ]
+    },
+    "cfGeoBBoxId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfGeographicBoundingBox": {
+      "attributes": [
+        "cfGeographicBoundingBoxIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfGeographicBoundingBox_Classification"
+        },
+        {
+          "related_to": "GeographicBoundingBox",
+          "through": "cfGeographicBoundingBox_GeographicBoundingBox"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfGeographicBoundingBox_Measurement"
+        }
+      ]
+    },
+    "cfGeographicBoundingBoxIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfHeadcount": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfIPR": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfISBN": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfISSN": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfIndic": {
+      "attributes": [
+        "cfIndicId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfIndic_Class"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfIndic_Indic"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfIndic_Meas"
+        }
+      ]
+    },
+    "cfIndicId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfIndicator": {
+      "attributes": [
+        "cfIndicatorIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfIndicator_Classification"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfIndicator_Indicator"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfIndicator_Measurement"
+        }
+      ]
+    },
+    "cfIndicatorIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfInstId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfInstanceIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfIntellectualPropertyRights": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfInternationalStandardBookNumber": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfInternationalStandardSerialNumber": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfIssue": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfKeyw": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfLang": {
+      "attributes": [
+        "cfLangCode"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfLang_Class"
+        }
+      ]
+    },
+    "cfLangCode": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfLanguage": {
+      "attributes": [
+        "cfLanguageCode"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfLanguage_Classification"
+        }
+      ]
+    },
+    "cfLanguageCode": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMaxElev": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMaximumElevation": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMeas": {
+      "attributes": [
+        "cfMeasId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfMeas_Class"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfMeas_Meas"
+        }
+      ]
+    },
+    "cfMeasId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMeasurement": {
+      "attributes": [
+        "cfMeasurementIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfMeasurement_Classification"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfMeasurement_Measurement"
+        }
+      ]
+    },
+    "cfMeasurementIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMedium": {
+      "attributes": [
+        "cfMediumCreationDate",
+        "cfMediumId",
+        "cfMediumIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfMedium_Class"
+        },
+        {
+          "related_to": "Classification",
+          "through": "cfMedium_Classification"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfMedium_Fund"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfMedium_Funding"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfMedium_Indic"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfMedium_Indicator"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfMedium_Meas"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfMedium_Measurement"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfMedium_Medium"
+        }
+      ]
+    },
+    "cfMediumCreationDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMediumId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMediumIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMetrics": {
+      "attributes": [
+        "cfMetricsDescription",
+        "cfMetricsId",
+        "cfMetricsIdentifier",
+        "cfMetricsName"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfMetrics_Class"
+        },
+        {
+          "related_to": "Classification",
+          "through": "cfMetrics_Classification"
+        }
+      ]
+    },
+    "cfMetricsDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMetricsId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMetricsIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMetricsName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMimeType": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMinElev": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfMinimumElevation": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfNBLat": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfName": {
+      "attributes": [
+        "cfNameAbbrev",
+        "cfNameAbbreviation"
+      ],
+      "relationships": []
+    },
+    "cfNameAbbrev": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfNameAbbreviation": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfNorthBoundLatitude": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfNum": {
+      "attributes": [
+        "cfNumCurrCode"
+      ],
+      "relationships": []
+    },
+    "cfNumCurrCode": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfNumber": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfNumericCurrencyCode": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfOrder": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfOrgUnit": {
+      "attributes": [
+        "cfOrgUnitId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfOrgUnit_Class"
+        },
+        {
+          "related_to": "DC",
+          "through": "cfOrgUnit_DC"
+        },
+        {
+          "related_to": "EAddr",
+          "through": "cfOrgUnit_EAddr"
+        },
+        {
+          "related_to": "Equip",
+          "through": "cfOrgUnit_Equip"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfOrgUnit_Event"
+        },
+        {
+          "related_to": "ExpSkills",
+          "through": "cfOrgUnit_ExpSkills"
+        },
+        {
+          "related_to": "Facil",
+          "through": "cfOrgUnit_Facil"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfOrgUnit_Fund"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfOrgUnit_Indic"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfOrgUnit_Meas"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfOrgUnit_Medium"
+        },
+        {
+          "related_to": "OrgUnit",
+          "through": "cfOrgUnit_OrgUnit"
+        },
+        {
+          "related_to": "PAddr",
+          "through": "cfOrgUnit_PAddr"
+        },
+        {
+          "related_to": "Prize",
+          "through": "cfOrgUnit_Prize"
+        },
+        {
+          "related_to": "ResPat",
+          "through": "cfOrgUnit_ResPat"
+        },
+        {
+          "related_to": "ResProd",
+          "through": "cfOrgUnit_ResProd"
+        },
+        {
+          "related_to": "ResPubl",
+          "through": "cfOrgUnit_ResPubl"
+        },
+        {
+          "related_to": "Srv",
+          "through": "cfOrgUnit_Srv"
+        }
+      ]
+    },
+    "cfOrgUnitId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfOrganisaionUnit": {
+      "attributes": [],
+      "relationships": [
+        {
+          "related_to": "Equipment",
+          "through": "cfOrganisaionUnit_Equipment"
+        }
+      ]
+    },
+    "cfOrganisation": {
+      "attributes": [
+        "cfOrganisationUnit",
+        "cfOrganisationUnitIdentifier",
+        "cfOrganisationUnitKeywords",
+        "cfOrganisationUnitName",
+        "cfOrganisationUnitResearchActivity"
+      ],
+      "relationships": []
+    },
+    "cfOrganisationUnit": {
+      "attributes": [
+        "cfOrganisationUnitIdentifier",
+        "cfOrganisationUnitKeywords",
+        "cfOrganisationUnitName",
+        "cfOrganisationUnitResearchActivity"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfOrganisationUnit_Classification"
+        },
+        {
+          "related_to": "DublinCore",
+          "through": "cfOrganisationUnit_DublinCore"
+        },
+        {
+          "related_to": "ElectronicAddress",
+          "through": "cfOrganisationUnit_ElectronicAddress"
+        },
+        {
+          "related_to": "Equipment",
+          "through": "cfOrganisationUnit_Equipment"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfOrganisationUnit_Event"
+        },
+        {
+          "related_to": "ExpertiseAndSkills",
+          "through": "cfOrganisationUnit_ExpertiseAndSkills"
+        },
+        {
+          "related_to": "Facility",
+          "through": "cfOrganisationUnit_Facility"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfOrganisationUnit_Funding"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfOrganisationUnit_Indicator"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfOrganisationUnit_Measurement"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfOrganisationUnit_Medium"
+        },
+        {
+          "related_to": "OrganisationUnit",
+          "through": "cfOrganisationUnit_OrganisationUnit"
+        },
+        {
+          "related_to": "PostAddress",
+          "through": "cfOrganisationUnit_PostAddress"
+        },
+        {
+          "related_to": "PrizeAward",
+          "through": "cfOrganisationUnit_PrizeAward"
+        },
+        {
+          "related_to": "ResultPatent",
+          "through": "cfOrganisationUnit_ResultPatent"
+        },
+        {
+          "related_to": "ResultProduct",
+          "through": "cfOrganisationUnit_ResultProduct"
+        },
+        {
+          "related_to": "ResultPublication",
+          "through": "cfOrganisationUnit_ResultPublication"
+        },
+        {
+          "related_to": "Service",
+          "through": "cfOrganisationUnit_Service"
+        }
+      ]
+    },
+    "cfOrganisationUnitIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfOrganisationUnitKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfOrganisationUnitName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfOrganisationUnitResearchActivity": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfOrganisationalUnit": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfOtherNames": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPAddr": {
+      "attributes": [
+        "cfPAddrId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfPAddr_Class"
+        },
+        {
+          "related_to": "GeoBBox",
+          "through": "cfPAddr_GeoBBox"
+        }
+      ]
+    },
+    "cfPAddrId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPatentNum": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPatentNumber": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPers": {
+      "attributes": [
+        "cfPersId",
+        "cfPersName",
+        "cfPersNameId"
+      ],
+      "relationships": [
+        {
+          "related_to": "CV",
+          "through": "cfPers_CV"
+        },
+        {
+          "related_to": "Class",
+          "through": "cfPers_Class"
+        },
+        {
+          "related_to": "Country",
+          "through": "cfPers_Country"
+        },
+        {
+          "related_to": "DC",
+          "through": "cfPers_DC"
+        },
+        {
+          "related_to": "EAddr",
+          "through": "cfPers_EAddr"
+        },
+        {
+          "related_to": "Equip",
+          "through": "cfPers_Equip"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfPers_Event"
+        },
+        {
+          "related_to": "ExpSkills",
+          "through": "cfPers_ExpSkills"
+        },
+        {
+          "related_to": "Facil",
+          "through": "cfPers_Facil"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfPers_Fund"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfPers_Indic"
+        },
+        {
+          "related_to": "Lang",
+          "through": "cfPers_Lang"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfPers_Meas"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfPers_Medium"
+        },
+        {
+          "related_to": "OrgUnit",
+          "through": "cfPers_OrgUnit"
+        },
+        {
+          "related_to": "PAddr",
+          "through": "cfPers_PAddr"
+        },
+        {
+          "related_to": "Pers",
+          "through": "cfPers_Pers"
+        },
+        {
+          "related_to": "Prize",
+          "through": "cfPers_Prize"
+        },
+        {
+          "related_to": "Qual",
+          "through": "cfPers_Qual"
+        },
+        {
+          "related_to": "ResPat",
+          "through": "cfPers_ResPat"
+        },
+        {
+          "related_to": "ResProd",
+          "through": "cfPers_ResProd"
+        },
+        {
+          "related_to": "ResPubl",
+          "through": "cfPers_ResPubl"
+        },
+        {
+          "related_to": "Srv",
+          "through": "cfPers_Srv"
+        }
+      ]
+    },
+    "cfPersId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPersName": {
+      "attributes": [
+        "cfPersNameId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Pers",
+          "through": "cfPersName_Pers"
+        }
+      ]
+    },
+    "cfPersNameId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPerson": {
+      "attributes": [
+        "cfPersonIdentifier",
+        "cfPersonKeywords",
+        "cfPersonName",
+        "cfPersonNameIdentifier",
+        "cfPersonResearchInterest"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfPerson_Classification"
+        },
+        {
+          "related_to": "Country",
+          "through": "cfPerson_Country"
+        },
+        {
+          "related_to": "CurriculumVitae",
+          "through": "cfPerson_CurriculumVitae"
+        },
+        {
+          "related_to": "DublinCore",
+          "through": "cfPerson_DublinCore"
+        },
+        {
+          "related_to": "ElectronicAddress",
+          "through": "cfPerson_ElectronicAddress"
+        },
+        {
+          "related_to": "Equipment",
+          "through": "cfPerson_Equipment"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfPerson_Event"
+        },
+        {
+          "related_to": "ExpertiseAndSkills",
+          "through": "cfPerson_ExpertiseAndSkills"
+        },
+        {
+          "related_to": "Facility",
+          "through": "cfPerson_Facility"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfPerson_Funding"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfPerson_Indicator"
+        },
+        {
+          "related_to": "Language",
+          "through": "cfPerson_Language"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfPerson_Measurement"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfPerson_Medium"
+        },
+        {
+          "related_to": "OrganisationUnit",
+          "through": "cfPerson_OrganisationUnit"
+        },
+        {
+          "related_to": "Person",
+          "through": "cfPerson_Person"
+        },
+        {
+          "related_to": "PostAddress",
+          "through": "cfPerson_PostAddress"
+        },
+        {
+          "related_to": "PrizeAward",
+          "through": "cfPerson_PrizeAward"
+        },
+        {
+          "related_to": "Qualification",
+          "through": "cfPerson_Qualification"
+        },
+        {
+          "related_to": "ResultPatent",
+          "through": "cfPerson_ResultPatent"
+        },
+        {
+          "related_to": "ResultProduct",
+          "through": "cfPerson_ResultProduct"
+        },
+        {
+          "related_to": "ResultPublication",
+          "through": "cfPerson_ResultPublication"
+        },
+        {
+          "related_to": "Service",
+          "through": "cfPerson_Service"
+        }
+      ]
+    },
+    "cfPersonIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPersonKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPersonName": {
+      "attributes": [
+        "cfPersonNameIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Person",
+          "through": "cfPersonName_Person"
+        }
+      ]
+    },
+    "cfPersonNameIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPersonResearchInterest": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPostAddress": {
+      "attributes": [
+        "cfPostAddressIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfPostAddress_Classification"
+        },
+        {
+          "related_to": "GeographicBoundingBox",
+          "through": "cfPostAddress_GeographicBoundingBox"
+        }
+      ]
+    },
+    "cfPostAddressIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPostCode": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPrice": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPrize": {
+      "attributes": [
+        "cfPrizeAward",
+        "cfPrizeAwardDate",
+        "cfPrizeAwardIdentifier",
+        "cfPrizeDate",
+        "cfPrizeId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfPrize_Class"
+        }
+      ]
+    },
+    "cfPrizeAward": {
+      "attributes": [
+        "cfPrizeAwardDate",
+        "cfPrizeAwardIdentifier"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfPrizeAward_Classification"
+        }
+      ]
+    },
+    "cfPrizeAwardDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPrizeAwardIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPrizeDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfPrizeId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfProj": {
+      "attributes": [
+        "cfProjId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfProj_Class"
+        },
+        {
+          "related_to": "DC",
+          "through": "cfProj_DC"
+        },
+        {
+          "related_to": "Equip",
+          "through": "cfProj_Equip"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfProj_Event"
+        },
+        {
+          "related_to": "Facil",
+          "through": "cfProj_Facil"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfProj_Fund"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfProj_Indic"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfProj_Meas"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfProj_Medium"
+        },
+        {
+          "related_to": "OrgUnit",
+          "through": "cfProj_OrgUnit"
+        },
+        {
+          "related_to": "Pers",
+          "through": "cfProj_Pers"
+        },
+        {
+          "related_to": "Prize",
+          "through": "cfProj_Prize"
+        },
+        {
+          "related_to": "Proj",
+          "through": "cfProj_Proj"
+        },
+        {
+          "related_to": "ResPat",
+          "through": "cfProj_ResPat"
+        },
+        {
+          "related_to": "ResProd",
+          "through": "cfProj_ResProd"
+        },
+        {
+          "related_to": "ResPubl",
+          "through": "cfProj_ResPubl"
+        },
+        {
+          "related_to": "Srv",
+          "through": "cfProj_Srv"
+        }
+      ]
+    },
+    "cfProjId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfProject": {
+      "attributes": [
+        "cfProjectAbstract",
+        "cfProjectIdentifier",
+        "cfProjectKeywords",
+        "cfProjectTitle"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfProject_Classification"
+        },
+        {
+          "related_to": "DublinCore",
+          "through": "cfProject_DublinCore"
+        },
+        {
+          "related_to": "Equipment",
+          "through": "cfProject_Equipment"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfProject_Event"
+        },
+        {
+          "related_to": "Facility",
+          "through": "cfProject_Facility"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfProject_Funding"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfProject_Indicator"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfProject_Measurement"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfProject_Medium"
+        },
+        {
+          "related_to": "OrganisationUnit",
+          "through": "cfProject_OrganisationUnit"
+        },
+        {
+          "related_to": "Person",
+          "through": "cfProject_Person"
+        },
+        {
+          "related_to": "PrizeAward",
+          "through": "cfProject_PrizeAward"
+        },
+        {
+          "related_to": "Project",
+          "through": "cfProject_Project"
+        },
+        {
+          "related_to": "ResultPatent",
+          "through": "cfProject_ResultPatent"
+        },
+        {
+          "related_to": "ResultProduct",
+          "through": "cfProject_ResultProduct"
+        },
+        {
+          "related_to": "ResultPublication",
+          "through": "cfProject_ResultPublication"
+        },
+        {
+          "related_to": "Service",
+          "through": "cfProject_Service"
+        }
+      ]
+    },
+    "cfProjectAbstract": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfProjectIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfProjectKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfProjectTitle": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfQual": {
+      "attributes": [
+        "cfQualId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfQual_Class"
+        }
+      ]
+    },
+    "cfQualId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfQualification": {
+      "attributes": [
+        "cfQualificationDescription",
+        "cfQualificationIdentifier",
+        "cfQualificationKeywords"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfQualification_Classification"
+        }
+      ]
+    },
+    "cfQualificationDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfQualificationIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfQualificationKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfRegistrDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfRegistrationDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResAct": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResInt": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResPat": {
+      "attributes": [
+        "cfResPatId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfResPat_Class"
+        },
+        {
+          "related_to": "Equip",
+          "through": "cfResPat_Equip"
+        },
+        {
+          "related_to": "Facil",
+          "through": "cfResPat_Facil"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfResPat_Fund"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfResPat_Indic"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfResPat_Meas"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfResPat_Medium"
+        },
+        {
+          "related_to": "ResPat",
+          "through": "cfResPat_ResPat"
+        },
+        {
+          "related_to": "Srv",
+          "through": "cfResPat_Srv"
+        }
+      ]
+    },
+    "cfResPatId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResProd": {
+      "attributes": [
+        "cfResProdId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfResProd_Class"
+        },
+        {
+          "related_to": "Equip",
+          "through": "cfResProd_Equip"
+        },
+        {
+          "related_to": "Facil",
+          "through": "cfResProd_Facil"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfResProd_Fund"
+        },
+        {
+          "related_to": "GeoBBox",
+          "through": "cfResProd_GeoBBox"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfResProd_Indic"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfResProd_Meas"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfResProd_Medium"
+        },
+        {
+          "related_to": "ResPat",
+          "through": "cfResProd_ResPat"
+        },
+        {
+          "related_to": "ResProd",
+          "through": "cfResProd_ResProd"
+        },
+        {
+          "related_to": "Srv",
+          "through": "cfResProd_Srv"
+        }
+      ]
+    },
+    "cfResProdId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResPubl": {
+      "attributes": [
+        "cfResPublDate",
+        "cfResPublId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Cite",
+          "through": "cfResPubl_Cite"
+        },
+        {
+          "related_to": "Class",
+          "through": "cfResPubl_Class"
+        },
+        {
+          "related_to": "DC",
+          "through": "cfResPubl_DC"
+        },
+        {
+          "related_to": "Equip",
+          "through": "cfResPubl_Equip"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfResPubl_Event"
+        },
+        {
+          "related_to": "Facil",
+          "through": "cfResPubl_Facil"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfResPubl_Fund"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfResPubl_Indic"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfResPubl_Meas"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfResPubl_Medium"
+        },
+        {
+          "related_to": "Metrics",
+          "through": "cfResPubl_Metrics"
+        },
+        {
+          "related_to": "ResPat",
+          "through": "cfResPubl_ResPat"
+        },
+        {
+          "related_to": "ResProd",
+          "through": "cfResPubl_ResProd"
+        },
+        {
+          "related_to": "ResPubl",
+          "through": "cfResPubl_ResPubl"
+        },
+        {
+          "related_to": "Srv",
+          "through": "cfResPubl_Srv"
+        }
+      ]
+    },
+    "cfResPublDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResPublId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResearchActivity": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResearchInterest": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPatent": {
+      "attributes": [
+        "cfResultPatentAbstract",
+        "cfResultPatentIdentifier",
+        "cfResultPatentKeywords",
+        "cfResultPatentTitle"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfResultPatent_Classification"
+        },
+        {
+          "related_to": "Equipment",
+          "through": "cfResultPatent_Equipment"
+        },
+        {
+          "related_to": "Facility",
+          "through": "cfResultPatent_Facility"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfResultPatent_Funding"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfResultPatent_Indicator"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfResultPatent_Measurement"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfResultPatent_Medium"
+        },
+        {
+          "related_to": "ResultPatent",
+          "through": "cfResultPatent_ResultPatent"
+        },
+        {
+          "related_to": "Service",
+          "through": "cfResultPatent_Service"
+        }
+      ]
+    },
+    "cfResultPatentAbstract": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPatentIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPatentKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPatentTitle": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultProduct": {
+      "attributes": [
+        "cfResultProductDescription",
+        "cfResultProductIdentifier",
+        "cfResultProductKeywords",
+        "cfResultProductName"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfResultProduct_Classification"
+        },
+        {
+          "related_to": "Equipment",
+          "through": "cfResultProduct_Equipment"
+        },
+        {
+          "related_to": "Facility",
+          "through": "cfResultProduct_Facility"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfResultProduct_Funding"
+        },
+        {
+          "related_to": "GeographicBoundingBox",
+          "through": "cfResultProduct_GeographicBoundingBox"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfResultProduct_Indicator"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfResultProduct_Measurement"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfResultProduct_Medium"
+        },
+        {
+          "related_to": "ResultPatent",
+          "through": "cfResultProduct_ResultPatent"
+        },
+        {
+          "related_to": "ResultProduct",
+          "through": "cfResultProduct_ResultProduct"
+        },
+        {
+          "related_to": "Service",
+          "through": "cfResultProduct_Service"
+        }
+      ]
+    },
+    "cfResultProductDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultProductIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultProductKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultProductName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPublication": {
+      "attributes": [
+        "cfResultPublicationAbstract",
+        "cfResultPublicationBibliographicNote",
+        "cfResultPublicationDate",
+        "cfResultPublicationIdentifier",
+        "cfResultPublicationKeywords",
+        "cfResultPublicationNameAbbrevtation",
+        "cfResultPublicationSubtitle",
+        "cfResultPublicationTitle"
+      ],
+      "relationships": [
+        {
+          "related_to": "Citation",
+          "through": "cfResultPublication_Citation"
+        },
+        {
+          "related_to": "Classification",
+          "through": "cfResultPublication_Classification"
+        },
+        {
+          "related_to": "DublinCore",
+          "through": "cfResultPublication_DublinCore"
+        },
+        {
+          "related_to": "Equipment",
+          "through": "cfResultPublication_Equipment"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfResultPublication_Event"
+        },
+        {
+          "related_to": "Facility",
+          "through": "cfResultPublication_Facility"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfResultPublication_Funding"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfResultPublication_Indicator"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfResultPublication_Measurement"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfResultPublication_Medium"
+        },
+        {
+          "related_to": "Metrics",
+          "through": "cfResultPublication_Metrics"
+        },
+        {
+          "related_to": "ResultPatent",
+          "through": "cfResultPublication_ResultPatent"
+        },
+        {
+          "related_to": "ResultProduct",
+          "through": "cfResultPublication_ResultProduct"
+        },
+        {
+          "related_to": "ResultPublication",
+          "through": "cfResultPublication_ResultPublication"
+        },
+        {
+          "related_to": "Service",
+          "through": "cfResultPublication_Service"
+        }
+      ]
+    },
+    "cfResultPublicationAbstract": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPublicationBibliographicNote": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPublicationDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPublicationIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPublicationKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPublicationNameAbbrevtation": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPublicationSubtitle": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfResultPublicationTitle": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfRoleExpr": {
+      "attributes": [
+        "cfRoleExprOpp"
+      ],
+      "relationships": []
+    },
+    "cfRoleExprOpp": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfRoleExpression": {
+      "attributes": [
+        "cfRoleExpressionOpposite"
+      ],
+      "relationships": []
+    },
+    "cfRoleExpressionOpposite": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfSBLat": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfSeries": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfService": {
+      "attributes": [
+        "cfServiceDescription",
+        "cfServiceIdentifier",
+        "cfServiceKeywords",
+        "cfServiceName"
+      ],
+      "relationships": [
+        {
+          "related_to": "Classification",
+          "through": "cfService_Classification"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfService_Event"
+        },
+        {
+          "related_to": "Funding",
+          "through": "cfService_Funding"
+        },
+        {
+          "related_to": "Indicator",
+          "through": "cfService_Indicator"
+        },
+        {
+          "related_to": "Measurement",
+          "through": "cfService_Measurement"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfService_Medium"
+        },
+        {
+          "related_to": "PostAddress",
+          "through": "cfService_PostAddress"
+        },
+        {
+          "related_to": "Service",
+          "through": "cfService_Service"
+        }
+      ]
+    },
+    "cfServiceDescription": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfServiceIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfServiceKeywords": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfServiceName": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfSize": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfSkillReading": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfSkillSpeaking": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfSkillWriting": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfSouthBoundLatitude": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfSrv": {
+      "attributes": [
+        "cfSrvId"
+      ],
+      "relationships": [
+        {
+          "related_to": "Class",
+          "through": "cfSrv_Class"
+        },
+        {
+          "related_to": "Event",
+          "through": "cfSrv_Event"
+        },
+        {
+          "related_to": "Fund",
+          "through": "cfSrv_Fund"
+        },
+        {
+          "related_to": "Indic",
+          "through": "cfSrv_Indic"
+        },
+        {
+          "related_to": "Meas",
+          "through": "cfSrv_Meas"
+        },
+        {
+          "related_to": "Medium",
+          "through": "cfSrv_Medium"
+        },
+        {
+          "related_to": "PAddr",
+          "through": "cfSrv_PAddr"
+        },
+        {
+          "related_to": "Srv",
+          "through": "cfSrv_Srv"
+        }
+      ]
+    },
+    "cfSrvId": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfStartDate": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfStartPage": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfStateOfCountry": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfSubtitle": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfTerm": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfTitle": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfTotalPages": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfTurnover": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfURI": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfUniformResourceIdentifier": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfValFloatP": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfValJudgeNum": {
+      "attributes": [
+        "cfValJudgeNumChange"
+      ],
+      "relationships": []
+    },
+    "cfValJudgeNumChange": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfValJudgeText": {
+      "attributes": [
+        "cfValJudgeTextChange"
+      ],
+      "relationships": []
+    },
+    "cfValJudgeTextChange": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfValueFloatingPoint": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfValueJudgementalNumeric": {
+      "attributes": [
+        "cfValueJudgementalNumericChange"
+      ],
+      "relationships": []
+    },
+    "cfValueJudgementalNumericChange": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfValueJudgementalText": {
+      "attributes": [
+        "cfValueJudgementalTextChange"
+      ],
+      "relationships": []
+    },
+    "cfValueJudgementalTextChange": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfVersInfo": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfVersionInfo": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfVol": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfVolume": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfWBLong": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfWestBoundLongitude": {
+      "attributes": [],
+      "relationships": []
+    },
+    "cfYear": {
+      "attributes": [],
+      "relationships": []
+    }
+  },
+  "link_tables": {
+    "cfCV_Class": {
+      "connects": [
+        "cfCV",
+        "Class"
+      ]
+    },
+    "cfCitation_Classification": {
+      "connects": [
+        "cfCitation",
+        "Classification"
+      ]
+    },
+    "cfCitation_Medium": {
+      "connects": [
+        "cfCitation",
+        "Medium"
+      ]
+    },
+    "cfCite_Class": {
+      "connects": [
+        "cfCite",
+        "Class"
+      ]
+    },
+    "cfCite_Medium": {
+      "connects": [
+        "cfCite",
+        "Medium"
+      ]
+    },
+    "cfClassScheme_Class": {
+      "connects": [
+        "cfClassScheme",
+        "Class"
+      ]
+    },
+    "cfClassScheme_ClassScheme": {
+      "connects": [
+        "cfClassScheme",
+        "ClassScheme"
+      ]
+    },
+    "cfClassScheme_OrgUnit": {
+      "connects": [
+        "cfClassScheme",
+        "OrgUnit"
+      ]
+    },
+    "cfClass_Class": {
+      "connects": [
+        "cfClass",
+        "Class"
+      ]
+    },
+    "cfClassificationScheme_Classification": {
+      "connects": [
+        "cfClassificationScheme",
+        "Classification"
+      ]
+    },
+    "cfClassificationScheme_ClassificationScheme": {
+      "connects": [
+        "cfClassificationScheme",
+        "ClassificationScheme"
+      ]
+    },
+    "cfClassificationScheme_OrganisationUnit": {
+      "connects": [
+        "cfClassificationScheme",
+        "OrganisationUnit"
+      ]
+    },
+    "cfClassification_Classification": {
+      "connects": [
+        "cfClassification",
+        "Classification"
+      ]
+    },
+    "cfCountry_Class": {
+      "connects": [
+        "cfCountry",
+        "Class"
+      ]
+    },
+    "cfCountry_Classification": {
+      "connects": [
+        "cfCountry",
+        "Classification"
+      ]
+    },
+    "cfCurrency_Class": {
+      "connects": [
+        "cfCurrency",
+        "Class"
+      ]
+    },
+    "cfCurrency_Classification": {
+      "connects": [
+        "cfCurrency",
+        "Classification"
+      ]
+    },
+    "cfCurriculumVitae_Classification": {
+      "connects": [
+        "cfCurriculumVitae",
+        "Classification"
+      ]
+    },
+    "cfEAddr_Class": {
+      "connects": [
+        "cfEAddr",
+        "Class"
+      ]
+    },
+    "cfElectronicAddress_Classification": {
+      "connects": [
+        "cfElectronicAddress",
+        "Classification"
+      ]
+    },
+    "cfEquip_Class": {
+      "connects": [
+        "cfEquip",
+        "Class"
+      ]
+    },
+    "cfEquip_Equip": {
+      "connects": [
+        "cfEquip",
+        "Equip"
+      ]
+    },
+    "cfEquip_Event": {
+      "connects": [
+        "cfEquip",
+        "Event"
+      ]
+    },
+    "cfEquip_Fund": {
+      "connects": [
+        "cfEquip",
+        "Fund"
+      ]
+    },
+    "cfEquip_Indic": {
+      "connects": [
+        "cfEquip",
+        "Indic"
+      ]
+    },
+    "cfEquip_Meas": {
+      "connects": [
+        "cfEquip",
+        "Meas"
+      ]
+    },
+    "cfEquip_Medium": {
+      "connects": [
+        "cfEquip",
+        "Medium"
+      ]
+    },
+    "cfEquip_PAddr": {
+      "connects": [
+        "cfEquip",
+        "PAddr"
+      ]
+    },
+    "cfEquip_Srv": {
+      "connects": [
+        "cfEquip",
+        "Srv"
+      ]
+    },
+    "cfEquipment_Classification": {
+      "connects": [
+        "cfEquipment",
+        "Classification"
+      ]
+    },
+    "cfEquipment_Equipment": {
+      "connects": [
+        "cfEquipment",
+        "Equipment"
+      ]
+    },
+    "cfEquipment_Event": {
+      "connects": [
+        "cfEquipment",
+        "Event"
+      ]
+    },
+    "cfEquipment_Funding": {
+      "connects": [
+        "cfEquipment",
+        "Funding"
+      ]
+    },
+    "cfEquipment_Indicator": {
+      "connects": [
+        "cfEquipment",
+        "Indicator"
+      ]
+    },
+    "cfEquipment_Measurement": {
+      "connects": [
+        "cfEquipment",
+        "Measurement"
+      ]
+    },
+    "cfEquipment_Measurment": {
+      "connects": [
+        "cfEquipment",
+        "Measurment"
+      ]
+    },
+    "cfEquipment_Medium": {
+      "connects": [
+        "cfEquipment",
+        "Medium"
+      ]
+    },
+    "cfEquipment_PostAddress": {
+      "connects": [
+        "cfEquipment",
+        "PostAddress"
+      ]
+    },
+    "cfEquipment_Service": {
+      "connects": [
+        "cfEquipment",
+        "Service"
+      ]
+    },
+    "cfEvent_Class": {
+      "connects": [
+        "cfEvent",
+        "Class"
+      ]
+    },
+    "cfEvent_Classification": {
+      "connects": [
+        "cfEvent",
+        "Classification"
+      ]
+    },
+    "cfEvent_Event": {
+      "connects": [
+        "cfEvent",
+        "Event"
+      ]
+    },
+    "cfEvent_Fund": {
+      "connects": [
+        "cfEvent",
+        "Fund"
+      ]
+    },
+    "cfEvent_Funding": {
+      "connects": [
+        "cfEvent",
+        "Funding"
+      ]
+    },
+    "cfEvent_Indic": {
+      "connects": [
+        "cfEvent",
+        "Indic"
+      ]
+    },
+    "cfEvent_Indicator": {
+      "connects": [
+        "cfEvent",
+        "Indicator"
+      ]
+    },
+    "cfEvent_Meas": {
+      "connects": [
+        "cfEvent",
+        "Meas"
+      ]
+    },
+    "cfEvent_Measurement": {
+      "connects": [
+        "cfEvent",
+        "Measurement"
+      ]
+    },
+    "cfEvent_Medium": {
+      "connects": [
+        "cfEvent",
+        "Medium"
+      ]
+    },
+    "cfExpSkills_Class": {
+      "connects": [
+        "cfExpSkills",
+        "Class"
+      ]
+    },
+    "cfExpertiseAndSkills_Classification": {
+      "connects": [
+        "cfExpertiseAndSkills",
+        "Classification"
+      ]
+    },
+    "cfFacil_Class": {
+      "connects": [
+        "cfFacil",
+        "Class"
+      ]
+    },
+    "cfFacil_Equip": {
+      "connects": [
+        "cfFacil",
+        "Equip"
+      ]
+    },
+    "cfFacil_Event": {
+      "connects": [
+        "cfFacil",
+        "Event"
+      ]
+    },
+    "cfFacil_Facil": {
+      "connects": [
+        "cfFacil",
+        "Facil"
+      ]
+    },
+    "cfFacil_Fund": {
+      "connects": [
+        "cfFacil",
+        "Fund"
+      ]
+    },
+    "cfFacil_Indic": {
+      "connects": [
+        "cfFacil",
+        "Indic"
+      ]
+    },
+    "cfFacil_Meas": {
+      "connects": [
+        "cfFacil",
+        "Meas"
+      ]
+    },
+    "cfFacil_Medium": {
+      "connects": [
+        "cfFacil",
+        "Medium"
+      ]
+    },
+    "cfFacil_PAddr": {
+      "connects": [
+        "cfFacil",
+        "PAddr"
+      ]
+    },
+    "cfFacil_Srv": {
+      "connects": [
+        "cfFacil",
+        "Srv"
+      ]
+    },
+    "cfFacility_Classification": {
+      "connects": [
+        "cfFacility",
+        "Classification"
+      ]
+    },
+    "cfFacility_Equipment": {
+      "connects": [
+        "cfFacility",
+        "Equipment"
+      ]
+    },
+    "cfFacility_Event": {
+      "connects": [
+        "cfFacility",
+        "Event"
+      ]
+    },
+    "cfFacility_Facility": {
+      "connects": [
+        "cfFacility",
+        "Facility"
+      ]
+    },
+    "cfFacility_Funding": {
+      "connects": [
+        "cfFacility",
+        "Funding"
+      ]
+    },
+    "cfFacility_Indicator": {
+      "connects": [
+        "cfFacility",
+        "Indicator"
+      ]
+    },
+    "cfFacility_Measurement": {
+      "connects": [
+        "cfFacility",
+        "Measurement"
+      ]
+    },
+    "cfFacility_Medium": {
+      "connects": [
+        "cfFacility",
+        "Medium"
+      ]
+    },
+    "cfFacility_PostAddress": {
+      "connects": [
+        "cfFacility",
+        "PostAddress"
+      ]
+    },
+    "cfFacility_Service": {
+      "connects": [
+        "cfFacility",
+        "Service"
+      ]
+    },
+    "cfFedId_Class": {
+      "connects": [
+        "cfFedId",
+        "Class"
+      ]
+    },
+    "cfFedId_Srv": {
+      "connects": [
+        "cfFedId",
+        "Srv"
+      ]
+    },
+    "cfFederatedIdentifier_Classification": {
+      "connects": [
+        "cfFederatedIdentifier",
+        "Classification"
+      ]
+    },
+    "cfFederatedIdentifier_Service": {
+      "connects": [
+        "cfFederatedIdentifier",
+        "Service"
+      ]
+    },
+    "cfFund_Class": {
+      "connects": [
+        "cfFund",
+        "Class"
+      ]
+    },
+    "cfFund_Fund": {
+      "connects": [
+        "cfFund",
+        "Fund"
+      ]
+    },
+    "cfFund_Indic": {
+      "connects": [
+        "cfFund",
+        "Indic"
+      ]
+    },
+    "cfFund_Meas": {
+      "connects": [
+        "cfFund",
+        "Meas"
+      ]
+    },
+    "cfFunding_Classification": {
+      "connects": [
+        "cfFunding",
+        "Classification"
+      ]
+    },
+    "cfFunding_Funding": {
+      "connects": [
+        "cfFunding",
+        "Funding"
+      ]
+    },
+    "cfFunding_Indicator": {
+      "connects": [
+        "cfFunding",
+        "Indicator"
+      ]
+    },
+    "cfFunding_Measurement": {
+      "connects": [
+        "cfFunding",
+        "Measurement"
+      ]
+    },
+    "cfGeoBBox_Class": {
+      "connects": [
+        "cfGeoBBox",
+        "Class"
+      ]
+    },
+    "cfGeoBBox_GeoBBox": {
+      "connects": [
+        "cfGeoBBox",
+        "GeoBBox"
+      ]
+    },
+    "cfGeoBBox_Meas": {
+      "connects": [
+        "cfGeoBBox",
+        "Meas"
+      ]
+    },
+    "cfGeographicBoundingBox_Classification": {
+      "connects": [
+        "cfGeographicBoundingBox",
+        "Classification"
+      ]
+    },
+    "cfGeographicBoundingBox_GeographicBoundingBox": {
+      "connects": [
+        "cfGeographicBoundingBox",
+        "GeographicBoundingBox"
+      ]
+    },
+    "cfGeographicBoundingBox_Measurement": {
+      "connects": [
+        "cfGeographicBoundingBox",
+        "Measurement"
+      ]
+    },
+    "cfIndic_Class": {
+      "connects": [
+        "cfIndic",
+        "Class"
+      ]
+    },
+    "cfIndic_Indic": {
+      "connects": [
+        "cfIndic",
+        "Indic"
+      ]
+    },
+    "cfIndic_Meas": {
+      "connects": [
+        "cfIndic",
+        "Meas"
+      ]
+    },
+    "cfIndicator_Classification": {
+      "connects": [
+        "cfIndicator",
+        "Classification"
+      ]
+    },
+    "cfIndicator_Indicator": {
+      "connects": [
+        "cfIndicator",
+        "Indicator"
+      ]
+    },
+    "cfIndicator_Measurement": {
+      "connects": [
+        "cfIndicator",
+        "Measurement"
+      ]
+    },
+    "cfLang_Class": {
+      "connects": [
+        "cfLang",
+        "Class"
+      ]
+    },
+    "cfLanguage_Classification": {
+      "connects": [
+        "cfLanguage",
+        "Classification"
+      ]
+    },
+    "cfMeas_Class": {
+      "connects": [
+        "cfMeas",
+        "Class"
+      ]
+    },
+    "cfMeas_Meas": {
+      "connects": [
+        "cfMeas",
+        "Meas"
+      ]
+    },
+    "cfMeasurement_Classification": {
+      "connects": [
+        "cfMeasurement",
+        "Classification"
+      ]
+    },
+    "cfMeasurement_Measurement": {
+      "connects": [
+        "cfMeasurement",
+        "Measurement"
+      ]
+    },
+    "cfMedium_Class": {
+      "connects": [
+        "cfMedium",
+        "Class"
+      ]
+    },
+    "cfMedium_Classification": {
+      "connects": [
+        "cfMedium",
+        "Classification"
+      ]
+    },
+    "cfMedium_Fund": {
+      "connects": [
+        "cfMedium",
+        "Fund"
+      ]
+    },
+    "cfMedium_Funding": {
+      "connects": [
+        "cfMedium",
+        "Funding"
+      ]
+    },
+    "cfMedium_Indic": {
+      "connects": [
+        "cfMedium",
+        "Indic"
+      ]
+    },
+    "cfMedium_Indicator": {
+      "connects": [
+        "cfMedium",
+        "Indicator"
+      ]
+    },
+    "cfMedium_Meas": {
+      "connects": [
+        "cfMedium",
+        "Meas"
+      ]
+    },
+    "cfMedium_Measurement": {
+      "connects": [
+        "cfMedium",
+        "Measurement"
+      ]
+    },
+    "cfMedium_Medium": {
+      "connects": [
+        "cfMedium",
+        "Medium"
+      ]
+    },
+    "cfMetrics_Class": {
+      "connects": [
+        "cfMetrics",
+        "Class"
+      ]
+    },
+    "cfMetrics_Classification": {
+      "connects": [
+        "cfMetrics",
+        "Classification"
+      ]
+    },
+    "cfOrgUnit_Class": {
+      "connects": [
+        "cfOrgUnit",
+        "Class"
+      ]
+    },
+    "cfOrgUnit_DC": {
+      "connects": [
+        "cfOrgUnit",
+        "DC"
+      ]
+    },
+    "cfOrgUnit_EAddr": {
+      "connects": [
+        "cfOrgUnit",
+        "EAddr"
+      ]
+    },
+    "cfOrgUnit_Equip": {
+      "connects": [
+        "cfOrgUnit",
+        "Equip"
+      ]
+    },
+    "cfOrgUnit_Event": {
+      "connects": [
+        "cfOrgUnit",
+        "Event"
+      ]
+    },
+    "cfOrgUnit_ExpSkills": {
+      "connects": [
+        "cfOrgUnit",
+        "ExpSkills"
+      ]
+    },
+    "cfOrgUnit_Facil": {
+      "connects": [
+        "cfOrgUnit",
+        "Facil"
+      ]
+    },
+    "cfOrgUnit_Fund": {
+      "connects": [
+        "cfOrgUnit",
+        "Fund"
+      ]
+    },
+    "cfOrgUnit_Indic": {
+      "connects": [
+        "cfOrgUnit",
+        "Indic"
+      ]
+    },
+    "cfOrgUnit_Meas": {
+      "connects": [
+        "cfOrgUnit",
+        "Meas"
+      ]
+    },
+    "cfOrgUnit_Medium": {
+      "connects": [
+        "cfOrgUnit",
+        "Medium"
+      ]
+    },
+    "cfOrgUnit_OrgUnit": {
+      "connects": [
+        "cfOrgUnit",
+        "OrgUnit"
+      ]
+    },
+    "cfOrgUnit_PAddr": {
+      "connects": [
+        "cfOrgUnit",
+        "PAddr"
+      ]
+    },
+    "cfOrgUnit_Prize": {
+      "connects": [
+        "cfOrgUnit",
+        "Prize"
+      ]
+    },
+    "cfOrgUnit_ResPat": {
+      "connects": [
+        "cfOrgUnit",
+        "ResPat"
+      ]
+    },
+    "cfOrgUnit_ResProd": {
+      "connects": [
+        "cfOrgUnit",
+        "ResProd"
+      ]
+    },
+    "cfOrgUnit_ResPubl": {
+      "connects": [
+        "cfOrgUnit",
+        "ResPubl"
+      ]
+    },
+    "cfOrgUnit_Srv": {
+      "connects": [
+        "cfOrgUnit",
+        "Srv"
+      ]
+    },
+    "cfOrganisaionUnit_Equipment": {
+      "connects": [
+        "cfOrganisaionUnit",
+        "Equipment"
+      ]
+    },
+    "cfOrganisationUnit_Classification": {
+      "connects": [
+        "cfOrganisationUnit",
+        "Classification"
+      ]
+    },
+    "cfOrganisationUnit_DublinCore": {
+      "connects": [
+        "cfOrganisationUnit",
+        "DublinCore"
+      ]
+    },
+    "cfOrganisationUnit_ElectronicAddress": {
+      "connects": [
+        "cfOrganisationUnit",
+        "ElectronicAddress"
+      ]
+    },
+    "cfOrganisationUnit_Equipment": {
+      "connects": [
+        "cfOrganisationUnit",
+        "Equipment"
+      ]
+    },
+    "cfOrganisationUnit_Event": {
+      "connects": [
+        "cfOrganisationUnit",
+        "Event"
+      ]
+    },
+    "cfOrganisationUnit_ExpertiseAndSkills": {
+      "connects": [
+        "cfOrganisationUnit",
+        "ExpertiseAndSkills"
+      ]
+    },
+    "cfOrganisationUnit_Facility": {
+      "connects": [
+        "cfOrganisationUnit",
+        "Facility"
+      ]
+    },
+    "cfOrganisationUnit_Funding": {
+      "connects": [
+        "cfOrganisationUnit",
+        "Funding"
+      ]
+    },
+    "cfOrganisationUnit_Indicator": {
+      "connects": [
+        "cfOrganisationUnit",
+        "Indicator"
+      ]
+    },
+    "cfOrganisationUnit_Measurement": {
+      "connects": [
+        "cfOrganisationUnit",
+        "Measurement"
+      ]
+    },
+    "cfOrganisationUnit_Medium": {
+      "connects": [
+        "cfOrganisationUnit",
+        "Medium"
+      ]
+    },
+    "cfOrganisationUnit_OrganisationUnit": {
+      "connects": [
+        "cfOrganisationUnit",
+        "OrganisationUnit"
+      ]
+    },
+    "cfOrganisationUnit_PostAddress": {
+      "connects": [
+        "cfOrganisationUnit",
+        "PostAddress"
+      ]
+    },
+    "cfOrganisationUnit_PrizeAward": {
+      "connects": [
+        "cfOrganisationUnit",
+        "PrizeAward"
+      ]
+    },
+    "cfOrganisationUnit_ResultPatent": {
+      "connects": [
+        "cfOrganisationUnit",
+        "ResultPatent"
+      ]
+    },
+    "cfOrganisationUnit_ResultProduct": {
+      "connects": [
+        "cfOrganisationUnit",
+        "ResultProduct"
+      ]
+    },
+    "cfOrganisationUnit_ResultPublication": {
+      "connects": [
+        "cfOrganisationUnit",
+        "ResultPublication"
+      ]
+    },
+    "cfOrganisationUnit_Service": {
+      "connects": [
+        "cfOrganisationUnit",
+        "Service"
+      ]
+    },
+    "cfPAddr_Class": {
+      "connects": [
+        "cfPAddr",
+        "Class"
+      ]
+    },
+    "cfPAddr_GeoBBox": {
+      "connects": [
+        "cfPAddr",
+        "GeoBBox"
+      ]
+    },
+    "cfPersName_Pers": {
+      "connects": [
+        "cfPersName",
+        "Pers"
+      ]
+    },
+    "cfPers_CV": {
+      "connects": [
+        "cfPers",
+        "CV"
+      ]
+    },
+    "cfPers_Class": {
+      "connects": [
+        "cfPers",
+        "Class"
+      ]
+    },
+    "cfPers_Country": {
+      "connects": [
+        "cfPers",
+        "Country"
+      ]
+    },
+    "cfPers_DC": {
+      "connects": [
+        "cfPers",
+        "DC"
+      ]
+    },
+    "cfPers_EAddr": {
+      "connects": [
+        "cfPers",
+        "EAddr"
+      ]
+    },
+    "cfPers_Equip": {
+      "connects": [
+        "cfPers",
+        "Equip"
+      ]
+    },
+    "cfPers_Event": {
+      "connects": [
+        "cfPers",
+        "Event"
+      ]
+    },
+    "cfPers_ExpSkills": {
+      "connects": [
+        "cfPers",
+        "ExpSkills"
+      ]
+    },
+    "cfPers_Facil": {
+      "connects": [
+        "cfPers",
+        "Facil"
+      ]
+    },
+    "cfPers_Fund": {
+      "connects": [
+        "cfPers",
+        "Fund"
+      ]
+    },
+    "cfPers_Indic": {
+      "connects": [
+        "cfPers",
+        "Indic"
+      ]
+    },
+    "cfPers_Lang": {
+      "connects": [
+        "cfPers",
+        "Lang"
+      ]
+    },
+    "cfPers_Meas": {
+      "connects": [
+        "cfPers",
+        "Meas"
+      ]
+    },
+    "cfPers_Medium": {
+      "connects": [
+        "cfPers",
+        "Medium"
+      ]
+    },
+    "cfPers_OrgUnit": {
+      "connects": [
+        "cfPers",
+        "OrgUnit"
+      ]
+    },
+    "cfPers_PAddr": {
+      "connects": [
+        "cfPers",
+        "PAddr"
+      ]
+    },
+    "cfPers_Pers": {
+      "connects": [
+        "cfPers",
+        "Pers"
+      ]
+    },
+    "cfPers_Prize": {
+      "connects": [
+        "cfPers",
+        "Prize"
+      ]
+    },
+    "cfPers_Qual": {
+      "connects": [
+        "cfPers",
+        "Qual"
+      ]
+    },
+    "cfPers_ResPat": {
+      "connects": [
+        "cfPers",
+        "ResPat"
+      ]
+    },
+    "cfPers_ResProd": {
+      "connects": [
+        "cfPers",
+        "ResProd"
+      ]
+    },
+    "cfPers_ResPubl": {
+      "connects": [
+        "cfPers",
+        "ResPubl"
+      ]
+    },
+    "cfPers_Srv": {
+      "connects": [
+        "cfPers",
+        "Srv"
+      ]
+    },
+    "cfPersonName_Person": {
+      "connects": [
+        "cfPersonName",
+        "Person"
+      ]
+    },
+    "cfPerson_Classification": {
+      "connects": [
+        "cfPerson",
+        "Classification"
+      ]
+    },
+    "cfPerson_Country": {
+      "connects": [
+        "cfPerson",
+        "Country"
+      ]
+    },
+    "cfPerson_CurriculumVitae": {
+      "connects": [
+        "cfPerson",
+        "CurriculumVitae"
+      ]
+    },
+    "cfPerson_DublinCore": {
+      "connects": [
+        "cfPerson",
+        "DublinCore"
+      ]
+    },
+    "cfPerson_ElectronicAddress": {
+      "connects": [
+        "cfPerson",
+        "ElectronicAddress"
+      ]
+    },
+    "cfPerson_Equipment": {
+      "connects": [
+        "cfPerson",
+        "Equipment"
+      ]
+    },
+    "cfPerson_Event": {
+      "connects": [
+        "cfPerson",
+        "Event"
+      ]
+    },
+    "cfPerson_ExpertiseAndSkills": {
+      "connects": [
+        "cfPerson",
+        "ExpertiseAndSkills"
+      ]
+    },
+    "cfPerson_Facility": {
+      "connects": [
+        "cfPerson",
+        "Facility"
+      ]
+    },
+    "cfPerson_Funding": {
+      "connects": [
+        "cfPerson",
+        "Funding"
+      ]
+    },
+    "cfPerson_Indicator": {
+      "connects": [
+        "cfPerson",
+        "Indicator"
+      ]
+    },
+    "cfPerson_Language": {
+      "connects": [
+        "cfPerson",
+        "Language"
+      ]
+    },
+    "cfPerson_Measurement": {
+      "connects": [
+        "cfPerson",
+        "Measurement"
+      ]
+    },
+    "cfPerson_Medium": {
+      "connects": [
+        "cfPerson",
+        "Medium"
+      ]
+    },
+    "cfPerson_OrganisationUnit": {
+      "connects": [
+        "cfPerson",
+        "OrganisationUnit"
+      ]
+    },
+    "cfPerson_Person": {
+      "connects": [
+        "cfPerson",
+        "Person"
+      ]
+    },
+    "cfPerson_PostAddress": {
+      "connects": [
+        "cfPerson",
+        "PostAddress"
+      ]
+    },
+    "cfPerson_PrizeAward": {
+      "connects": [
+        "cfPerson",
+        "PrizeAward"
+      ]
+    },
+    "cfPerson_Qualification": {
+      "connects": [
+        "cfPerson",
+        "Qualification"
+      ]
+    },
+    "cfPerson_ResultPatent": {
+      "connects": [
+        "cfPerson",
+        "ResultPatent"
+      ]
+    },
+    "cfPerson_ResultProduct": {
+      "connects": [
+        "cfPerson",
+        "ResultProduct"
+      ]
+    },
+    "cfPerson_ResultPublication": {
+      "connects": [
+        "cfPerson",
+        "ResultPublication"
+      ]
+    },
+    "cfPerson_Service": {
+      "connects": [
+        "cfPerson",
+        "Service"
+      ]
+    },
+    "cfPostAddress_Classification": {
+      "connects": [
+        "cfPostAddress",
+        "Classification"
+      ]
+    },
+    "cfPostAddress_GeographicBoundingBox": {
+      "connects": [
+        "cfPostAddress",
+        "GeographicBoundingBox"
+      ]
+    },
+    "cfPrizeAward_Classification": {
+      "connects": [
+        "cfPrizeAward",
+        "Classification"
+      ]
+    },
+    "cfPrize_Class": {
+      "connects": [
+        "cfPrize",
+        "Class"
+      ]
+    },
+    "cfProj_Class": {
+      "connects": [
+        "cfProj",
+        "Class"
+      ]
+    },
+    "cfProj_DC": {
+      "connects": [
+        "cfProj",
+        "DC"
+      ]
+    },
+    "cfProj_Equip": {
+      "connects": [
+        "cfProj",
+        "Equip"
+      ]
+    },
+    "cfProj_Event": {
+      "connects": [
+        "cfProj",
+        "Event"
+      ]
+    },
+    "cfProj_Facil": {
+      "connects": [
+        "cfProj",
+        "Facil"
+      ]
+    },
+    "cfProj_Fund": {
+      "connects": [
+        "cfProj",
+        "Fund"
+      ]
+    },
+    "cfProj_Indic": {
+      "connects": [
+        "cfProj",
+        "Indic"
+      ]
+    },
+    "cfProj_Meas": {
+      "connects": [
+        "cfProj",
+        "Meas"
+      ]
+    },
+    "cfProj_Medium": {
+      "connects": [
+        "cfProj",
+        "Medium"
+      ]
+    },
+    "cfProj_OrgUnit": {
+      "connects": [
+        "cfProj",
+        "OrgUnit"
+      ]
+    },
+    "cfProj_Pers": {
+      "connects": [
+        "cfProj",
+        "Pers"
+      ]
+    },
+    "cfProj_Prize": {
+      "connects": [
+        "cfProj",
+        "Prize"
+      ]
+    },
+    "cfProj_Proj": {
+      "connects": [
+        "cfProj",
+        "Proj"
+      ]
+    },
+    "cfProj_ResPat": {
+      "connects": [
+        "cfProj",
+        "ResPat"
+      ]
+    },
+    "cfProj_ResProd": {
+      "connects": [
+        "cfProj",
+        "ResProd"
+      ]
+    },
+    "cfProj_ResPubl": {
+      "connects": [
+        "cfProj",
+        "ResPubl"
+      ]
+    },
+    "cfProj_Srv": {
+      "connects": [
+        "cfProj",
+        "Srv"
+      ]
+    },
+    "cfProject_Classification": {
+      "connects": [
+        "cfProject",
+        "Classification"
+      ]
+    },
+    "cfProject_DublinCore": {
+      "connects": [
+        "cfProject",
+        "DublinCore"
+      ]
+    },
+    "cfProject_Equipment": {
+      "connects": [
+        "cfProject",
+        "Equipment"
+      ]
+    },
+    "cfProject_Event": {
+      "connects": [
+        "cfProject",
+        "Event"
+      ]
+    },
+    "cfProject_Facility": {
+      "connects": [
+        "cfProject",
+        "Facility"
+      ]
+    },
+    "cfProject_Funding": {
+      "connects": [
+        "cfProject",
+        "Funding"
+      ]
+    },
+    "cfProject_Indicator": {
+      "connects": [
+        "cfProject",
+        "Indicator"
+      ]
+    },
+    "cfProject_Measurement": {
+      "connects": [
+        "cfProject",
+        "Measurement"
+      ]
+    },
+    "cfProject_Medium": {
+      "connects": [
+        "cfProject",
+        "Medium"
+      ]
+    },
+    "cfProject_OrganisationUnit": {
+      "connects": [
+        "cfProject",
+        "OrganisationUnit"
+      ]
+    },
+    "cfProject_Person": {
+      "connects": [
+        "cfProject",
+        "Person"
+      ]
+    },
+    "cfProject_PrizeAward": {
+      "connects": [
+        "cfProject",
+        "PrizeAward"
+      ]
+    },
+    "cfProject_Project": {
+      "connects": [
+        "cfProject",
+        "Project"
+      ]
+    },
+    "cfProject_ResultPatent": {
+      "connects": [
+        "cfProject",
+        "ResultPatent"
+      ]
+    },
+    "cfProject_ResultProduct": {
+      "connects": [
+        "cfProject",
+        "ResultProduct"
+      ]
+    },
+    "cfProject_ResultPublication": {
+      "connects": [
+        "cfProject",
+        "ResultPublication"
+      ]
+    },
+    "cfProject_Service": {
+      "connects": [
+        "cfProject",
+        "Service"
+      ]
+    },
+    "cfQual_Class": {
+      "connects": [
+        "cfQual",
+        "Class"
+      ]
+    },
+    "cfQualification_Classification": {
+      "connects": [
+        "cfQualification",
+        "Classification"
+      ]
+    },
+    "cfResPat_Class": {
+      "connects": [
+        "cfResPat",
+        "Class"
+      ]
+    },
+    "cfResPat_Equip": {
+      "connects": [
+        "cfResPat",
+        "Equip"
+      ]
+    },
+    "cfResPat_Facil": {
+      "connects": [
+        "cfResPat",
+        "Facil"
+      ]
+    },
+    "cfResPat_Fund": {
+      "connects": [
+        "cfResPat",
+        "Fund"
+      ]
+    },
+    "cfResPat_Indic": {
+      "connects": [
+        "cfResPat",
+        "Indic"
+      ]
+    },
+    "cfResPat_Meas": {
+      "connects": [
+        "cfResPat",
+        "Meas"
+      ]
+    },
+    "cfResPat_Medium": {
+      "connects": [
+        "cfResPat",
+        "Medium"
+      ]
+    },
+    "cfResPat_ResPat": {
+      "connects": [
+        "cfResPat",
+        "ResPat"
+      ]
+    },
+    "cfResPat_Srv": {
+      "connects": [
+        "cfResPat",
+        "Srv"
+      ]
+    },
+    "cfResProd_Class": {
+      "connects": [
+        "cfResProd",
+        "Class"
+      ]
+    },
+    "cfResProd_Equip": {
+      "connects": [
+        "cfResProd",
+        "Equip"
+      ]
+    },
+    "cfResProd_Facil": {
+      "connects": [
+        "cfResProd",
+        "Facil"
+      ]
+    },
+    "cfResProd_Fund": {
+      "connects": [
+        "cfResProd",
+        "Fund"
+      ]
+    },
+    "cfResProd_GeoBBox": {
+      "connects": [
+        "cfResProd",
+        "GeoBBox"
+      ]
+    },
+    "cfResProd_Indic": {
+      "connects": [
+        "cfResProd",
+        "Indic"
+      ]
+    },
+    "cfResProd_Meas": {
+      "connects": [
+        "cfResProd",
+        "Meas"
+      ]
+    },
+    "cfResProd_Medium": {
+      "connects": [
+        "cfResProd",
+        "Medium"
+      ]
+    },
+    "cfResProd_ResPat": {
+      "connects": [
+        "cfResProd",
+        "ResPat"
+      ]
+    },
+    "cfResProd_ResProd": {
+      "connects": [
+        "cfResProd",
+        "ResProd"
+      ]
+    },
+    "cfResProd_Srv": {
+      "connects": [
+        "cfResProd",
+        "Srv"
+      ]
+    },
+    "cfResPubl_Cite": {
+      "connects": [
+        "cfResPubl",
+        "Cite"
+      ]
+    },
+    "cfResPubl_Class": {
+      "connects": [
+        "cfResPubl",
+        "Class"
+      ]
+    },
+    "cfResPubl_DC": {
+      "connects": [
+        "cfResPubl",
+        "DC"
+      ]
+    },
+    "cfResPubl_Equip": {
+      "connects": [
+        "cfResPubl",
+        "Equip"
+      ]
+    },
+    "cfResPubl_Event": {
+      "connects": [
+        "cfResPubl",
+        "Event"
+      ]
+    },
+    "cfResPubl_Facil": {
+      "connects": [
+        "cfResPubl",
+        "Facil"
+      ]
+    },
+    "cfResPubl_Fund": {
+      "connects": [
+        "cfResPubl",
+        "Fund"
+      ]
+    },
+    "cfResPubl_Indic": {
+      "connects": [
+        "cfResPubl",
+        "Indic"
+      ]
+    },
+    "cfResPubl_Meas": {
+      "connects": [
+        "cfResPubl",
+        "Meas"
+      ]
+    },
+    "cfResPubl_Medium": {
+      "connects": [
+        "cfResPubl",
+        "Medium"
+      ]
+    },
+    "cfResPubl_Metrics": {
+      "connects": [
+        "cfResPubl",
+        "Metrics"
+      ]
+    },
+    "cfResPubl_ResPat": {
+      "connects": [
+        "cfResPubl",
+        "ResPat"
+      ]
+    },
+    "cfResPubl_ResProd": {
+      "connects": [
+        "cfResPubl",
+        "ResProd"
+      ]
+    },
+    "cfResPubl_ResPubl": {
+      "connects": [
+        "cfResPubl",
+        "ResPubl"
+      ]
+    },
+    "cfResPubl_Srv": {
+      "connects": [
+        "cfResPubl",
+        "Srv"
+      ]
+    },
+    "cfResultPatent_Classification": {
+      "connects": [
+        "cfResultPatent",
+        "Classification"
+      ]
+    },
+    "cfResultPatent_Equipment": {
+      "connects": [
+        "cfResultPatent",
+        "Equipment"
+      ]
+    },
+    "cfResultPatent_Facility": {
+      "connects": [
+        "cfResultPatent",
+        "Facility"
+      ]
+    },
+    "cfResultPatent_Funding": {
+      "connects": [
+        "cfResultPatent",
+        "Funding"
+      ]
+    },
+    "cfResultPatent_Indicator": {
+      "connects": [
+        "cfResultPatent",
+        "Indicator"
+      ]
+    },
+    "cfResultPatent_Measurement": {
+      "connects": [
+        "cfResultPatent",
+        "Measurement"
+      ]
+    },
+    "cfResultPatent_Medium": {
+      "connects": [
+        "cfResultPatent",
+        "Medium"
+      ]
+    },
+    "cfResultPatent_ResultPatent": {
+      "connects": [
+        "cfResultPatent",
+        "ResultPatent"
+      ]
+    },
+    "cfResultPatent_Service": {
+      "connects": [
+        "cfResultPatent",
+        "Service"
+      ]
+    },
+    "cfResultProduct_Classification": {
+      "connects": [
+        "cfResultProduct",
+        "Classification"
+      ]
+    },
+    "cfResultProduct_Equipment": {
+      "connects": [
+        "cfResultProduct",
+        "Equipment"
+      ]
+    },
+    "cfResultProduct_Facility": {
+      "connects": [
+        "cfResultProduct",
+        "Facility"
+      ]
+    },
+    "cfResultProduct_Funding": {
+      "connects": [
+        "cfResultProduct",
+        "Funding"
+      ]
+    },
+    "cfResultProduct_GeographicBoundingBox": {
+      "connects": [
+        "cfResultProduct",
+        "GeographicBoundingBox"
+      ]
+    },
+    "cfResultProduct_Indicator": {
+      "connects": [
+        "cfResultProduct",
+        "Indicator"
+      ]
+    },
+    "cfResultProduct_Measurement": {
+      "connects": [
+        "cfResultProduct",
+        "Measurement"
+      ]
+    },
+    "cfResultProduct_Medium": {
+      "connects": [
+        "cfResultProduct",
+        "Medium"
+      ]
+    },
+    "cfResultProduct_ResultPatent": {
+      "connects": [
+        "cfResultProduct",
+        "ResultPatent"
+      ]
+    },
+    "cfResultProduct_ResultProduct": {
+      "connects": [
+        "cfResultProduct",
+        "ResultProduct"
+      ]
+    },
+    "cfResultProduct_Service": {
+      "connects": [
+        "cfResultProduct",
+        "Service"
+      ]
+    },
+    "cfResultPublication_Citation": {
+      "connects": [
+        "cfResultPublication",
+        "Citation"
+      ]
+    },
+    "cfResultPublication_Classification": {
+      "connects": [
+        "cfResultPublication",
+        "Classification"
+      ]
+    },
+    "cfResultPublication_DublinCore": {
+      "connects": [
+        "cfResultPublication",
+        "DublinCore"
+      ]
+    },
+    "cfResultPublication_Equipment": {
+      "connects": [
+        "cfResultPublication",
+        "Equipment"
+      ]
+    },
+    "cfResultPublication_Event": {
+      "connects": [
+        "cfResultPublication",
+        "Event"
+      ]
+    },
+    "cfResultPublication_Facility": {
+      "connects": [
+        "cfResultPublication",
+        "Facility"
+      ]
+    },
+    "cfResultPublication_Funding": {
+      "connects": [
+        "cfResultPublication",
+        "Funding"
+      ]
+    },
+    "cfResultPublication_Indicator": {
+      "connects": [
+        "cfResultPublication",
+        "Indicator"
+      ]
+    },
+    "cfResultPublication_Measurement": {
+      "connects": [
+        "cfResultPublication",
+        "Measurement"
+      ]
+    },
+    "cfResultPublication_Medium": {
+      "connects": [
+        "cfResultPublication",
+        "Medium"
+      ]
+    },
+    "cfResultPublication_Metrics": {
+      "connects": [
+        "cfResultPublication",
+        "Metrics"
+      ]
+    },
+    "cfResultPublication_ResultPatent": {
+      "connects": [
+        "cfResultPublication",
+        "ResultPatent"
+      ]
+    },
+    "cfResultPublication_ResultProduct": {
+      "connects": [
+        "cfResultPublication",
+        "ResultProduct"
+      ]
+    },
+    "cfResultPublication_ResultPublication": {
+      "connects": [
+        "cfResultPublication",
+        "ResultPublication"
+      ]
+    },
+    "cfResultPublication_Service": {
+      "connects": [
+        "cfResultPublication",
+        "Service"
+      ]
+    },
+    "cfService_Classification": {
+      "connects": [
+        "cfService",
+        "Classification"
+      ]
+    },
+    "cfService_Event": {
+      "connects": [
+        "cfService",
+        "Event"
+      ]
+    },
+    "cfService_Funding": {
+      "connects": [
+        "cfService",
+        "Funding"
+      ]
+    },
+    "cfService_Indicator": {
+      "connects": [
+        "cfService",
+        "Indicator"
+      ]
+    },
+    "cfService_Measurement": {
+      "connects": [
+        "cfService",
+        "Measurement"
+      ]
+    },
+    "cfService_Medium": {
+      "connects": [
+        "cfService",
+        "Medium"
+      ]
+    },
+    "cfService_PostAddress": {
+      "connects": [
+        "cfService",
+        "PostAddress"
+      ]
+    },
+    "cfService_Service": {
+      "connects": [
+        "cfService",
+        "Service"
+      ]
+    },
+    "cfSrv_Class": {
+      "connects": [
+        "cfSrv",
+        "Class"
+      ]
+    },
+    "cfSrv_Event": {
+      "connects": [
+        "cfSrv",
+        "Event"
+      ]
+    },
+    "cfSrv_Fund": {
+      "connects": [
+        "cfSrv",
+        "Fund"
+      ]
+    },
+    "cfSrv_Indic": {
+      "connects": [
+        "cfSrv",
+        "Indic"
+      ]
+    },
+    "cfSrv_Meas": {
+      "connects": [
+        "cfSrv",
+        "Meas"
+      ]
+    },
+    "cfSrv_Medium": {
+      "connects": [
+        "cfSrv",
+        "Medium"
+      ]
+    },
+    "cfSrv_PAddr": {
+      "connects": [
+        "cfSrv",
+        "PAddr"
+      ]
+    },
+    "cfSrv_Srv": {
+      "connects": [
+        "cfSrv",
+        "Srv"
+      ]
+    }
+  },
+  "classification_schemes": [
+    "Academic Titles)",
+    "Organisation Types)",
+    "Person-Project Roles)",
+    "Publication Types)"
+  ],
+  "entity_hierarchy": {
+    "cfAbstr": [
+      "cfAbstract"
+    ],
+    "cfAcro": [
+      "cfAcronym"
+    ],
+    "cfCV": [
+      "cfCVDoc",
+      "cfCVId"
+    ],
+    "cfCitation": [
+      "cfCitationIdentifier"
+    ],
+    "cfCite": [
+      "cfCiteId"
+    ],
+    "cfClass": [
+      "cfClassEntity",
+      "cfClassId",
+      "cfClassScheme",
+      "cfClassification"
+    ],
+    "cfClassScheme": [
+      "cfClassSchemeId"
+    ],
+    "cfClassification": [
+      "cfClassificationIdentifier",
+      "cfClassificationScheme"
+    ],
+    "cfClassificationScheme": [
+      "cfClassificationSchemeIdentifier"
+    ],
+    "cfCount": [
+      "cfCountFloatPChange",
+      "cfCountFloatingPointChange",
+      "cfCountInt",
+      "cfCountry"
+    ],
+    "cfCountInt": [
+      "cfCountIntChange",
+      "cfCountInteger"
+    ],
+    "cfCountInteger": [
+      "cfCountIntegerChange"
+    ],
+    "cfCountry": [
+      "cfCountryCode"
+    ],
+    "cfCurrency": [
+      "cfCurrencyCode"
+    ],
+    "cfCurriculumVitae": [
+      "cfCurriculumVitaeDoc",
+      "cfCurriculumVitaeIdentifier"
+    ],
+    "cfDC": [
+      "cfDCAudience",
+      "cfDCContributor",
+      "cfDCCoverage",
+      "cfDCCreator",
+      "cfDCDate",
+      "cfDCDescription",
+      "cfDCEndDate",
+      "cfDCFormat",
+      "cfDCId",
+      "cfDCLangTag",
+      "cfDCLanguage",
+      "cfDCProvenance",
+      "cfDCPublisher",
+      "cfDCRelation",
+      "cfDCResourceIdentifier",
+      "cfDCResourceType",
+      "cfDCRightsHolder",
+      "cfDCRightsMM",
+      "cfDCScheme",
+      "cfDCSource",
+      "cfDCStartDate",
+      "cfDCSubject",
+      "cfDCTitle",
+      "cfDCTrans",
+      "cfDCType",
+      "cfDCValue"
+    ],
+    "cfDCCoverage": [
+      "cfDCCoverageSpatial",
+      "cfDCCoverageTemporal"
+    ],
+    "cfDCDate": [
+      "cfDCDateBegin",
+      "cfDCDateEnd"
+    ],
+    "cfDCRightsMM": [
+      "cfDCRightsMMAccessRights",
+      "cfDCRightsMMLicense"
+    ],
+    "cfDCScheme": [
+      "cfDCSchemeURI"
+    ],
+    "cfDef": [
+      "cfDefinition"
+    ],
+    "cfDescr": [
+      "cfDescription"
+    ],
+    "cfDublinCore": [
+      "cfDublinCoreAudience",
+      "cfDublinCoreContributor",
+      "cfDublinCoreCoverage",
+      "cfDublinCoreCreator",
+      "cfDublinCoreDate",
+      "cfDublinCoreDescription",
+      "cfDublinCoreEndDate",
+      "cfDublinCoreFormat",
+      "cfDublinCoreIdentifier",
+      "cfDublinCoreLanguage",
+      "cfDublinCoreProvenance",
+      "cfDublinCorePublisher",
+      "cfDublinCoreRelation",
+      "cfDublinCoreResourceIdentifier",
+      "cfDublinCoreResourceType",
+      "cfDublinCoreRightsHolder",
+      "cfDublinCoreRightsManagement",
+      "cfDublinCoreScheme",
+      "cfDublinCoreSource",
+      "cfDublinCoreStartDate",
+      "cfDublinCoreSubject",
+      "cfDublinCoreTitle",
+      "cfDublinCoreTranslation",
+      "cfDublinCoreType",
+      "cfDublinCoreValue"
+    ],
+    "cfDublinCoreCoverage": [
+      "cfDublinCoreCoverageSpatial",
+      "cfDublinCoreCoverageTemporal"
+    ],
+    "cfDublinCoreDate": [
+      "cfDublinCoreDateBegin",
+      "cfDublinCoreDateEnd"
+    ],
+    "cfDublinCoreLanguage": [
+      "cfDublinCoreLanguageTag"
+    ],
+    "cfDublinCoreRightsManagement": [
+      "cfDublinCoreRightsManagementAccessRights",
+      "cfDublinCoreRightsManagementLicense"
+    ],
+    "cfDublinCoreScheme": [
+      "cfDublinCoreSchemeUniformResourceIdentifier"
+    ],
+    "cfEAddr": [
+      "cfEAddrId"
+    ],
+    "cfElectronicAddress": [
+      "cfElectronicAddressIdentifier"
+    ],
+    "cfEquip": [
+      "cfEquipId",
+      "cfEquipment"
+    ],
+    "cfEquipment": [
+      "cfEquipmentDescription",
+      "cfEquipmentIdentifier",
+      "cfEquipmentKeywords",
+      "cfEquipmentName"
+    ],
+    "cfEvent": [
+      "cfEventDescription",
+      "cfEventId",
+      "cfEventKeywords",
+      "cfEventName"
+    ],
+    "cfEventId": [
+      "cfEventIdentifier"
+    ],
+    "cfEx": [
+      "cfExample",
+      "cfExpSkills",
+      "cfExpertiseAndSkills"
+    ],
+    "cfExpSkills": [
+      "cfExpSkillsId"
+    ],
+    "cfExpertiseAndSkills": [
+      "cfExpertiseAndSkillsDescription",
+      "cfExpertiseAndSkillsIdentifier",
+      "cfExpertiseAndSkillsKeywords",
+      "cfExpertiseAndSkillsName"
+    ],
+    "cfFacil": [
+      "cfFacilId",
+      "cfFacility"
+    ],
+    "cfFacility": [
+      "cfFacilityDescription",
+      "cfFacilityIdentifier",
+      "cfFacilityKeywords",
+      "cfFacilityName"
+    ],
+    "cfFedId": [
+      "cfFedIdId"
+    ],
+    "cfFederatedIdentifier": [
+      "cfFederatedIdentifierIdentifier"
+    ],
+    "cfFund": [
+      "cfFundId",
+      "cfFunding"
+    ],
+    "cfFunding": [
+      "cfFundingDescription",
+      "cfFundingIdentifier",
+      "cfFundingKeywords",
+      "cfFundingName"
+    ],
+    "cfGeoBBox": [
+      "cfGeoBBoxId"
+    ],
+    "cfGeographicBoundingBox": [
+      "cfGeographicBoundingBoxIdentifier"
+    ],
+    "cfIndic": [
+      "cfIndicId",
+      "cfIndicator"
+    ],
+    "cfIndicator": [
+      "cfIndicatorIdentifier"
+    ],
+    "cfKeyw": [
+      "cfKeywords"
+    ],
+    "cfLang": [
+      "cfLangCode",
+      "cfLanguage"
+    ],
+    "cfLanguage": [
+      "cfLanguageCode"
+    ],
+    "cfMeas": [
+      "cfMeasId",
+      "cfMeasurement"
+    ],
+    "cfMeasurement": [
+      "cfMeasurementIdentifier"
+    ],
+    "cfMedium": [
+      "cfMediumCreationDate",
+      "cfMediumId"
+    ],
+    "cfMediumId": [
+      "cfMediumIdentifier"
+    ],
+    "cfMetrics": [
+      "cfMetricsDescription",
+      "cfMetricsId",
+      "cfMetricsName"
+    ],
+    "cfMetricsId": [
+      "cfMetricsIdentifier"
+    ],
+    "cfName": [
+      "cfNameAbbrev"
+    ],
+    "cfNameAbbrev": [
+      "cfNameAbbreviation"
+    ],
+    "cfNum": [
+      "cfNumCurrCode",
+      "cfNumber",
+      "cfNumericCurrencyCode"
+    ],
+    "cfOrgUnit": [
+      "cfOrgUnitId"
+    ],
+    "cfOrganisation": [
+      "cfOrganisationUnit",
+      "cfOrganisationalUnit"
+    ],
+    "cfOrganisationUnit": [
+      "cfOrganisationUnitIdentifier",
+      "cfOrganisationUnitKeywords",
+      "cfOrganisationUnitName",
+      "cfOrganisationUnitResearchActivity"
+    ],
+    "cfPAddr": [
+      "cfPAddrId"
+    ],
+    "cfPatentNum": [
+      "cfPatentNumber"
+    ],
+    "cfPers": [
+      "cfPersId",
+      "cfPersName",
+      "cfPerson"
+    ],
+    "cfPersName": [
+      "cfPersNameId"
+    ],
+    "cfPerson": [
+      "cfPersonIdentifier",
+      "cfPersonKeywords",
+      "cfPersonName",
+      "cfPersonResearchInterest"
+    ],
+    "cfPersonName": [
+      "cfPersonNameIdentifier"
+    ],
+    "cfPostAddress": [
+      "cfPostAddressIdentifier"
+    ],
+    "cfPrize": [
+      "cfPrizeAward",
+      "cfPrizeDate",
+      "cfPrizeId"
+    ],
+    "cfPrizeAward": [
+      "cfPrizeAwardDate",
+      "cfPrizeAwardIdentifier"
+    ],
+    "cfProj": [
+      "cfProjId",
+      "cfProject"
+    ],
+    "cfProject": [
+      "cfProjectAbstract",
+      "cfProjectIdentifier",
+      "cfProjectKeywords",
+      "cfProjectTitle"
+    ],
+    "cfQual": [
+      "cfQualId",
+      "cfQualification"
+    ],
+    "cfQualification": [
+      "cfQualificationDescription",
+      "cfQualificationIdentifier",
+      "cfQualificationKeywords"
+    ],
+    "cfResPat": [
+      "cfResPatId"
+    ],
+    "cfResProd": [
+      "cfResProdId"
+    ],
+    "cfResPubl": [
+      "cfResPublDate",
+      "cfResPublId"
+    ],
+    "cfResultPatent": [
+      "cfResultPatentAbstract",
+      "cfResultPatentIdentifier",
+      "cfResultPatentKeywords",
+      "cfResultPatentTitle"
+    ],
+    "cfResultProduct": [
+      "cfResultProductDescription",
+      "cfResultProductIdentifier",
+      "cfResultProductKeywords",
+      "cfResultProductName"
+    ],
+    "cfResultPublication": [
+      "cfResultPublicationAbstract",
+      "cfResultPublicationBibliographicNote",
+      "cfResultPublicationDate",
+      "cfResultPublicationIdentifier",
+      "cfResultPublicationKeywords",
+      "cfResultPublicationNameAbbrevtation",
+      "cfResultPublicationSubtitle",
+      "cfResultPublicationTitle"
+    ],
+    "cfRoleExpr": [
+      "cfRoleExprOpp",
+      "cfRoleExpression"
+    ],
+    "cfRoleExpression": [
+      "cfRoleExpressionOpposite"
+    ],
+    "cfService": [
+      "cfServiceDescription",
+      "cfServiceIdentifier",
+      "cfServiceKeywords",
+      "cfServiceName"
+    ],
+    "cfSrv": [
+      "cfSrvId"
+    ],
+    "cfValJudgeNum": [
+      "cfValJudgeNumChange"
+    ],
+    "cfValJudgeText": [
+      "cfValJudgeTextChange"
+    ],
+    "cfValueJudgementalNumeric": [
+      "cfValueJudgementalNumericChange"
+    ],
+    "cfValueJudgementalText": [
+      "cfValueJudgementalTextChange"
+    ],
+    "cfVol": [
+      "cfVolume"
+    ]
+  },
+  "key_concepts": {
+    "identifiers": "A classification in the optimum case is uniquely identified through a uuid with the cfClassificationIdentifier (cfClassId) attribute (CERIF 1.3 provides a uuid",
+    "classifications": "classification examples grouped by example scheme",
+    "entity_types": {
+      "cfPerson": [
+        "cfPersonIdentifier",
+        "cfPersonKeywords",
+        "cfPersonName",
+        "cfPersonNameIdentifier",
+        "cfPersonName_Person",
+        "cfPersonResearchInterest",
+        "cfPerson_Classification",
+        "cfPerson_Country",
+        "cfPerson_CurriculumVitae",
+        "cfPerson_DublinCore",
+        "cfPerson_ElectronicAddress",
+        "cfPerson_Equipment",
+        "cfPerson_Event",
+        "cfPerson_ExpertiseAndSkills",
+        "cfPerson_Facility",
+        "cfPerson_Funding",
+        "cfPerson_Indicator",
+        "cfPerson_Language",
+        "cfPerson_Measurement",
+        "cfPerson_Medium",
+        "cfPerson_OrganisationUnit",
+        "cfPerson_Person",
+        "cfPerson_PostAddress",
+        "cfPerson_PrizeAward",
+        "cfPerson_Qualification",
+        "cfPerson_ResultPatent",
+        "cfPerson_ResultProduct",
+        "cfPerson_ResultPublication",
+        "cfPerson_Service"
+      ],
+      "cfOrganisation": [
+        "cfOrganisationUnit",
+        "cfOrganisationUnitIdentifier",
+        "cfOrganisationUnitKeywords",
+        "cfOrganisationUnitName",
+        "cfOrganisationUnitResearchActivity",
+        "cfOrganisationUnit_Classification",
+        "cfOrganisationUnit_DublinCore",
+        "cfOrganisationUnit_ElectronicAddress",
+        "cfOrganisationUnit_Equipment",
+        "cfOrganisationUnit_Event",
+        "cfOrganisationUnit_ExpertiseAndSkills",
+        "cfOrganisationUnit_Facility",
+        "cfOrganisationUnit_Funding",
+        "cfOrganisationUnit_Indicator",
+        "cfOrganisationUnit_Measurement",
+        "cfOrganisationUnit_Medium",
+        "cfOrganisationUnit_OrganisationUnit",
+        "cfOrganisationUnit_PostAddress",
+        "cfOrganisationUnit_PrizeAward",
+        "cfOrganisationUnit_ResultPatent",
+        "cfOrganisationUnit_ResultProduct",
+        "cfOrganisationUnit_ResultPublication",
+        "cfOrganisationUnit_Service",
+        "cfOrganisation_unit_ElectronicAddress",
+        "cfOrganisationalUnit"
+      ],
+      "cfProject": [
+        "cfProjectAbstract",
+        "cfProjectIdentifier",
+        "cfProjectKeywords",
+        "cfProjectTitle",
+        "cfProject_Classification",
+        "cfProject_DublinCore",
+        "cfProject_Equipment",
+        "cfProject_Event",
+        "cfProject_Facility",
+        "cfProject_Funding",
+        "cfProject_Indicator",
+        "cfProject_Measurement",
+        "cfProject_Medium",
+        "cfProject_OrganisationUnit",
+        "cfProject_Person",
+        "cfProject_PrizeAward",
+        "cfProject_Project",
+        "cfProject_ResultPatent",
+        "cfProject_ResultProduct",
+        "cfProject_ResultPublication",
+        "cfProject_Service"
+      ],
+      "cfPatent": [
+        "cfPatentNum",
+        "cfPatentNumber"
+      ],
+      "cfFacility": [
+        "cfFacilityDescription",
+        "cfFacilityIdentifier",
+        "cfFacilityIdentifier1",
+        "cfFacilityIdentifier2",
+        "cfFacilityKeywords",
+        "cfFacilityName",
+        "cfFacility_Classification",
+        "cfFacility_Equipment",
+        "cfFacility_Event",
+        "cfFacility_Facility",
+        "cfFacility_Funding",
+        "cfFacility_Indicator",
+        "cfFacility_Measurement",
+        "cfFacility_Medium",
+        "cfFacility_PostAddress",
+        "cfFacility_Service"
+      ],
+      "cfEquipment": [
+        "cfEquipmentDescription",
+        "cfEquipmentIdentifier",
+        "cfEquipmentIdentifier1",
+        "cfEquipmentIdentifier2",
+        "cfEquipmentKeywords",
+        "cfEquipmentName",
+        "cfEquipment_Classification",
+        "cfEquipment_Equipment",
+        "cfEquipment_Event",
+        "cfEquipment_Funding",
+        "cfEquipment_Indicator",
+        "cfEquipment_Measurement",
+        "cfEquipment_Measurment",
+        "cfEquipment_Medium",
+        "cfEquipment_PostAddress",
+        "cfEquipment_Service"
+      ],
+      "cfService": [
+        "cfServiceDescription",
+        "cfServiceIdentifier",
+        "cfServiceIdentifier1",
+        "cfServiceIdentifier2",
+        "cfServiceKeywords",
+        "cfServiceName",
+        "cfService_Classification",
+        "cfService_Event",
+        "cfService_Funding",
+        "cfService_Indicator",
+        "cfService_Measurement",
+        "cfService_Medium",
+        "cfService_PostAddress",
+        "cfService_Service"
+      ]
+    }
+  },
+  "summary": {
+    "entity_count": 384,
+    "link_table_count": 325,
+    "attribute_count": 308
+  }
+}

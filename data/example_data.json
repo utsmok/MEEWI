@@ -1,0 +1,240 @@
+{
+    "authorships": [
+        {
+            "affiliations": [
+                {
+                    "institution_ids": [
+                        "https://openalex.org/I42264441"
+                    ],
+                    "raw_affiliation_string": "Pendidikan Matematika FKIP Universitas Lambung Mangkurat"
+                }
+            ],
+            "author": {
+                "display_name": "Siti Mawaddah",
+                "id": "https://openalex.org/A5110695685",
+                "orcid": null
+            },
+            "author_position": "first",
+            "countries": [],
+            "institutions": [
+                {
+                    "country_code": "ID",
+                    "display_name": "Lambung Mangkurat University",
+                    "id": "https://openalex.org/I42264441",
+                    "lineage": [
+                        "https://openalex.org/I42264441"
+                    ],
+                    "ror": "https://ror.org/01khn0w07",
+                    "type": "education"
+                }
+            ],
+            "is_corresponding": false,
+            "raw_affiliation_strings": [
+                "Pendidikan Matematika FKIP Universitas Lambung Mangkurat"
+            ],
+            "raw_author_name": "Siti Mawaddah"
+        },
+        {
+            "affiliations": [
+                {
+                    "institution_ids": [
+                        "https://openalex.org/I42264441"
+                    ],
+                    "raw_affiliation_string": "Pendidikan Matematika FKIP Universitas Lambung Mangkurat"
+                }
+            ],
+            "author": {
+                "display_name": "Ratih Maryanti",
+                "id": "https://openalex.org/A5063849925",
+                "orcid": null
+            },
+            "author_position": "last",
+            "countries": [
+                "ID"
+            ],
+            "institutions": [
+                {
+                    "country_code": "ID",
+                    "display_name": "Lambung Mangkurat University",
+                    "id": "https://openalex.org/I42264441",
+                    "lineage": [
+                        "https://openalex.org/I42264441"
+                    ],
+                    "ror": "https://ror.org/01khn0w07",
+                    "type": "education"
+                }
+            ],
+            "is_corresponding": false,
+            "raw_affiliation_strings": [
+                "Pendidikan Matematika FKIP Universitas Lambung Mangkurat"
+            ],
+            "raw_author_name": "Ratih Maryanti"
+        }
+    ],
+    "biblio": {
+        "first_page": null,
+        "issue": "1",
+        "last_page": null,
+        "volume": "4"
+    },
+    "citation_normalized_percentile": {
+        "is_in_top_1_percent": false,
+        "is_in_top_10_percent": true,
+        "value": 0.913189
+    },
+    "cited_by_count": 205,
+    "cited_by_percentile_year": {
+        "max": 100,
+        "min": 99
+    },
+    "display_name": "Kemampuan Pemahaman Konsep Matematis Siswa SMP dalam Pembelajaran Menggunakan Model Penemuan Terbimbing (Discovery Learning)",
+    "doi": "https://doi.org/10.20527/edumat.v4i1.2292",
+    "fwci": 6.588,
+    "has_fulltext": true,
+    "ids": {
+        "doi": "https://doi.org/10.20527/edumat.v4i1.2292"
+    },
+    "indexed_in": [
+        "crossref"
+    ],
+    "language": "id",
+    "locations": [
+        {
+            "is_accepted": true,
+            "is_oa": true,
+            "is_published": true,
+            "landing_page_url": "https://doi.org/10.20527/edumat.v4i1.2292",
+            "license": "cc-by-nd",
+            "license_id": "https://openalex.org/licenses/cc-by-nd",
+            "pdf_url": "https://ppjp.ulm.ac.id/journal/index.php/edumat/article/download/2292/2010",
+            "source": {
+                "display_name": "EDU-MAT Jurnal Pendidikan Matematika",
+                "host_organization": null,
+                "host_organization_lineage": [],
+                "host_organization_lineage_names": [],
+                "host_organization_name": null,
+                "id": "https://openalex.org/S4210235019",
+                "is_core": false,
+                "is_in_doaj": false,
+                "is_indexed_in_scopus": false,
+                "is_oa": true,
+                "issn": [
+                    "2338-2759",
+                    "2597-9051"
+                ],
+                "issn_l": "2338-2759",
+                "type": "journal"
+            },
+            "version": "publishedVersion"
+        }
+    ],
+    "open_access": {
+        "any_repository_has_fulltext": false,
+        "is_oa": true,
+        "oa_status": "hybrid",
+        "oa_url": "https://ppjp.ulm.ac.id/journal/index.php/edumat/article/download/2292/2010"
+    },
+    "primary_location": {
+        "is_accepted": true,
+        "is_oa": true,
+        "is_published": true,
+        "landing_page_url": "https://doi.org/10.20527/edumat.v4i1.2292",
+        "license": "cc-by-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nd",
+        "pdf_url": "https://ppjp.ulm.ac.id/journal/index.php/edumat/article/download/2292/2010",
+        "source": {
+            "display_name": "EDU-MAT Jurnal Pendidikan Matematika",
+            "host_organization": null,
+            "host_organization_lineage": [],
+            "host_organization_lineage_names": [],
+            "host_organization_name": null,
+            "id": "https://openalex.org/S4210235019",
+            "is_core": false,
+            "is_in_doaj": false,
+            "is_indexed_in_scopus": false,
+            "is_oa": true,
+            "issn": [
+                "2338-2759",
+                "2597-9051"
+            ],
+            "issn_l": "2338-2759",
+            "type": "journal"
+        },
+        "version": "publishedVersion"
+    },
+    "primary_topic": {
+        "display_name": "Mathematics Education and Pedagogy",
+        "domain": {
+            "display_name": "Physical Sciences",
+            "id": "https://openalex.org/domains/3"
+        },
+        "field": {
+            "display_name": "Mathematics",
+            "id": "https://openalex.org/fields/26"
+        },
+        "id": "https://openalex.org/T12522",
+        "score": 0.9962,
+        "subfield": {
+            "display_name": "Applied Mathematics",
+            "id": "https://openalex.org/subfields/2604"
+        }
+    },
+    "publication_date": "2016-04-01",
+    "publication_year": 2016,
+    "title": "Kemampuan Pemahaman Konsep Matematis Siswa SMP dalam Pembelajaran Menggunakan Model Penemuan Terbimbing (Discovery Learning)",
+    "topics": [
+        {
+            "display_name": "Mathematics Education and Pedagogy",
+            "domain": {
+                "display_name": "Physical Sciences",
+                "id": "https://openalex.org/domains/3"
+            },
+            "field": {
+                "display_name": "Mathematics",
+                "id": "https://openalex.org/fields/26"
+            },
+            "id": "https://openalex.org/T12522",
+            "score": 0.9962,
+            "subfield": {
+                "display_name": "Applied Mathematics",
+                "id": "https://openalex.org/subfields/2604"
+            }
+        },
+        {
+            "display_name": "STEM Education",
+            "domain": {
+                "display_name": "Social Sciences",
+                "id": "https://openalex.org/domains/2"
+            },
+            "field": {
+                "display_name": "Social Sciences",
+                "id": "https://openalex.org/fields/33"
+            },
+            "id": "https://openalex.org/T12590",
+            "score": 0.9925,
+            "subfield": {
+                "display_name": "Education",
+                "id": "https://openalex.org/subfields/3304"
+            }
+        },
+        {
+            "display_name": "Educational Methods and Outcomes",
+            "domain": {
+                "display_name": "Social Sciences",
+                "id": "https://openalex.org/domains/2"
+            },
+            "field": {
+                "display_name": "Social Sciences",
+                "id": "https://openalex.org/fields/33"
+            },
+            "id": "https://openalex.org/T12931",
+            "score": 0.9839,
+            "subfield": {
+                "display_name": "Education",
+                "id": "https://openalex.org/subfields/3304"
+            }
+        }
+    ],
+    "type": "article",
+    "type_crossref": "journal-article"
+}
