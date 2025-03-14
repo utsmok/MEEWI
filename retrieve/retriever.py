@@ -6,8 +6,6 @@ user inputs an id and the retriever will return data from all valid sources for 
 
 from collections import defaultdict
 
-import polars as pl
-
 from models.enums import Identifier
 
 from .connectors import (
@@ -139,7 +137,7 @@ class Retriever:
             if not id_values:
                 print(f"No ids for id type {id_type}.")
                 continue
-            connectors = CONNECTOR_MAPPING.get(id_type, None)
+            connectors = CONNECTOR_MAPPING.get(id_type)
             if not connectors:
                 print(f"No connector found for id type {id_type}.")
                 continue
@@ -162,14 +160,7 @@ class Retriever:
         for k, v in data.items():
             if v and isinstance(v, dict):
                 for source, result in v.items():
-                    if len(result) == 1:
-                        result = result[0]
-                        if "abstract_inverted_index" in result:
-                            del result["abstract_inverted_index"]
-                        for key, item in result.items():
-                            print(key)
-                            print(f"     {item}")
-
-                        data[k][source] = pl.from_dict(result)
+                    if isinstance(result, list) and len(result) == 1:
+                        data[k][source] = result[0]
 
         return data

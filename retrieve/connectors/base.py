@@ -2,7 +2,11 @@
 base classes / enums / ... for all connectors
 """
 
+import contextlib
 from typing import Protocol
+
+import pyalex
+from pyalex import Works
 
 from models.enums import Identifier
 
@@ -34,10 +38,6 @@ class Connector(Protocol):
         Setup the connector (e.g. set up API keys, etc.) if needed
         """
         ...
-
-
-import pyalex
-from pyalex import Works
 
 
 class OpenAlexConnector(Connector):
@@ -84,11 +84,14 @@ class OpenAlexConnector(Connector):
             return {}
 
         self.data = {}
-        for id_value, id_type in retrieval_ids.items():
+        for id_value, id_type in retrieval_ids.items():  # noqa: PLR1704
             print(id_value, id_type)
             if id_type == Identifier.DOI:
                 try:
-                    self.data[id_value] = Works().filter(doi=id_value).get()
+                    self.data[id_value] = list(Works().filter(doi=id_value).get())[0]
+                    with contextlib.suppress(KeyError):
+                        del self.data[id_value]["abstract_inverted_index"]
+
                 except Exception as e:
                     print("Error retrieving data for DOI:", id_value)
                     print(e)

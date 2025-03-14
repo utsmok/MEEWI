@@ -4,7 +4,7 @@ This marimo app will serve as the frontend for this application, using the funct
 
 import marimo
 
-__generated_with = "0.11.19"
+__generated_with = "0.11.20"
 app = marimo.App(width="columns", app_title="Meeuwi")
 
 
@@ -146,8 +146,9 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(Callable, form, get_data, get_validator, mo):
-    # parse, normalize, validate input
+def _(Callable, form, get_validator, mo):
+    # Parse, normalize and validate user input
+    # then display it for review
     final_stack = ""
 
     stack = [mo.md("# Parsed search input"), mo.md("---")]
@@ -206,19 +207,8 @@ def _(Callable, form, get_data, get_validator, mo):
         stack.append(mo.md("No input received."))
     final_stack = mo.vstack(stack)
 
-    results = get_data(input_data)
 
-    return (
-        doi_path,
-        entries,
-        final_stack,
-        input_data,
-        k,
-        results,
-        stack,
-        v,
-        validator,
-    )
+    return doi_path, entries, final_stack, input_data, k, stack, v, validator
 
 
 @app.cell(hide_code=True)
@@ -239,18 +229,15 @@ def _(Identifier, Retriever):
         # 3. Construct the return dict with the source as the key and the metadata as the value.
 
         # parse the input
-        input: list[tuple[str|Identifier, str]] = []
-        for k,v in form_values.items():
+        input: list[tuple[str | Identifier, str]] = []
+        for k, v in form_values.items():
             if all([v, not isinstance(v, Exception)]):
-                input.append((k,v))
+                input.append((k, v))
         if not input:
             return {}
         retriever = Retriever()
         retriever.add_id(input)
         return retriever.retrieve()
-
-    
-    
     return (get_data,)
 
 
@@ -288,6 +275,93 @@ def _(form):
 def _(final_stack):
     final_stack
     return
+
+
+@app.cell
+def _(get_data, input_data, mo):
+
+    def dict_to_markdown(input_data) -> list[mo.Html]:
+        icon = "::hugeicons:pin-02::"
+        color_mapping = {
+            1: "CornflowerBlue",
+            2: "DarkOrange",
+            3: "DarkOrchid",
+            4: "HotPink",
+            5: "SteelBlue",
+            6: "GoldenRod",
+        }
+
+        def parse_list(input_list, indent=1) -> list:
+            markd = []
+            color = color_mapping[indent + 1]
+            headgap = f"{icon * indent * 2}"
+            gap = f"{icon * (indent + 1) * 2}"
+            for item in input_list:
+                if isinstance(item, dict):
+                    markd.extend(parse_dict(item, indent=indent + 1))
+                elif isinstance(item, list):
+                    markd.extend(parse_list(item, indent=indent + 1))
+                else:
+                    markd.append(mo.md(f" {gap}{item}"))
+            return markd
+
+        def parse_dict(input_dict, indent=1) -> list:
+            markd = []
+            color = color_mapping[indent + 1]
+            headgap = f"{icon * indent * 2}"
+            gap = f"{icon * (indent + 1) * 2}"
+            for key, value in input_dict.items():
+                markd.append(mo.md(f'<span style="color:{color}"> {headgap}{key} </span>'))
+                if isinstance(value, dict):
+                    markd.extend(parse_dict(value, indent=indent + 1))
+                elif isinstance(value, list):
+                    markd.extend(parse_list(value, indent=indent + 1))
+                else:
+                    markd.append(mo.md(f" {gap}{value}"))
+            return markd
+
+        print_data = []
+        for input_id, data_source in input_data.items():
+            print_data.append(mo.md(f"# Data retrieved for {input_id}"))
+            if not data_source:
+                continue
+            for source, itemlist in data_source.items():
+                print_data.append(mo.md(f"## from {source}"))
+                if not isinstance(itemlist, list):
+                    itemlist = [itemlist]
+                for data in itemlist:
+                    for key, value in data.items():
+                        if "abstract" in key:
+                            continue
+                        indent = 1
+                        color = color_mapping[indent]
+                        headgap = f"{icon}"
+                        gap = f"{icon * 2}"
+                        if isinstance(value, dict):
+                            print_data.extend(parse_dict(value, indent))
+                        elif isinstance(value, list):
+                            print_data.extend(parse_list(value, indent))
+                        else:
+                            print_data.append(
+                                mo.md(f'<span style="color:{color}"> {headgap}{key} </span>')
+                            )
+                            print_data.append(mo.md(f"{gap}{value}"))
+
+        return print_data
+
+    results = get_data(input_data)
+
+    printlist = [
+        mo.md(f"""
+        # Results   
+        ---
+    """)
+    ]
+
+    # printlist.extend(dict_to_markdown(results))
+
+    #mo.vstack(printlist)
+    return dict_to_markdown, printlist, results
 
 
 @app.cell(column=2, hide_code=True)

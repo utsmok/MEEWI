@@ -27,6 +27,7 @@ UUID_REGEX = re.compile(
     r"^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
     re.IGNORECASE,
 )
+MD5_REGEX = re.compile(r"^[0-9a-f]{32}$")
 
 
 def is_valid_input(input_value: any) -> bool:
@@ -40,11 +41,9 @@ def is_valid_input(input_value: any) -> bool:
     """
     if isinstance(input_value, Exception):
         return False
-    if input_value is None or (
-        isinstance(input_value, str) and not input_value.strip()
-    ):
-        return False
-    return True
+    return not (
+        input_value is None or isinstance(input_value, str) and not input_value.strip()
+    )
 
 
 def validate_input(input_value: any) -> str:
@@ -100,7 +99,7 @@ def validate_doi(doi: str) -> str:
     try:
         doi = validate_input(doi)
     except ValueError as e:
-        raise ValueError(f"Invalid DOI: {e}")
+        raise ValueError(f"Invalid DOI: {e}") from None
 
     prefixes = {
         "https://doi.org/": "",
@@ -122,7 +121,7 @@ def validate_doi(doi: str) -> str:
             stripped_doi = "10." + doi.split(sep="10.")[-1].strip()
         except Exception as e:
             error_str = f"Input not recognized as a DOI: {doi}. Error: {e}"
-            raise ValueError(error_str)
+            raise ValueError(error_str) from None
 
     if not stripped_doi:
         error_str = f"Input not recognized as a DOI: {doi}"
@@ -149,7 +148,7 @@ def validate_isbn(input: str) -> str:
     try:
         isbn = validate_input(input)
     except ValueError as e:
-        raise ValueError(f"Invalid ISBN: {e}")
+        raise ValueError(f"Invalid ISBN: {e}") from None
 
     prefixes = {
         "isbn:": "",
@@ -162,20 +161,19 @@ def validate_isbn(input: str) -> str:
     clean_isbn = clean_prefix(isbn, prefixes)
     clean_isbn = re.sub(r"[- ]", "", clean_isbn)
 
+    ISBN10_LEN = 10
+    ISBN13_LEN = 13
     # Validate ISBN-10
-    if len(clean_isbn) == 10:
+    if len(clean_isbn) == ISBN10_LEN:
         if not ISBN10_REGEX.match(clean_isbn):
             raise ValueError(f"Invalid ISBN-10 format: {input}")
 
         checksum = 0
-        for i in range(9):
+        for i in range(ISBN10_LEN - 1):
             checksum += int(clean_isbn[i]) * (10 - i)
 
-        check_digit = clean_isbn[9].upper()
-        if check_digit == "X":
-            check_digit = 10
-        else:
-            check_digit = int(check_digit)
+        check_digit = clean_isbn[ISBN10_LEN - 1].upper()
+        check_digit = 10 if check_digit == "X" else int(check_digit)
 
         if (checksum + check_digit) % 11 != 0:
             raise ValueError(f"Invalid ISBN-10 checksum: {input}")
@@ -183,23 +181,22 @@ def validate_isbn(input: str) -> str:
         return f"{clean_isbn[0]}-{clean_isbn[1:4]}-{clean_isbn[4:9]}-{clean_isbn[9]}"
 
     # Validate ISBN-13
-    elif len(clean_isbn) == 13:
+    if len(clean_isbn) == ISBN13_LEN:
         if not clean_isbn.isdigit():
             raise ValueError(f"Invalid ISBN-13 format: {input}")
 
         checksum = 0
-        for i in range(12):
+        for i in range(ISBN13_LEN - 1):
             checksum += int(clean_isbn[i]) * (3 if i % 2 else 1)
 
         check_digit = (10 - (checksum % 10)) % 10
 
-        if int(clean_isbn[12]) != check_digit:
+        if int(clean_isbn[ISBN13_LEN - 1]) != check_digit:
             raise ValueError(f"Invalid ISBN-13 checksum: {input}")
 
         return f"{clean_isbn[0:3]}-{clean_isbn[3]}-{clean_isbn[4:9]}-{clean_isbn[9:12]}-{clean_isbn[12]}"
 
-    else:
-        raise ValueError(f"Invalid ISBN length ({len(clean_isbn)} digits): {input}")
+    raise ValueError(f"Invalid ISBN length ({len(clean_isbn)} digits): {input}")
 
 
 def validate_scopus_id(input: str) -> str:
@@ -218,7 +215,7 @@ def validate_scopus_id(input: str) -> str:
     try:
         scopus_id = validate_input(input)
     except ValueError as e:
-        raise ValueError(f"Invalid Scopus ID: {e}")
+        raise ValueError(f"Invalid Scopus ID: {e}") from None
 
     prefixes = {
         "scopus:": "",
@@ -259,23 +256,23 @@ def validate_openaire_id(input: str) -> str:
     try:
         openaire_id = validate_input(input)
     except ValueError as e:
-        raise ValueError(f"Invalid OpenAIRE ID: {e}")
+        raise ValueError(f"Invalid OpenAIRE ID: {e}") from None
 
     parts = openaire_id.split("::")
 
-    if len(parts) != 2:
+    if len(parts) != 2:  # noqa: PLR2004
         raise ValueError(
             f"Invalid OpenAIRE ID format. Expected 'sourcePrefix::md5hash' but got: {input}"
         )
 
     source_prefix, md5_hash = parts
-
-    if len(source_prefix) != 12:
+    OPENAIRE_PREFIX_LEN = 12
+    if len(source_prefix) != OPENAIRE_PREFIX_LEN:
         raise ValueError(
             f"Invalid source prefix length. Expected 12 characters but got {len(source_prefix)}: {input}"
         )
 
-    if not re.match(r"^[0-9a-f]{32}$", md5_hash.lower()):
+    if not re.match(MD5_REGEX, md5_hash.lower()):
         raise ValueError(f"Invalid MD5 hash in OpenAIRE ID: {input}")
 
     return f"{source_prefix}::{md5_hash.lower()}"
@@ -296,7 +293,7 @@ def validate_pmid(input: str) -> str:
     try:
         pmid = validate_input(input)
     except ValueError as e:
-        raise ValueError(f"Invalid PMID: {e}")
+        raise ValueError(f"Invalid PMID: {e}") from None
 
     prefixes = {
         "pmid:": "",
@@ -311,7 +308,7 @@ def validate_pmid(input: str) -> str:
         raise ValueError(f"Invalid PMID format. Expected 1-8 digits: {input}")
 
     pmid_int = int(clean_pmid)
-    if pmid_int < 1 or pmid_int > 99999999:
+    if pmid_int < 1 or pmid_int > 99999999:  # noqa: PLR2004
         raise ValueError(f"PMID out of range (1-99999999): {input}")
 
     return clean_pmid
@@ -331,7 +328,7 @@ def validate_arxiv_id(input: str) -> str:
     try:
         arxiv_id = validate_input(input)
     except ValueError as e:
-        raise ValueError(f"Invalid arXiv ID: {e}")
+        raise ValueError(f"Invalid arXiv ID: {e}") from None
 
     prefixes = {
         "arxiv:": "",
@@ -368,11 +365,10 @@ def validate_arxiv_id(input: str) -> str:
                 raise ValueError(
                     f"Invalid arXiv ID number format. Expected 4 digits for IDs before 1501: {input}"
                 )
-        else:  # From 2015-01 onwards
-            if len(number) != 5:
-                raise ValueError(
-                    f"Invalid arXiv ID number format. Expected 5 digits for IDs from 1501 onwards: {input}"
-                )
+        elif len(number) != 5:
+            raise ValueError(
+                f"Invalid arXiv ID number format. Expected 5 digits for IDs from 1501 onwards: {input}"
+            )
 
         if version is None:
             version = ""
@@ -396,7 +392,7 @@ def validate_pure_id(input: str) -> str:
     try:
         pure_id = validate_input(input)
     except ValueError as e:
-        raise ValueError(f"Invalid Pure ID: {e}")
+        raise ValueError(f"Invalid Pure ID: {e}") from None
 
     prefixes = {
         "pure:": "",
@@ -413,10 +409,9 @@ def validate_pure_id(input: str) -> str:
     if UUID_REGEX.match(clean_id):
         try:
             # Validate UUID format
-            validated_uuid = str(uuid.UUID(clean_id))
-            return validated_uuid
+            return str(uuid.UUID(clean_id))
         except ValueError:
-            raise ValueError(f"Invalid UUID format for Pure ID: {input}")
+            raise ValueError(f"Invalid UUID format for Pure ID: {input}") from None
 
     raise ValueError(f"Invalid Pure ID format. Expected integer or UUID: {input}")
 
@@ -435,7 +430,7 @@ def validate_patent_number(input: str) -> str:
     try:
         patent_num = validate_input(input)
     except ValueError as e:
-        raise ValueError(f"Invalid patent number: {e}")
+        raise ValueError(f"Invalid patent number: {e}") from None
 
     # Patent numbers can have various formats depending on the country and type
     # This is a simplified validation focusing on common patent number formats
@@ -453,18 +448,17 @@ def validate_patent_number(input: str) -> str:
             clean_patent = f"US{clean_patent}"
         return clean_patent.upper()
 
-    elif (
-        ep_pattern.match(clean_patent)
-        or wo_pattern.match(clean_patent)
-        or jp_pattern.match(clean_patent)
+    if (
+        (
+            ep_pattern.match(clean_patent)
+            or wo_pattern.match(clean_patent)
+            or jp_pattern.match(clean_patent)
+        )
+        or re.search(r"\d", clean_patent)
+        and len(clean_patent) >= 4
     ):
         return clean_patent.upper()
-
-    else:
-        if re.search(r"\d", clean_patent) and len(clean_patent) >= 4:
-            return clean_patent.upper()
-        else:
-            raise ValueError(f"Unrecognized patent number format: {input}")
+    raise ValueError(f"Unrecognized patent number format: {input}")
 
 
 def validate_orcid(input: str) -> str:
@@ -484,7 +478,7 @@ def validate_orcid(input: str) -> str:
     try:
         orcid = validate_input(input)
     except ValueError as e:
-        raise ValueError(f"Invalid ORCID: {e}")
+        raise ValueError(f"Invalid ORCID: {e}") from None
 
     url_prefixes = [
         "https://orcid.org/",
@@ -514,17 +508,14 @@ def validate_orcid(input: str) -> str:
     total = 0
     for digit in digits[:-1]:
         total = (total + int(digit)) * 2
-    if digits[-1] == "X":
-        last_digit = 10
-    else:
-        last_digit = int(digits[-1])
+    last_digit = 10 if digits[-1] == "X" else int(digits[-1])
 
     checksum = (12 - (total % 11)) % 11
     if checksum == 10:
         checksum = "X"
 
     if str(checksum) != str(last_digit):
-        raise ValueError(f"Invalid ORCID checksum: {input}")
+        raise ValueError(f"Invalid ORCID checksum: {input}") from None
 
     return f"https://orcid.org/{extracted_id}"
 
@@ -543,7 +534,7 @@ def validate_email(input: str) -> str:
     try:
         email = validate_input(input)
     except ValueError as e:
-        raise ValueError(f"Invalid email: {e}")
+        raise ValueError(f"Invalid email: {e}") from None
 
     email = email.strip().lower()
 
@@ -572,7 +563,7 @@ def validate_url(input: str) -> str:
     try:
         url = validate_input(input)
     except ValueError as e:
-        raise ValueError(f"Invalid URL: {e}")
+        raise ValueError(f"Invalid URL: {e}") from None
 
     url = url.strip()
 
@@ -604,6 +595,7 @@ def get_validator(identifier_str: str) -> None | Callable[[str], str]:
     for k, v in VALIDATION_MAPPING.items():
         if identifier_str in k:
             return v
+    return None
 
 
 VALIDATION_MAPPING: dict[str, Callable] = {

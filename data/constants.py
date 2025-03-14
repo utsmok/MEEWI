@@ -28,10 +28,10 @@ except Exception:
         if matches:
             load_dotenv(matches[0])
         else:
-            with open(Path(__file__).parent / ".env", "w") as f:
+            with (Path(__file__).parent / ".env").open("w", encoding="utf-8") as f:
                 f.write("# Add your environment variables here\n")
                 f.write("# e.g., API_KEY=your_api_key\n")
 
             raise FileNotFoundError(
                 f"No .env file found in root directory {Path(__file__).parent}. A template .env has been created at {Path(__file__).parent / '.env'}. Please open the file, fill in the required variables and rerun the script."
-            )
+            ) from None

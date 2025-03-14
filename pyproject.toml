@@ -1,12 +1,16 @@
 [project]
 name = "meewi"
 version = "0.1.0"
-description = "Add your description here"
+description = "tool for metadata retrieval"
+authors = [
+    {name = "Samuel Mok",email = "s.mok@utwente.nl"}
+]
 readme = "README.md"
-requires-python = ">=3.13.2"
+license = {text= "MIT"}
+requires-python = ">=3.13"
 dependencies = [
     "httpx",
-    "polars",
+    "polars[pyarrow]",
     "marimo",
     "duckdb",
     "nameparser",
@@ -14,5 +18,41 @@ dependencies = [
     "srsly",
     "loguru",
     "python-dotenv",
-    "pymupdf4llm"
+    "pymupdf4llm",
+]
+
+[project.optional-dependencies]
+lint = ["ruff"]
+test = ["pytest", "pytest-randomly"]
+
+[tool.uv.pip]
+generate-hashes = true
+
+[tool.ruff.format]
+# formatting of code snippets in docstrings.
+docstring-code-format = true
+docstring-code-line-length = 60
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
+[tool.ruff.lint]
+# defaults are `E4`, E7`, `E9`, and `F`
+select = [
+    "E4",
+    "E7",
+    "E9",
+    "F",
+    "I", # isort
+    "B", # bugbear -- flake8 bugfinder
+    "Q", # correct quotes usage
+    "PTH",  # Replace os functions with pathlib functions
+    "SIM", # Simplify statements
+    "RET", # Return value related rules
+    "PIE", # misc flake8 rules
+    "FBT", # boolean traps
+    "PERF", # performance optimization
+    "PL", # pylint
+    "UP", # check for deprecated ways of coding
+    "FURB",
 ]
