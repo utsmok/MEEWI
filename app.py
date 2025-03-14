@@ -206,8 +206,6 @@ def _(Callable, form, get_validator, mo):
     if len(stack) == 2:
         stack.append(mo.md("No input received."))
     final_stack = mo.vstack(stack)
-
-
     return doi_path, entries, final_stack, input_data, k, stack, v, validator
 
 
@@ -277,9 +275,8 @@ def _(final_stack):
     return
 
 
-@app.cell
-def _(get_data, input_data, mo):
-
+@app.cell(hide_code=True)
+def _(mo):
     def dict_to_markdown(input_data) -> list[mo.Html]:
         icon = "::hugeicons:pin-02::"
         color_mapping = {
@@ -349,7 +346,8 @@ def _(get_data, input_data, mo):
 
         return print_data
 
-    results = get_data(input_data)
+
+
 
     printlist = [
         mo.md(f"""
@@ -357,11 +355,11 @@ def _(get_data, input_data, mo):
         ---
     """)
     ]
-
+    # results = get_data(input_data)
     # printlist.extend(dict_to_markdown(results))
 
-    #mo.vstack(printlist)
-    return dict_to_markdown, printlist, results
+    # mo.vstack(printlist)
+    return dict_to_markdown, printlist
 
 
 @app.cell(column=2, hide_code=True)
@@ -383,10 +381,13 @@ def _(mo):
         # To do list
 
         ## Input
-        - [ ] Finish validation functions
+        - [x] Finish validation functions for identifiers
+        - [ ] create other validation functions & datamodels?
 
         ## Retrieval
-        - [ ] Start working on retrieval functionality
+        - [x] Start working on retrieval functionality
+        - [ ] finish openalex retriever
+        - [ ] start working on other retrievers
 
         ## Parsing
 

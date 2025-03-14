@@ -148,11 +148,8 @@ class Retriever:
                 for id_value in id_values:
                     connector_instance.add_id(id_value, id_type)
                 results: dict[str, dict] = connector_instance.get()
-                print(results)
                 for id_value, result in results.items():
-                    print(id_value, str(connector_instance))
                     full_data[id_value][str(connector_instance)] = result
-                    print(full_data)
 
         self.data.update(full_data)
         data = dict(full_data)

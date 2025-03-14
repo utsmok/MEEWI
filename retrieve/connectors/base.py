@@ -85,7 +85,6 @@ class OpenAlexConnector(Connector):
 
         self.data = {}
         for id_value, id_type in retrieval_ids.items():  # noqa: PLR1704
-            print(id_value, id_type)
             if id_type == Identifier.DOI:
                 try:
                     self.data[id_value] = list(Works().filter(doi=id_value).get())[0]
