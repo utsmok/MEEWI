@@ -1,3 +1,4 @@
+import time
 from dataclasses import dataclass, field
 from enum import Enum
 from itertools import batched
@@ -12,6 +13,7 @@ from openalex_schemas.create_ddl import generate_ddl
 from openalex_schemas.works import Message, Work
 
 BATCH_SIZE = 50
+MAX_RESULTS = 1000
 
 
 class Endpoint(Enum):
@@ -101,6 +103,7 @@ class Query:
     _results: list[BaseModel] | None = field(default_factory=list, init=False)
     cursor: str | None = field(default="*", init=False)
     count: int | None = field(default=None, init=False)
+    total_retrieved: int = field(default=0, init=False)
 
     def __post_init__(self) -> None:
         if isinstance(self.endpoint, str):
@@ -114,32 +117,52 @@ class Query:
         if self.search_term:
             self.filters.append(OAFilter({"default.search": self.search_term}))
 
-    def get_results(self) -> None:
+    def get_results(self, db: "DuckDBInstance" = None) -> None:
         """
         Fetches paginated data from OpenAlex API and stores it in the results attribute.
         """
+        repeats = 0
         while self.cursor:
             try:
                 data: str = self.client.get(self.get_url()).text
                 results: Message = Message.model_validate_json(data)
                 self._results.extend(results.results)
-                self.cursor = results.meta.next_cursor
+                self.total_retrieved += len(results.results)
                 if not self.count:
                     self.count = results.meta.count
                     print(f"Expecting {self.count} results for query {self}")
                 else:
                     print(
-                        f"[{len(self._results)}/{self.count}] results retrieved and parsed"
+                        f"[{self.total_retrieved}/{self.count}] results retrieved & parsed"
                     )
+                    if len(self._results) >= MAX_RESULTS and db:
+                        print(
+                            "Reached max amounts of results for a single get_results() operation. Storing data in DB and clearing self._results."
+                        )
+                        db.store_results(self)
+                        self._results = []
+                self.cursor = results.meta.next_cursor
             except httpx.HTTPStatusError as e:
                 print(f"Error fetching data for {self}: {e}")
-                break
+                # wait 10 seconds and retry
+                time.sleep(10)
+                repeats += 1
+                if repeats > 5:
+                    print(f"Reached max amount of retries for {self}. Stopping query.")
+                    break
             except httpx.RequestError as e:
                 print(f"Error fetching data for {self}: {e}")
-                break
+                time.sleep(10)
+                repeats += 1
+                if repeats > 5:
+                    print(f"Reached max amount of retries for {self}. Stopping query.")
+                    break
             except ValidationError as e:
                 print(f"Error validating data for {self}: {e}")
                 break
+
+        if db and self._results:
+            db.store_results(self)
 
     def get_url(self) -> str:
         """
@@ -174,6 +197,12 @@ class Query:
         if not self._results:
             self.get_results()
         return [result.model_dump() for result in self._results]
+
+    def store_results(self, db: "DuckDBInstance") -> None:
+        """
+        Stores the results of the query in the DuckDB instance.
+        """
+        self.get_results(db)
 
     def __len__(self) -> int:
         """
@@ -243,6 +272,15 @@ class QuerySet:
         for query in self.queries:
             results.extend(query.serialized_results)
         return results
+
+    def store_results(self, db: "DuckDBInstance") -> None:
+        """
+        Stores the results of all queries in the set in the DuckDB instance.
+        """
+        if not self.queries:
+            raise ValueError("No queries in the set.")
+        for query in self.queries:
+            query.store_results(db)
 
     def __len__(self) -> int:
         """
@@ -362,7 +400,7 @@ def get_all_ut_works(client: httpx.Client, db: DuckDBInstance):
         )
     )
 
-    db.store_results(queryset)
+    queryset.store_results(db)
 
 
 def store_doi_data(dois: list[str], client: httpx.Client, db: DuckDBInstance) -> None:
