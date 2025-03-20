@@ -55,8 +55,8 @@ def generate_ddl(model: BaseModel, table_name: str = "works"):
 
     def build_struct_type(object_schema):
         """Build a STRUCT type from an object schema"""
-        if "properties" not in object_schema:
-            return "STRUCT()"
+        if "properties" not in object_schema or not object_schema["properties"]:
+            return "JSON"  # Return JSON for empty structs instead of STRUCT()
 
         properties = object_schema.get("properties", {})
         struct_fields = []

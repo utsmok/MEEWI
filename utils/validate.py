@@ -28,6 +28,7 @@ UUID_REGEX = re.compile(
     re.IGNORECASE,
 )
 MD5_REGEX = re.compile(r"^[0-9a-f]{32}$")
+OPENALEX_ID_REGEX = re.compile(r"([WAICFVPST]\d{2,})")
 
 
 def is_valid_input(input_value: any) -> bool:
@@ -576,6 +577,37 @@ def validate_url(input: str) -> str:
     return url
 
 
+def is_openalex_id(openalex_id: str):
+    if not openalex_id:
+        return False
+    openalex_id = openalex_id.lower()
+    if re.findall(r"http[s]://openalex.org/([waicfvpst]\d{2,})", openalex_id):
+        return True
+    if re.findall(r"^([waicfvpst]\d{2,})", openalex_id):
+        return True
+    return bool(re.findall(r"(openalex:[waicfvpst]\d{2,})", openalex_id))
+
+
+def validate_openalex_id(openalex_id: str) -> str:
+    if not is_openalex_id(openalex_id):
+        raise ValueError(f"Input not recognized as an OpenAlex ID: {openalex_id}")
+    openalex_id = openalex_id.strip().upper()
+    matches: list[str] = re.findall(OPENALEX_ID_REGEX, openalex_id)
+    if len(matches) == 0:
+        raise ValueError(f"Input not recognized as an OpenAlex ID: {openalex_id}")
+
+    return matches[0].replace("\0", "")
+
+
+def get_full_openalex_id(openalex_id):
+    short_openalex_id = validate_openalex_id(openalex_id)
+    if short_openalex_id:
+        full_openalex_id = f"https://openalex.org/{short_openalex_id}"
+    else:
+        full_openalex_id = None
+    return full_openalex_id
+
+
 def get_validator(identifier_str: str) -> None | Callable[[str], str]:
     """
     Get the validation function for a specific identifier type.
@@ -610,4 +642,5 @@ VALIDATION_MAPPING: dict[str, Callable] = {
     "orcid": validate_orcid,
     "email": validate_email,
     "url": validate_url,
+    "openalex_id": validate_openalex_id,
 }

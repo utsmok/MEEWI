@@ -2,6 +2,12 @@ from typing import Any
 
 from pydantic import BaseModel, Field, model_validator
 
+"""
+This module contains the Pydantic models for parsing & validation OpenAlex API responses from the '/works' endpoint.
+The models are designed to be used with the OpenAlex API and are structured to match the expected JSON response format.
+The structure was directly derived from the OpenAlex elastic-api implementation.
+"""
+
 
 class Author(BaseModel):
     id: str | None = None
@@ -41,6 +47,30 @@ class Authorship(BaseModel):
     raw_author_name: str | None = None
     raw_affiliation_strings: list[str] = Field(default_factory=list)
     affiliations: list[Affiliation] = Field(default_factory=list)
+
+    @model_validator(mode="before")
+    @classmethod
+    def replace_none_with_empty_classes(cls, data) -> dict | Any:
+        """
+        for each field that expects an object but can be None,
+        replace None with an class instance with all fields set to None
+        in order to preserve the schema
+        """
+        if data is None:
+            datadict = {field: None for field in cls.__annotations__}
+            datadict["author"] = Author()
+            datadict["institutions"] = [Institution()]
+            datadict["affiliations"] = [Affiliation()]
+            return datadict
+
+        if isinstance(data, dict):
+            if not data.get("author") or data["author"] is None:
+                data["author"] = Author()
+            if not data.get("institutions") or data["institutions"] is None:
+                data["institutions"] = [Institution()]
+            if not data.get("affiliations") or data["affiliations"] is None:
+                data["affiliations"] = [Affiliation()]
+        return data
 
     class Config:
         frozen = True
@@ -133,6 +163,27 @@ class Sources(BaseModel):
     host_organization: HostOrganization | None = None
     type: str | None = None
 
+    @model_validator(mode="before")
+    @classmethod
+    def replace_none_with_empty_classes(cls, data) -> dict | Any:
+        """
+        for each field that expects an object but can be None,
+        replace None with an class instance with all fields set to None
+        in order to preserve the schema
+        """
+        if data is None:
+            datadict = {field: None for field in cls.__annotations__}
+            datadict["locations"] = [SourcesLocation()]
+            datadict["host_organization"] = HostOrganization()
+            return datadict
+        if isinstance(data, dict):
+            if not data.get("locations") or data["locations"] is None:
+                data["locations"] = [SourcesLocation()]
+            if not data.get("host_organization") or data["host_organization"] is None:
+                data["host_organization"] = HostOrganization()
+
+        return data
+
     class Config:
         frozen = True
 
@@ -147,6 +198,25 @@ class Location(BaseModel):
     version: str | None = None
     is_accepted: bool | None = None
     is_published: bool | None = None
+
+    @model_validator(mode="before")
+    @classmethod
+    def replace_none_with_empty_classes(cls, data) -> dict | Any:
+        """
+        for each field that expects an object but can be None,
+        replace None with an class instance with all fields set to None
+        in order to preserve the schema
+        """
+        if data is None:
+            datadict = {field: None for field in cls.__annotations__}
+            datadict["source"] = Source()
+            return datadict
+
+        if isinstance(data, dict) and (
+            not data.get("source") or data["source"] is None
+        ):
+            data["source"] = Source()
+        return data
 
     class Config:
         frozen = True
@@ -312,6 +382,54 @@ class Work(BaseModel):
         data["abstract_inverted_index"] = None
         return data
 
+    @model_validator(mode="before")
+    @classmethod
+    def replace_none_with_empty_classes(cls, data) -> dict | Any:
+        """
+        for each field that expects an object but can be None,
+        replace None with an class instance with all fields set to None
+        in order to preserve the schema
+        """
+        if not isinstance(data, dict):
+            return data
+
+        obj_fields = {
+            "ids": IDs,
+            "primary_location": Location,
+            "open_access": OpenAccess,
+            "apc_list": APC,
+            "apc_paid": APC,
+            "citation_normalized_percentile": CitationNormalizedPercentile,
+            "cited_by_percentile_year": CitedByPercentileYear,
+            "biblio": Biblio,
+            "primary_topic": Topic,
+            "best_oa_location": Location,
+        }
+
+        list_obj_fields = {
+            "sources": Sources,
+            "authorships": Authorship,
+            "institution_assertions": Institution,
+            "topics": Topic,
+            "keywords": Keyword,
+            "concepts": Concept,
+            "mesh": Mesh,
+            "locations": Location,
+            "sustainable_development_goals": SDG,
+            "grants": Grant,
+            "counts_by_year": CountsByYear,
+        }
+
+        for field, classtype in obj_fields.items():
+            if data.get(field) is None or not data.get(field):
+                data[field] = classtype()
+
+        for field, classtype in list_obj_fields.items():
+            if not data.get(field) or data[field] is None:
+                data[field] = [classtype()]
+
+        return data
+
     class Config:
         frozen = True
 
@@ -327,28 +445,9 @@ class Meta(BaseModel):
         frozen = True
 
 
-class GroupBy(BaseModel):
-    key: str | None = None
-    key_display_name: str | None = None
-    count: int | None = None
-
-    class Config:
-        frozen = True
-
-
-class GroupBys(BaseModel):
-    key: str | None = None
-    count: int | None = None
-
-    class Config:
-        frozen = True
-
-
 class Message(BaseModel):
     meta: Meta | None = None
     results: list[Work] = Field(default_factory=list)
-    group_by: list[GroupBy] = Field(default_factory=list)
-    group_bys: list[GroupBys] = Field(default_factory=list)
 
     class Config:
         frozen = True
