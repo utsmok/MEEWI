@@ -1,4 +1,3 @@
-import contextlib
 from dataclasses import dataclass, field
 from enum import Enum
 from itertools import batched
@@ -6,6 +5,11 @@ from itertools import batched
 import duckdb
 import httpx
 import polars as pl
+from pydantic import BaseModel, ValidationError
+from rich import print
+
+from openalex_schemas.create_ddl import generate_ddl
+from openalex_schemas.works import Message, Work
 
 BATCH_SIZE = 50
 
@@ -94,8 +98,9 @@ class Query:
         default=None, metadata={"help": "Email address for OpenAlex API polite pool."}
     )
     client: httpx.Client | None = field(default=None)
-    _results: list[dict] | None = field(default_factory=list, init=False)
+    _results: list[BaseModel] | None = field(default_factory=list, init=False)
     cursor: str | None = field(default="*", init=False)
+    count: int | None = field(default=None, init=False)
 
     def __post_init__(self) -> None:
         if isinstance(self.endpoint, str):
@@ -109,34 +114,32 @@ class Query:
         if self.search_term:
             self.filters.append(OAFilter({"default.search": self.search_term}))
 
-    def _parse_results(self, results: list[dict]) -> None:
-        """
-        Private method to parse the results of the query and store them in the results attribute.
-        It will also invert the abstract_inverted_index to the actual abstract if present (for Works).
-        """
-        if not results:
-            return
-        if not self._results:
-            self._results = []
-        if self.endpoint == Endpoint.WORKS:
-            for result in results:
-                with contextlib.suppress(KeyError):
-                    result["abstract"] = invert_abstract(
-                        result.get("abstract_inverted_index", {})
-                    )
-                    del result["abstract_inverted_index"]
-        self._results.extend(results)
-
     def get_results(self) -> None:
         """
         Fetches paginated data from OpenAlex API and stores it in the results attribute.
         """
         while self.cursor:
-            data: dict[str, list[dict] | dict[int | str]] = self.client.get(
-                self.get_url()
-            ).json()
-            self._parse_results(data.get("results", []))
-            self.cursor = data.get("meta", {}).get("next_cursor")
+            try:
+                data: str = self.client.get(self.get_url()).text
+                results: Message = Message.model_validate_json(data)
+                self._results.extend(results.results)
+                self.cursor = results.meta.next_cursor
+                if not self.count:
+                    self.count = results.meta.count
+                    print(f"Expecting {self.count} results for query {self}")
+                else:
+                    print(
+                        f"[{len(self._results)}/{self.count}] results retrieved and parsed"
+                    )
+            except httpx.HTTPStatusError as e:
+                print(f"Error fetching data for {self}: {e}")
+                break
+            except httpx.RequestError as e:
+                print(f"Error fetching data for {self}: {e}")
+                break
+            except ValidationError as e:
+                print(f"Error validating data for {self}: {e}")
+                break
 
     def get_url(self) -> str:
         """
@@ -155,13 +158,106 @@ class Query:
         return f"https://api.openalex.org/{self.endpoint.value}"
 
     @property
-    def results(self) -> list[dict]:
+    def results(self) -> list[BaseModel]:
         """
-        Returns the results of the query.
+        Returns the results of the query as a list of pydantic models.
         """
         if not self._results:
             self.get_results()
         return self._results
+
+    @property
+    def serialized_results(self) -> list[dict]:
+        """
+        Returns the results of the query as a list of dictionaries.
+        """
+        if not self._results:
+            self.get_results()
+        return [result.model_dump() for result in self._results]
+
+    def __len__(self) -> int:
+        """
+        Returns the number of results in the query.
+        """
+        if not self.count:
+            self.get_results()
+        return self.count
+
+    def __str__(self) -> str:
+        """
+        Returns the string representation of the query.
+        """
+        return self.get_url()
+
+
+class Works(Query):
+    """
+    Query with the endpoint set to WORKS.
+    """
+
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(Endpoint.WORKS, *args, **kwargs)
+
+
+@dataclass
+class QuerySet:
+    """
+    Class that provides an abstraction layer for a set of queries.
+    Requires an endpoint to be set -- each query in the set must have the same endpoint.
+    """
+
+    endpoint: Endpoint
+    queries: list[Query] = field(default_factory=list)
+
+    def __post_init__(self) -> None:
+        if not self.queries:
+            self.queries = []
+
+    def add(self, query: Query | list[Query]) -> None:
+        """
+        Adds query/queries to the set. Only accepts queries with the same endpoint as the set.
+        """
+        if isinstance(query, list):
+            query = [q for q in query if q.endpoint == self.endpoint]
+        elif query.endpoint == self.endpoint:
+            query = [query]
+        if query:
+            self.queries.extend(query)
+
+    @property
+    def results(self) -> list[BaseModel]:
+        """
+        Returns the results of all queries in the set as a list of pydantic models.
+        """
+        results = []
+        for query in self.queries:
+            results.extend(query.results)
+        return results
+
+    @property
+    def serialized_results(self) -> list[dict]:
+        """
+        Returns the results of all queries in the set as a list of dictionaries.
+        """
+        results = []
+        for query in self.queries:
+            results.extend(query.serialized_results)
+        return results
+
+    def __len__(self) -> int:
+        """
+        Returns the number of queries in the set.
+        """
+        return len(self.queries)
+
+
+class WorksSet(QuerySet):
+    """
+    Queryset with the endpoint set to WORKS.
+    """
+
+    def __init__(self, queries: list[Query] | None = None) -> None:
+        super().__init__(Endpoint.WORKS, queries)
 
 
 class DuckDBInstance:
@@ -173,26 +269,54 @@ class DuckDBInstance:
 
     def __init__(self, db_name: str = "duck.db") -> None:
         self.db_name = db_name
-        self.conn = duckdb.connect(database=self.db_name)
+        self.connection = duckdb.connect(database=self.db_name)
+
+    @property
+    def conn(self) -> duckdb.DuckDBPyConnection:
+        """
+        Returns the connection to the DuckDB instance.
+        """
+        if not self.connection:
+            self.connection = duckdb.connect(self.db_name)
+        return self.connection
 
     def __enter__(self) -> duckdb.DuckDBPyConnection:
-        if not self.conn:
-            self.conn = duckdb.connect(self.db_name)
         return self.conn
 
     def __exit__(self, exc_type, exc_val, exc_tb) -> None:
-        self.conn.close()
+        self.connection.close()
+
+    def table_exists(self, table_name: str) -> bool:
+        """
+        Checks if a table exists in the DuckDB instance.
+        """
+        result = self.conn.execute(
+            f"SELECT COUNT(*) FROM information_schema.tables WHERE table_name = '{table_name}';"
+        ).fetchone()
+        return result[0] > 0
 
     def clear_table(self, table_name: str = "openalex_data") -> None:
         """
         Clears a table in the DuckDB instance.
         """
-        if not self.conn:
-            self.conn = duckdb.connect(self.db_name)
+
         self.conn.execute(f"DROP TABLE IF EXISTS {table_name};")
 
+    def create_table(self, model: BaseModel):
+        """
+        Creates a table in the DuckDB instance based on the Pydantic model.
+        If the table exists, this will do nothing.
+        """
+        if self.table_exists(model.__name__.lower()):
+            print(f"Table {model.__name__} already exists in DuckDB instance.")
+            return
+        self.conn.execute(generate_ddl(model, table_name=model.__name__.lower()))
+        print(f"Created table {model.__name__} in DuckDB instance.")
+
     def store_results(
-        self, data: pl.DataFrame | Query | list[Query], table: Endpoint | None = None
+        self,
+        data: pl.DataFrame | Query | list[Query] | QuerySet,
+        table: Endpoint | None = None,
     ) -> None:
         """
         Stores results in the DuckDB instance.
@@ -201,51 +325,50 @@ class DuckDBInstance:
             data: the data to store in the DuckDB instance
             table: the name of the table to store the data in
         """
-        if not self.conn:
-            self.conn = duckdb.connect(self.db_name)
-        if isinstance(data, Query):
+
+        if isinstance(data, list):
+            data = QuerySet(data[0].endpoint, data)
+
+        if isinstance(data, QuerySet | Query):
             table = data.endpoint
-            data = pl.from_dicts(data.results)
-        elif isinstance(data, list):
-            table = data[0].endpoint
-            full_results = []
-            for query in data:
-                full_results.extend(query.results)
-            data = pl.from_dicts(full_results, infer_schema_length=None)
+            data = pl.from_dicts(data.serialized_results, infer_schema_length=None)
+
         if not table:
             raise ValueError("Table name must be provided.")
-        print(f"inserting {len(data)} items into {table.value}")
+        table_name = table.value.rstrip("s")
 
-        tables_present = self.conn.execute("SELECT * FROM duckdb_tables();").fetchall()
-        table_names = [t[4] for t in tables_present]
-        print(table_names)
-        print(table.value)
-        print(table.value in table_names)
-        if table.value in table_names:
-            self.conn.execute(f"""
-                            INSERT OR REPLACE INTO {table.value} SELECT * FROM data;
+        print(f"inserting {len(data)} items into {table_name}")
+
+        self.conn.execute(f"""
+                            INSERT OR REPLACE INTO {table_name} SELECT * FROM data;
                             """)
-        else:
-            self.conn.execute(f"""
-            CREATE TABLE IF NOT EXISTS {table.value} AS
-            SELECT * FROM data;
-            """)
 
 
-def invert_abstract(inverted_abstract: dict[str, list[int]]) -> str:
-    """
-    takes a dictionary of inverted indexes and returns the abstract as a string
-    """
-    if not inverted_abstract:
-        return None
-    l_inv = [(w, p) for w, pos in inverted_abstract.items() for p in pos]
-    return " ".join(map(lambda x: x[0], sorted(l_inv, key=lambda x: x[1])))
+def get_all_ut_works(client: httpx.Client, db: DuckDBInstance):
+    queryset = WorksSet()
+
+    queryset.add(
+        Query(
+            endpoint=Endpoint.WORKS,
+            per_page=50,
+            filters=[
+                OAFilter(
+                    filter_type="institutions.ror",
+                    filter_value="https://ror.org/006hf6230",
+                ),
+            ],
+            email="samopsa@gmail.com",
+            client=client,
+        )
+    )
+
+    db.store_results(queryset)
 
 
 def store_doi_data(dois: list[str], client: httpx.Client, db: DuckDBInstance) -> None:
-    queries: list[Query] = []
+    queryset = WorksSet()
     if len(dois) <= BATCH_SIZE:
-        queries.append(
+        queryset.add(
             Query(
                 endpoint=Endpoint.WORKS,
                 per_page=50,
@@ -257,7 +380,7 @@ def store_doi_data(dois: list[str], client: httpx.Client, db: DuckDBInstance) ->
             )
         )
     else:
-        queries.extend(
+        queryset.add(
             [
                 Query(
                     endpoint=Endpoint.WORKS,
@@ -271,14 +394,17 @@ def store_doi_data(dois: list[str], client: httpx.Client, db: DuckDBInstance) ->
                 for doi_batch in batched(dois, BATCH_SIZE, strict=False)
             ]
         )
-    print(len(queries))
-    db.store_results(queries)
+    print(len(queryset))
+    db.store_results(queryset)
 
 
 if __name__ == "__main__":
-    data = pl.read_csv("mor_items.csv")
-    dois = data["DOI"].to_list()
-    print(len(dois))
+    # data = pl.read_csv("mor_items.csv")
+    # dois = data["DOI"].to_list()
+    # dois = dois[0:10]
+    # print(len(dois))
     db = DuckDBInstance()
+    db.create_table(Work)
     with httpx.Client() as client:
-        store_doi_data(dois, client, db)
+        # store_doi_data(dois, client, db)
+        get_all_ut_works(client, db)
