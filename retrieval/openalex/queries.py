@@ -9,7 +9,7 @@ from rich import print
 
 from db.duckdb import DuckDBInstance
 
-from .utils import ENDPOINT_TO_MESSAGECLASS, BaseMessage, Endpoint
+from .mappings import ENDPOINT_TO_MESSAGECLASS, BaseMessage, OAEndpoint
 
 BATCH_SIZE = 50
 MAX_RESULTS = 200
@@ -36,7 +36,7 @@ class OAFilter:
         """
         Returns the string representation of the filter.
         """
-        if self.filter_type == "doi" and isinstance(self.filter_value, list):
+        if (self.filter_type in ["doi", "openalex_id", "id"]) and isinstance(self.filter_value, list):
             self.use_or = True
 
         if isinstance(self.filter_value, dict):
@@ -64,7 +64,7 @@ class OAQuery:
     Initialize with a endpoint
     """
 
-    endpoint: Endpoint | str
+    endpoint: OAEndpoint | str
     per_page: int | None = 50  # between 1 and 200
     search_term: str | None = field(
         default=None
@@ -83,10 +83,10 @@ class OAQuery:
     def __post_init__(self) -> None:
         if isinstance(self.endpoint, str):
             try:
-                self.endpoint = Endpoint(self.endpoint)
+                self.endpoint = OAEndpoint(self.endpoint)
             except ValueError as e:
                 raise ValueError(
-                    f"Invalid endpoint: {self.endpoint}. Choose from one of the following values: {', '.join([e.value for e in Endpoint])}"
+                    f"Invalid endpoint: {self.endpoint}. Choose from one of the following values: {', '.join([e.value for e in OAEndpoint])}"
                 ) from e
 
         self.messageclass = ENDPOINT_TO_MESSAGECLASS.get(self.endpoint)
@@ -115,7 +115,7 @@ class OAQuery:
                 # first time we get results, set the count
                 if not self.count:
                     self.count = results.meta.count
-                    print(f"Expecting {self.count} results for query {self}")
+                    print(f"Expecting {self.count} results")
 
                 # Check if we have received a new cursor, if not, retry
                 received_cursor: str | None = results.meta.next_cursor
@@ -219,7 +219,7 @@ class OAWorks(OAQuery):
     """
 
     def __init__(self, *args, **kwargs) -> None:
-        super().__init__(Endpoint.WORKS, *args, **kwargs)
+        super().__init__(OAEndpoint.WORKS, *args, **kwargs)
 
 
 @dataclass
@@ -229,7 +229,7 @@ class OAQuerySet:
     Requires an endpoint to be set -- each query in the set must have the same endpoint.
     """
 
-    endpoint: Endpoint
+    endpoint: OAEndpoint
     queries: list[OAQuery] = field(default_factory=list)
 
     def __post_init__(self) -> None:
@@ -285,6 +285,11 @@ class OAQuerySet:
         """
         BATCH_SIZE = 50
         client = httpx.Client()
+        if id_type == "openalex_id" and self.endpoint == OAEndpoint.TOPICS:
+            id_type = "id"
+
+        if not ids:
+            return self
 
         for id_batch in batched(ids, BATCH_SIZE, strict=False):
             self.add(
@@ -313,4 +318,4 @@ class OAWorksSet(OAQuerySet):
     """
 
     def __init__(self, queries: list[OAQuery] | None = None) -> None:
-        super().__init__(Endpoint.WORKS, queries)
+        super().__init__(OAEndpoint.WORKS, queries)

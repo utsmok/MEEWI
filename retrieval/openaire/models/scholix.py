@@ -1,0 +1,1 @@
+# https://graph.openaire.eu/docs/apis/scholexplorer/v3/response_schema

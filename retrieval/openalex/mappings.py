@@ -17,7 +17,7 @@ from .models import (
 )
 
 
-class Endpoint(Enum):
+class OAEndpoint(Enum):
     """
 
     Enum for OpenAlex API endpoints.
@@ -42,16 +42,32 @@ class OAFilterType(Enum):
     """
 
 
-ENDPOINT_TO_MESSAGECLASS: dict[Endpoint, "BaseMessage"] = {
-    Endpoint.WORKS: WorkMessage,
-    Endpoint.INSTITUTIONS: InstitutionMessage,
-    Endpoint.AUTHORS: AuthorMessage,
-    Endpoint.SOURCES: SourceMessage,
-    Endpoint.TOPICS: TopicMessage,
-    Endpoint.PUBLISHERS: PublisherMessage,
-    Endpoint.FUNDERS: FunderMessage,
+ENDPOINT_TO_MESSAGECLASS: dict[OAEndpoint, "BaseMessage"] = {
+    OAEndpoint.WORKS: WorkMessage,
+    OAEndpoint.INSTITUTIONS: InstitutionMessage,
+    OAEndpoint.AUTHORS: AuthorMessage,
+    OAEndpoint.SOURCES: SourceMessage,
+    OAEndpoint.TOPICS: TopicMessage,
+    OAEndpoint.PUBLISHERS: PublisherMessage,
+    OAEndpoint.FUNDERS: FunderMessage,
 }
 
+ID_TO_ENDPOINT: dict[str, OAEndpoint] = {
+    "S": OAEndpoint.SOURCES,
+    "https://openalex.org/S": OAEndpoint.SOURCES,
+    "P": OAEndpoint.PUBLISHERS,
+    "https://openalex.org/P": OAEndpoint.PUBLISHERS,
+    "I": OAEndpoint.INSTITUTIONS,
+    "https://openalex.org/I": OAEndpoint.INSTITUTIONS,
+    "A": OAEndpoint.AUTHORS,
+    "https://openalex.org/A": OAEndpoint.AUTHORS,
+    "T": OAEndpoint.TOPICS,
+    "https://openalex.org/T": OAEndpoint.TOPICS,
+    "F": OAEndpoint.FUNDERS,
+    "https://openalex.org/F": OAEndpoint.FUNDERS,
+    "W": OAEndpoint.WORKS,
+    "https://openalex.org/W": OAEndpoint.WORKS,
+}
 
 class BaseResult(Protocol):
     id: str | None = None
@@ -70,7 +86,6 @@ class Meta(Protocol):
     apc_list_sum_usd: int | None = None
     apc_paid_sum_usd: int | None = None
     cited_by_count_sum: int | None = None
-
 
 class BaseMessage(Protocol):
     results: list[BaseResult]

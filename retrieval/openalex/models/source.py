@@ -179,6 +179,12 @@ class Source(BaseModel):
         """
         if not isinstance(data, dict):
             return data
+        if not data.get('issn'):
+            data['issn'] = []
+        if not data.get('host_organization_lineage'):
+            data['host_organization_lineage'] = []
+        if not data.get('alternate_titles'):
+            data['alternate_titles'] = []
 
         if data.get("summary_stats") is None:
             data["summary_stats"] = SummaryStats()

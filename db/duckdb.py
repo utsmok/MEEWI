@@ -64,19 +64,23 @@ class DuckDBInstance:
         self.conn.execute(generate_ddl(model, table_name=tablename))
         print(f"Created table {tablename} in DuckDB instance.")
 
-    def retrieve_ids(self, table_name: str) -> None:
+    def retrieve_ids(self, table_name: str) -> set[str]:
         """
         retrieve all openalex ids from a table, eg works
         store in self.ids[table_name]=set()
         use to avoid insertions of duplicates
         """
+        if not self.table_exists(table_name):
+            print(f'Table {table_name} does not exist in DuckDB instance.')
+            return set()
+
+
         self.conn.execute(f"SELECT id FROM {table_name};")
         ids = self.conn.fetchall()
         ids = [id[0] for id in ids]
         self.ids[table_name] = set(ids)
-        print(ids[0:10])
         print(f"Retrieved {len(ids)} ids from {table_name} table.")
-
+        return self.ids[table_name]
     def store_results(
         self,
         query_input: BaseQuery | BaseQuerySet,
@@ -128,3 +132,4 @@ class DuckDBInstance:
             print(f"Error inserting data into {table_name}: {e}")
             return
         print(f"Done inserting {len(data)} items into {table_name}")
+        self.retrieve_ids(table_name)

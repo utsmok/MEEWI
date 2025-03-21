@@ -1,0 +1,1 @@
+#https://graph.openaire.eu/docs/data-model/entities/research-product
