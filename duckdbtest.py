@@ -1,12 +1,10 @@
 import httpx
-from rich import print
 
 from db.duckdb import DuckDBInstance
-from retrieval.openalex.models import Institution
-from retrieval.openalex.queries import OAFilter, OAQuery, OAQuerySet, OAWorksSet
-from retrieval.openalex.mappings import OAEndpoint
-from utils.create_ddl import generate_ddl
 from retrieval.openalex.enrich import OAEnricher
+from retrieval.openalex.mappings import OAEndpoint
+from retrieval.openalex.queries import OAFilter, OAQuery, OAQuerySet, OAWorksSet
+
 BATCH_SIZE = 50
 
 
@@ -27,13 +25,11 @@ def get_all_ut_works(client: httpx.Client, db: DuckDBInstance):
     ).store_results(db)
 
 
-
 if __name__ == "__main__":
     # data = pl.read_csv("mor_items.csv")
     # dois = data["DOI"].to_list()
     # print(len(dois))
     db = DuckDBInstance()
-
 
     with httpx.Client() as client:
         enricher = OAEnricher(db)

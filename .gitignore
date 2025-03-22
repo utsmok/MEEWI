@@ -1,5 +1,6 @@
 duck.db
 *.db
+*.secret
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

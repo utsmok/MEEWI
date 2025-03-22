@@ -9,7 +9,7 @@ from rich import print
 
 from db.duckdb import DuckDBInstance
 
-from .mappings import ENDPOINT_TO_MESSAGECLASS, BaseMessage, OAEndpoint
+from .mappings import ENDPOINT_TO_MESSAGECLASS, OAEndpoint, OAMessage
 
 BATCH_SIZE = 50
 MAX_RESULTS = 200
@@ -36,7 +36,9 @@ class OAFilter:
         """
         Returns the string representation of the filter.
         """
-        if (self.filter_type in ["doi", "openalex_id", "id"]) and isinstance(self.filter_value, list):
+        if (self.filter_type in ["doi", "openalex_id", "id"]) and isinstance(
+            self.filter_value, list
+        ):
             self.use_or = True
 
         if isinstance(self.filter_value, dict):
@@ -78,7 +80,7 @@ class OAQuery:
     cursor: str | None = field(default="*", init=False)
     count: int | None = field(default=None, init=False)
     total_retrieved: int = field(default=0, init=False)
-    messageclass: BaseMessage | None = field(default=None, init=False)
+    messageclass: OAMessage | None = field(default=None, init=False)
 
     def __post_init__(self) -> None:
         if isinstance(self.endpoint, str):
@@ -110,7 +112,7 @@ class OAQuery:
             try:
                 # Fetch from API
                 data: str = self.client.get(self.get_url()).text
-                results: BaseMessage = self.messageclass.model_validate_json(data)
+                results: OAMessage = self.messageclass.model_validate_json(data)
 
                 # first time we get results, set the count
                 if not self.count:
@@ -195,11 +197,16 @@ class OAQuery:
         """
         Stores the results of the query in the DuckDB instance.
         """
+        if self._results and not self.cursor:
+            # if we have results and no cursor, we are done
+            db.store_results(self, type(self._results[0]))
+            return
+        # else fetch the results and store them
         self.get_results(db)
 
     def __len__(self) -> int:
         """
-        Returns the number of results in the query.
+        Returns the number of expected results in the query.
         """
         if not self.count:
             self.get_results()

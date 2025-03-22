@@ -42,7 +42,7 @@ class OAFilterType(Enum):
     """
 
 
-ENDPOINT_TO_MESSAGECLASS: dict[OAEndpoint, "BaseMessage"] = {
+ENDPOINT_TO_MESSAGECLASS: dict[OAEndpoint, "OAMessage"] = {
     OAEndpoint.WORKS: WorkMessage,
     OAEndpoint.INSTITUTIONS: InstitutionMessage,
     OAEndpoint.AUTHORS: AuthorMessage,
@@ -69,13 +69,14 @@ ID_TO_ENDPOINT: dict[str, OAEndpoint] = {
     "https://openalex.org/W": OAEndpoint.WORKS,
 }
 
-class BaseResult(Protocol):
+
+class OAResult(Protocol):
     id: str | None = None
     display_name: str | None = None
     ...
 
 
-class Meta(Protocol):
+class OAMeta(Protocol):
     count: int | None = None
     q: str | None = None
     db_response_time_ms: int | None = None
@@ -87,6 +88,7 @@ class Meta(Protocol):
     apc_paid_sum_usd: int | None = None
     cited_by_count_sum: int | None = None
 
-class BaseMessage(Protocol):
-    results: list[BaseResult]
-    meta: Meta | None = None
+
+class OAMessage(Protocol):
+    results: list[OAResult]
+    meta: OAMeta | None = None

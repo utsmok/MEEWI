@@ -1,1 +1,1 @@
-# TODO: make models for OpenAIRE API responses
+from .research_product import Message as ResearchProductMessage, ResearchProduct

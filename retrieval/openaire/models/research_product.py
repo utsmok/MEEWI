@@ -1,6 +1,7 @@
-#https://graph.openaire.eu/docs/data-model/entities/research-product
+# https://graph.openaire.eu/docs/data-model/entities/research-product
 
-from typing import Any, Dict, List, Optional
+from typing import Any
+
 from pydantic import BaseModel, Field, model_validator
 
 """
@@ -9,28 +10,31 @@ The models are designed to be used with the OpenAIRE Graph API and are structure
 the expected JSON response format for Research Products.
 """
 
+
 # Sub-models for nested structures
 class PidIdentifier(BaseModel):
-    scheme: Optional[str] = None
-    value: Optional[str] = None
+    scheme: str | None = None
+    value: str | None = None
 
     class Config:
         frozen = True
+
 
 class PidProvenance(BaseModel):
-    provenance: Optional[str] = None
-    trust: Optional[float] = None
+    provenance: str | None = None
+    trust: float | None = None
 
     class Config:
         frozen = True
 
+
 class Pid(BaseModel):
-    id: Optional[PidIdentifier] = None
-    provenance: Optional[PidProvenance] = None
+    id: PidIdentifier | None = None
+    provenance: PidProvenance | None = None
 
     @model_validator(mode="before")
     @classmethod
-    def replace_none_with_empty_classes(cls, data) -> Dict | Any:
+    def replace_none_with_empty_classes(cls, data) -> dict | Any:
         if data is None:
             data = {}
         if isinstance(data, dict):
@@ -43,16 +47,17 @@ class Pid(BaseModel):
     class Config:
         frozen = True
 
+
 class Author(BaseModel):
-    fullName: Optional[str] = None
-    rank: Optional[int] = None
-    name: Optional[str] = None
-    surname: Optional[str] = None
-    pid: Optional[Pid] = None
+    fullName: str | None = None
+    rank: int | None = None
+    name: str | None = None
+    surname: str | None = None
+    pid: Pid | None = None
 
     @model_validator(mode="before")
     @classmethod
-    def replace_none_with_empty_classes(cls, data) -> Dict | Any:
+    def replace_none_with_empty_classes(cls, data) -> dict | Any:
         if data is None:
             data = {}
         if isinstance(data, dict) and not data.get("pid"):
@@ -62,22 +67,24 @@ class Author(BaseModel):
     class Config:
         frozen = True
 
+
 class BestAccessRight(BaseModel):
-    code: Optional[str] = None
-    label: Optional[str] = None
-    scheme: Optional[str] = None
+    code: str | None = None
+    label: str | None = None
+    scheme: str | None = None
 
     class Config:
         frozen = True
 
+
 class ResultCountry(BaseModel):
-    code: Optional[str] = None
-    label: Optional[str] = None
-    provenance: Optional[PidProvenance] = None
+    code: str | None = None
+    label: str | None = None
+    provenance: PidProvenance | None = None
 
     @model_validator(mode="before")
     @classmethod
-    def replace_none_with_empty_classes(cls, data) -> Dict | Any:
+    def replace_none_with_empty_classes(cls, data) -> dict | Any:
         if data is None:
             data = {}
         if isinstance(data, dict) and not data.get("provenance"):
@@ -87,33 +94,36 @@ class ResultCountry(BaseModel):
     class Config:
         frozen = True
 
+
 class CitationImpact(BaseModel):
-    influence: Optional[int] = None
-    influenceClass: Optional[str] = None
-    citationCount: Optional[int] = None
-    citationClass: Optional[str] = None
-    popularity: Optional[int] = None
-    popularityClass: Optional[str] = None
-    impulse: Optional[int] = None
-    impulseClass: Optional[str] = None
+    influence: int | None = None
+    influenceClass: str | None = None
+    citationCount: int | None = None
+    citationClass: str | None = None
+    popularity: int | None = None
+    popularityClass: str | None = None
+    impulse: int | None = None
+    impulseClass: str | None = None
 
     class Config:
         frozen = True
+
 
 class UsageCounts(BaseModel):
-    downloads: Optional[str] = None
-    views: Optional[str] = None
+    downloads: str | None = None
+    views: str | None = None
 
     class Config:
         frozen = True
 
+
 class Indicator(BaseModel):
-    citationImpact: Optional[CitationImpact] = None
-    usageCounts: Optional[UsageCounts] = None
+    citationImpact: CitationImpact | None = None
+    usageCounts: UsageCounts | None = None
 
     @model_validator(mode="before")
     @classmethod
-    def replace_none_with_empty_classes(cls, data) -> Dict | Any:
+    def replace_none_with_empty_classes(cls, data) -> dict | Any:
         if data is None:
             data = {}
         if isinstance(data, dict):
@@ -126,43 +136,47 @@ class Indicator(BaseModel):
     class Config:
         frozen = True
 
+
 class AccessRight(BaseModel):
-    code: Optional[str] = None
-    label: Optional[str] = None
-    openAccessRoute: Optional[str] = None
-    scheme: Optional[str] = None
+    code: str | None = None
+    label: str | None = None
+    openAccessRoute: str | None = None
+    scheme: str | None = None
 
     class Config:
         frozen = True
+
 
 class ArticleProcessingCharge(BaseModel):
-    amount: Optional[str] = None
-    currency: Optional[str] = None
+    amount: str | None = None
+    currency: str | None = None
 
     class Config:
         frozen = True
+
 
 class ResultPid(BaseModel):
-    scheme: Optional[str] = None
-    value: Optional[str] = None
+    scheme: str | None = None
+    value: str | None = None
 
     class Config:
         frozen = True
 
+
 class Instance(BaseModel):
-    accessRight: Optional[AccessRight] = None
-    alternateIdentifiers: List[Dict[str, str]] = Field(default_factory=list)
-    articleProcessingCharge: Optional[ArticleProcessingCharge] = None
-    license: Optional[str] = None
-    pids: List[ResultPid] = Field(default_factory=list)
-    publicationDate: Optional[str] = None
-    refereed: Optional[str] = None
-    type: Optional[str] = None
-    urls: List[str] = Field(default_factory=list)
+    accessRight: AccessRight | None = None
+    alternateIdentifiers: list[dict[str, str]] = Field(default_factory=list)
+    articleProcessingCharge: ArticleProcessingCharge | None = None
+    license: str | None = None
+    pids: list[ResultPid] = Field(default_factory=list)
+    publicationDate: str | None = None
+    refereed: str | None = None
+    type: str | None = None
+    urls: list[str] = Field(default_factory=list)
 
     @model_validator(mode="before")
     @classmethod
-    def replace_none_with_empty_classes(cls, data) -> Dict | Any:
+    def replace_none_with_empty_classes(cls, data) -> dict | Any:
         if data is None:
             data = {}
         if isinstance(data, dict):
@@ -170,25 +184,30 @@ class Instance(BaseModel):
                 data["accessRight"] = AccessRight()
             if not data.get("articleProcessingCharge"):
                 data["articleProcessingCharge"] = ArticleProcessingCharge()
+            if not data.get("pids"):
+                data["pids"] = [ResultPid()]
+
         return data
 
     class Config:
         frozen = True
 
+
 class Language(BaseModel):
-    code: Optional[str] = None
-    label: Optional[str] = None
+    code: str | None = None
+    label: str | None = None
 
     class Config:
         frozen = True
 
+
 class Subject(BaseModel):
-    subject: Optional[Dict[str, str]] = None
-    provenance: Optional[PidProvenance] = None
+    subject: dict[str, str] | None = None
+    provenance: PidProvenance | None = None
 
     @model_validator(mode="before")
     @classmethod
-    def replace_none_with_empty_classes(cls, data) -> Dict | Any:
+    def replace_none_with_empty_classes(cls, data) -> dict | Any:
         if data is None:
             data = {}
         if isinstance(data, dict):
@@ -201,63 +220,81 @@ class Subject(BaseModel):
     class Config:
         frozen = True
 
+
 # Container for Publication
 class Container(BaseModel):
-    edition: Optional[str] = None
-    iss: Optional[str] = None
-    issnLinking: Optional[str] = None
-    issnOnline: Optional[str] = None
-    issnPrinted: Optional[str] = None
-    name: Optional[str] = None
-    sp: Optional[str] = None
-    ep: Optional[str] = None
-    vol: Optional[str] = None
+    edition: str | None = None
+    iss: str | None = None
+    issnLinking: str | None = None
+    issnOnline: str | None = None
+    issnPrinted: str | None = None
+    name: str | None = None
+    sp: str | None = None
+    ep: str | None = None
+    vol: str | None = None
 
     class Config:
         frozen = True
+
 
 # GeoLocation for Data
 class GeoLocation(BaseModel):
-    box: Optional[str] = None
-    place: Optional[str] = None
-    point: Optional[str] = None
+    box: str | None = None
+    place: str | None = None
+    point: str | None = None
 
     class Config:
         frozen = True
 
+
 # Main ResearchProduct model
 class ResearchProduct(BaseModel):
-    id: Optional[str] = None
-    type: Optional[str] = None
-    originalIds: List[str] = Field(default_factory=list)
-    mainTitle: Optional[str] = None
-    subTitle: Optional[str] = None
-    authors: List[Author] = Field(default_factory=list)
-    bestAccessRight: Optional[BestAccessRight] = None
-    contributors: List[str] = Field(default_factory=list)
-    countries: List[ResultCountry] = Field(default_factory=list)
-    coverages: List[str] = Field(default_factory=list)
-    dateOfCollection: Optional[str] = None
-    descriptions: List[str] = Field(default_factory=list)
-    embargoEndDate: Optional[str] = None
-    indicators: Optional[Indicator] = None
-    instances: List[Instance] = Field(default_factory=list)
-    language: Optional[Language] = None
-    lastUpdateTimeStamp: Optional[int] = None
-    pids: List[ResultPid] = Field(default_factory=list)
-    publicationDate: Optional[str] = None
-    publisher: Optional[str] = None
-    sources: List[str] = Field(default_factory=list)
-    formats: List[str] = Field(default_factory=list)
-    subjects: List[Subject] = Field(default_factory.list)
-    isGreen: Optional[bool] = None
-    openAccessColor: Optional[str] = None
-    isInDiamondJournal: Optional[bool] = None
-    publiclyFunded: Optional[str] = None
+    id: str | None = None
+    type: str | None = None
+    originalIds: list[str] = Field(default_factory=list)
+    mainTitle: str | None = None
+    subTitle: str | None = None
+    authors: list[Author] = Field(default_factory=list)
+    bestAccessRight: BestAccessRight | None = None
+    contributors: list[str] = Field(default_factory=list)
+    countries: list[ResultCountry] = Field(default_factory=list)
+    coverages: list[str] = Field(default_factory=list)
+    dateOfCollection: str | None = None
+    descriptions: list[str] = Field(default_factory=list)
+    embargoEndDate: str | None = None
+    indicators: Indicator | None = None
+    instances: list[Instance] = Field(default_factory=list)
+    language: Language | None = None
+    lastUpdateTimeStamp: int | None = None
+    pids: list[ResultPid] = Field(default_factory=list)
+    publicationDate: str | None = None
+    publisher: str | None = None
+    sources: list[str] = Field(default_factory=list)
+    formats: list[str] = Field(default_factory=list)
+    subjects: list[Subject] = Field(default_factory=list)
+    isGreen: bool | None = None
+    openAccessColor: str | None = None
+    isInDiamondJournal: bool | None = None
+    publiclyFunded: str | None = None
+
+    # for publications
+    container: Container | None = None
+    # for datasets
+    size: str | None = None
+    version: str | None = None
+    geolocations: list[GeoLocation] = Field(default_factory=list)
+    # for software
+    documentationUrls: list[str] = Field(default_factory=list)
+    codeRepositoryUrl: str | None = None
+    programmingLanguage: str | None = None
+    # for other research products
+    contactPeople: list[str] = Field(default_factory=list)
+    contactGroups: list[str] = Field(default_factory=list)
+    tools: list[str] = Field(default_factory=list)
 
     @model_validator(mode="before")
     @classmethod
-    def replace_none_with_empty_classes(cls, data) -> Dict | Any:
+    def replace_none_with_empty_classes(cls, data) -> dict | Any:
         if not isinstance(data, dict):
             return data
 
@@ -266,76 +303,49 @@ class ResearchProduct(BaseModel):
             "bestAccessRight": BestAccessRight,
             "indicators": Indicator,
             "language": Language,
+            "container": Container,
         }
 
         for field, classtype in obj_fields.items():
             if data.get(field) is None:
                 data[field] = classtype()
 
+        obj_list_fields = {
+            "bestAccessRight": BestAccessRight,
+            "indicators": Indicator,
+            "language": Language,
+            "authors": Author,
+            "countries": ResultCountry,
+            "instances": Instance,
+            "pids": ResultPid,
+            "subjects": Subject,
+            "geolocations": GeoLocation,
+        }
+        for field, classtype in obj_list_fields.items():
+            if not data.get(field) or data.get(field) is None or data.get(field) == []:
+                data[field] = [classtype()]
         return data
 
     class Config:
         frozen = True
 
-# Subtypes of ResearchProduct
-class Publication(ResearchProduct):
-    container: Optional[Container] = None
-
-    @model_validator(mode="before")
-    @classmethod
-    def replace_none_with_empty_container(cls, data) -> Dict | Any:
-        if isinstance(data, dict) and not data.get("container"):
-            data["container"] = Container()
-        return data
-
-    class Config:
-        frozen = True
-
-class Data(ResearchProduct):
-    size: Optional[str] = None
-    version: Optional[str] = None
-    geolocations: List[GeoLocation] = Field(default_factory=list)
-
-    class Config:
-        frozen = True
-
-class Software(ResearchProduct):
-    documentationUrls: List[str] = Field(default_factory.list)
-    codeRepositoryUrl: Optional[str] = None
-    programmingLanguage: Optional[str] = None
-
-    class Config:
-        frozen = True
-
-class OtherResearchProduct(ResearchProduct):
-    contactPeople: List[str] = Field(default_factory.list)
-    contactGroups: List[str] = Field(default_factory.list)
-    tools: List[str] = Field(default_factory.list)
-
-    class Config:
-        frozen = True
 
 # Response wrapper classes
-class Meta(BaseModel):
-    count: Optional[int] = None
-    page: Optional[int] = None
-    size: Optional[int] = None
-
-    class Config:
-        frozen = True
-
-class OpenAireResponse(BaseModel):
-    meta: Optional[Meta] = None
-    results: List[ResearchProduct] = Field(default_factory.list)
-
-    @model_validator(mode="before")
-    @classmethod
-    def handle_meta(cls, data) -> Dict | Any:
-        if isinstance(data, dict) and not data.get("meta"):
-            data["meta"] = Meta()
-        return data
+class Header(BaseModel):
+    numfound: int
+    maxscore: int | None = None
+    querytime: int
+    page: int
+    pageSize: int | None = None
+    nextCursor: str | None = None
 
     class Config:
         frozen = True
 
 
+class Message(BaseModel):
+    header: Header
+    results: list[ResearchProduct]
+
+    class Config:
+        frozen = True
