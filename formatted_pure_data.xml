@@ -1,0 +1,441 @@
+<ListRecords>
+  <record>
+    <identifier type="id">5087960</identifier>
+    <identifier type="uuid">a0567182-e28c-405e-92a5-e94ef6bcec21</identifier>
+    <identifier type="local">researchoutputwizard: 163538</identifier>
+    <identifier type="local">NBN-ID: 65088</identifier>
+    <identifier type="local">ORCID: /0000-0002-1046-2044/work/169917684</identifier>
+    <relatedItem type="host">
+      <part>
+        <text>Vanberkel, P T, Boucherie, R J, Hans, E W, Hurink, J L, Litvak, N, van Lent, W A M &amp; van Harten, W H 2008, Reallocating resources to focused factories: a case study in chemotherapy. Beta Working Papers, no. 10/WP-259, University of Twente, Eindhoven.</text>
+      </part>
+    </relatedItem>
+    <physicalDescription>
+      <extent unit="pages">16</extent>
+    </physicalDescription>
+    <titleInfo lang="eng">
+      <title>Reallocating resources to focused factories: a case study in chemotherapy</title>
+    </titleInfo>
+    <name type="personal">
+      <role>
+        <roleTerm>author</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">2af472f6-afab-41e9-857c-abe605adf18d</nameIdentifier>
+      <nameIdentifier type="dai-nl" typeURI="info:eu-repo/dai/nl">322803519</nameIdentifier>
+      <nameIdentifier type="isni">0000000390085214</nameIdentifier>
+      <nameIdentifier type="orcid">0000-0002-4108-5675</nameIdentifier>
+      <namePart type="given">Peter T.</namePart>
+      <namePart type="family">Vanberkel</namePart>
+      <affiliation>Stochastic Operations Research</affiliation>
+      <affiliation>Center for Healthcare Operations Improvement and Research</affiliation>
+    </name>
+    <name type="personal">
+      <role>
+        <roleTerm>author</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">cea339f9-9df3-474e-86a2-2da0c7f68b09</nameIdentifier>
+      <nameIdentifier type="isni">0000000042322447</nameIdentifier>
+      <nameIdentifier type="orcid">0000-0002-1046-2044</nameIdentifier>
+      <role>
+        <roleTerm authority="username">M7646701</roleTerm>
+      </role>
+      <namePart type="given">Richard J.</namePart>
+      <namePart type="family">Boucherie</namePart>
+      <affiliation>Stochastic Operations Research</affiliation>
+      <affiliation>Stochastic Operations Research</affiliation>
+      <affiliation>Center for Healthcare Operations Improvement and Research</affiliation>
+    </name>
+    <name type="personal">
+      <role>
+        <roleTerm>author</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">f701ce7a-dcdc-45d2-b138-0feda4cc2f72</nameIdentifier>
+      <nameIdentifier type="isni">0000000037722526</nameIdentifier>
+      <nameIdentifier type="orcid">0000-0002-6618-4661</nameIdentifier>
+      <role>
+        <roleTerm authority="username">M7641655</roleTerm>
+      </role>
+      <namePart type="given">Erwin W.</namePart>
+      <namePart type="family">Hans</namePart>
+      <affiliation>Center for Healthcare Operations Improvement and Research</affiliation>
+    </name>
+    <name type="personal">
+      <role>
+        <roleTerm>author</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">b52c3bad-89ad-4c30-bbaa-7389ecd969ac</nameIdentifier>
+      <nameIdentifier type="isni">0000000353817703</nameIdentifier>
+      <nameIdentifier type="orcid">0000-0001-6986-5633</nameIdentifier>
+      <role>
+        <roleTerm authority="username">M7644236</roleTerm>
+      </role>
+      <namePart type="given">Johann L.</namePart>
+      <namePart type="family">Hurink</namePart>
+      <affiliation>Discrete Mathematics and Mathematical Programming</affiliation>
+      <affiliation>Discrete Mathematics and Mathematical Programming</affiliation>
+      <affiliation>Discrete Mathematics and Mathematical Programming</affiliation>
+    </name>
+    <name type="personal">
+      <role>
+        <roleTerm>author</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">d09a194d-6623-41d3-bb41-261ec6bd2658</nameIdentifier>
+      <nameIdentifier type="isni">0000000055069508</nameIdentifier>
+      <role>
+        <roleTerm authority="username">M7648180</roleTerm>
+      </role>
+      <namePart type="given">Nelly</namePart>
+      <namePart type="family">Litvak</namePart>
+      <affiliation>Stochastic Operations Research</affiliation>
+      <affiliation>Stochastic Operations Research</affiliation>
+      <affiliation>Stochastic Operations Research</affiliation>
+    </name>
+    <name type="personal">
+      <role>
+        <roleTerm>author</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">6ad6b17e-a015-4ef9-b40f-eecd22a04354</nameIdentifier>
+      <nameIdentifier type="dai-nl" typeURI="info:eu-repo/dai/nl">333752082</nameIdentifier>
+      <nameIdentifier type="isni">0000000389228767</nameIdentifier>
+      <namePart type="given">Wineke A.M.</namePart>
+      <namePart type="family">van Lent</namePart>
+    </name>
+    <name type="personal">
+      <role>
+        <roleTerm>author</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">449cf615-e9d2-4126-84df-9144e6b22ea1</nameIdentifier>
+      <nameIdentifier type="isni">0000000388371318</nameIdentifier>
+      <role>
+        <roleTerm authority="username">M7647376</roleTerm>
+      </role>
+      <namePart type="given">Wim H.</namePart>
+      <namePart type="family">van Harten</namePart>
+    </name>
+    <name type="corporate" lang="eng">
+      <role>
+        <roleTerm type="code" authority="marcrelator">pbl</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="organisationType">faculty</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">f2824e9c-5b0c-4bdb-a2fd-2ea6c702c21a</nameIdentifier>
+      <namePart>Faculty of Behavioural, Management and Social Sciences</namePart>
+      <role>
+        <roleTerm authority="scopus_affiliation_id">115164544</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="scopus_affiliation_id">117954946</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="scopus_affiliation_id">115005814</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="scopus_affiliation_id">112775725</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="scopus_affiliation_id">103176000</roleTerm>
+      </role>
+    </name>
+    <name type="corporate" lang="eng">
+      <role>
+        <roleTerm type="code" authority="marcrelator">pbl</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="organisationType">department</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">feb87d2b-bd3d-4343-bc74-999d4bf8a41f</nameIdentifier>
+      <namePart>Stochastic Operations Research</namePart>
+    </name>
+    <name type="corporate" lang="eng">
+      <role>
+        <roleTerm type="code" authority="marcrelator">pbl</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="organisationType">research_centre</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">91869f52-72ee-4e39-a933-458a3dc67260</nameIdentifier>
+      <namePart>Center for Healthcare Operations Improvement and Research</namePart>
+    </name>
+    <name type="corporate" lang="eng">
+      <role>
+        <roleTerm type="code" authority="marcrelator">pbl</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="organisationType">department</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">f747ad65-4c82-42ab-80a3-11334208dd7f</nameIdentifier>
+      <namePart>Discrete Mathematics and Mathematical Programming</namePart>
+    </name>
+    <genre type="publicationType" authority="dct">Report</genre>
+    <physicalDescription>
+      <form authority="marcform">electronic</form>
+      <note type="title">Vanberkel2008reallocating</note>
+      <internetMediaType>application/octet-stream</internetMediaType>
+      <extent unit="bytes">177482</extent>
+      <note type="location" href="https://research.utwente.nl/files/5087962/2008-XVanberkelBoucherieHansHurinkLitvakLentHarten-ORAHS.pdf"></note>
+      <note type="visibility">FREE</note>
+      <note type="version">publishersversion</note>
+      <note type="access">open</note>
+    </physicalDescription>
+    <note type="publication category">Professional</note>
+    <note type="publication workflow state">approved</note>
+    <originInfo>
+      <dateIssued>2008</dateIssued>
+      <dateOther type="published">2008</dateOther>
+      <place>
+        <placeTerm>Eindhoven</placeTerm>
+      </place>
+      <publisher>University of Twente</publisher>
+    </originInfo>
+    <subject>
+      <topic>Resource allocation</topic>
+      <topic>Slotted queueing model</topic>
+      <topic>Capacity planning</topic>
+      <topic>Chemotherapy</topic>
+      <topic>Focused factory</topic>
+    </subject>
+    <identifier type="uri">https://research.utwente.nl/en/publications/a0567182-e28c-405e-92a5-e94ef6bcec21</identifier>
+    <language>
+      <languageTerm type="code">eng</languageTerm>
+    </language>
+    <abstract type="content" lang="eng">This study investigates the expected service performance associated with a proposal to reallocate resources from a centralized chemotherapy department to a breast cancer focused factory. Using a slotted queueing model we show that a decrease in performance is expected and calculate the amount of additional resources required to offset these losses. The model relies solely on typical outpatient scheduling system data, making the methodology easy to replicate in other outpatient clinic settings. Finally, the paper highlights important factors to consider when assigning capacity to focused factories. These considerations are generally relevant to other resource allocation decisions.</abstract>
+    <accessCondition></accessCondition>
+    <note type="metadata visibility">FREE</note>
+    <note type="creatorCount">7</note>
+    <identifier type="isbn">9789038619941</identifier>
+    <relatedItem type="series">
+      <titleInfo>
+        <title>Beta Working Papers</title>
+      </titleInfo>
+      <originInfo>
+        <publisher>University of Twente, Beta Research School for Operations Management and Logistics</publisher>
+      </originInfo>
+      <identifier type="issn">1386-9213</identifier>
+      <part>
+        <detail type="issue">
+          <number>10/WP-259</number>
+          <caption>no.</caption>
+        </detail>
+      </part>
+    </relatedItem>
+    <note type="publicationStatus">published</note>
+  </record>
+  <record>
+    <identifier type="id">5088004</identifier>
+    <identifier type="uuid">d18fc722-3ec1-4729-9bd8-082f9769954e</identifier>
+    <identifier type="local">researchoutputwizard: 36244</identifier>
+    <identifier type="local">NBN-ID: 63855</identifier>
+    <identifier type="local">ORCID: /0000-0001-7118-1353/work/170277749</identifier>
+    <relatedItem type="host">
+      <part>
+        <text>van Sinderen, M J &amp; Nieuwenhuis, L J M (eds) 2001, Protocols for Multimedia Systems : 6th International Conference, PROMS 2001 Enschede, The Netherlands, October 17–19, 2001 Proceedings. Lecture Notes in Computer Science, vol. 2213, Springer, Heidelberg, Germany. https://doi.org/10.1007/3-540-45481-0</text>
+      </part>
+    </relatedItem>
+    <physicalDescription>
+      <extent unit="pages">237</extent>
+    </physicalDescription>
+    <note>Imported from research group ASNA (ID number 180)</note>
+    <titleInfo lang="eng">
+      <title>Protocols for Multimedia Systems</title>
+      <subTitle>6th International Conference, PROMS 2001 Enschede, The Netherlands, October 17–19, 2001 Proceedings</subTitle>
+    </titleInfo>
+    <name type="personal">
+      <role>
+        <roleTerm>editor</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">66a6c431-cb07-42c8-a797-d8ce4b4649ec</nameIdentifier>
+      <nameIdentifier type="isni">0000000114894859</nameIdentifier>
+      <nameIdentifier type="orcid">0000-0001-7118-1353</nameIdentifier>
+      <role>
+        <roleTerm authority="username">M7640249</roleTerm>
+      </role>
+      <namePart type="given">Marten J.</namePart>
+      <namePart type="family">van Sinderen</namePart>
+    </name>
+    <name type="personal">
+      <role>
+        <roleTerm>editor</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">9fef85ae-e94a-4327-b860-ac1ecf18ce0e</nameIdentifier>
+      <nameIdentifier type="isni">0000000374093484</nameIdentifier>
+      <role>
+        <roleTerm authority="username">M7645955</roleTerm>
+      </role>
+      <namePart type="given">Lambert J.M.</namePart>
+      <namePart type="family">Nieuwenhuis</namePart>
+    </name>
+    <name type="corporate" lang="eng">
+      <role>
+        <roleTerm type="code" authority="marcrelator">pbl</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="organisationType">faculty</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">f2824e9c-5b0c-4bdb-a2fd-2ea6c702c21a</nameIdentifier>
+      <namePart>Faculty of Behavioural, Management and Social Sciences</namePart>
+      <role>
+        <roleTerm authority="scopus_affiliation_id">115164544</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="scopus_affiliation_id">117954946</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="scopus_affiliation_id">115005814</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="scopus_affiliation_id">112775725</roleTerm>
+      </role>
+      <role>
+        <roleTerm authority="scopus_affiliation_id">103176000</roleTerm>
+      </role>
+    </name>
+    <genre type="publicationType" authority="dct">Book</genre>
+    <physicalDescription>
+      <form authority="marcform">electronic</form>
+      <note type="title">Front Matter</note>
+      <internetMediaType>application/pdf</internetMediaType>
+      <extent unit="bytes">39894</extent>
+      <note type="location" href="https://research.utwente.nl/files/5088007/front-matter.pdf"></note>
+      <note type="visibility">FREE</note>
+      <note type="version">publishersversion</note>
+      <note type="access">open</note>
+    </physicalDescription>
+    <note type="publication category">Academic</note>
+    <note type="publication workflow state">approved</note>
+    <originInfo>
+      <dateIssued>2001</dateIssued>
+      <dateOther type="published">2001</dateOther>
+      <place>
+        <placeTerm>Heidelberg, Germany</placeTerm>
+      </place>
+      <publisher>Springer</publisher>
+    </originInfo>
+    <identifier type="uri">https://research.utwente.nl/en/publications/d18fc722-3ec1-4729-9bd8-082f9769954e</identifier>
+    <identifier type="doi">10.1007/3-540-45481-0</identifier>
+    <language>
+      <languageTerm type="code">eng</languageTerm>
+    </language>
+    <abstract type="content" lang="eng">The goal of the PROMS series of conferences and workshops is to contribute to scientific, strategic, and practical cooperation between research institutes and industrial companies in the area of multimedia protocols. This is also the goal of PROMS 2001. The basic theme of this conference continues to be multimedia protocols, both at the network and application level, although the increasing interest in wireless, mobility, and quality-of-service as interrelated topics with relevance to multimedia are reflected in the current program. The papers are grouped as follows in sessions for the single track technical program: (1) QoS in the Internet, (2) Multimedia streaming, (3) Multimedia multicast, (4) Wireless networks and host mobility, (5) TCP/IP optimization, and (6) Service development and deployment. The technical program is complemented with two invited presentations: "From Mars to Your TV at Home - Selected Internet Developments" by Erik Huizer and "Which Way to the Wireless Internet?" by Andrew Campbell.</abstract>
+    <accessCondition></accessCondition>
+    <note type="metadata visibility">FREE</note>
+    <note type="creatorCount">2</note>
+    <identifier type="isbn">3-540-42708-2</identifier>
+    <identifier type="isbn">978-3-540-45481-6</identifier>
+    <relatedItem type="series">
+      <titleInfo>
+        <title>Lecture Notes in Computer Science</title>
+      </titleInfo>
+      <originInfo>
+        <publisher>Springer</publisher>
+      </originInfo>
+      <identifier type="issn">0302-9743</identifier>
+      <part>
+        <detail type="volume">
+          <number>2213</number>
+          <caption>vol.</caption>
+        </detail>
+      </part>
+    </relatedItem>
+    <note type="publicationStatus">published</note>
+  </record>
+  <record>
+    <identifier type="id">5088028</identifier>
+    <identifier type="uuid">da8886ad-0883-4bf0-8052-233b570f958b</identifier>
+    <identifier type="local">researchoutputwizard: 172019</identifier>
+    <identifier type="local">NBN-ID: 97798</identifier>
+    <relatedItem type="host">
+      <part>
+        <text>Ramsgaard Wognsen, E, Jongerden, M &amp; Haverkort, B R 2015, A Score Function for State of Charge Profiles for Rechargeable Batteries. CTIT Technical Report Series, no. 15-06, Centre for Telematics and Information Technology (CTIT), Enschede.</text>
+      </part>
+    </relatedItem>
+    <physicalDescription>
+      <extent unit="pages">4</extent>
+    </physicalDescription>
+    <note>eemcs-eprint-25900 Design &amp; Elektronik Entwicklerforum Batterien und Ladekonzepte 2015, Munchen</note>
+    <titleInfo lang="eng">
+      <title>A Score Function for State of Charge Profiles for Rechargeable Batteries</title>
+    </titleInfo>
+    <name type="personal">
+      <role>
+        <roleTerm>author</roleTerm>
+      </role>
+      <namePart type="given">Erik</namePart>
+      <namePart type="family">Ramsgaard Wognsen</namePart>
+      <affiliation>Aalborg University</affiliation>
+    </name>
+    <name type="personal">
+      <role>
+        <roleTerm>author</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">fbf1d2ad-f81d-402e-a027-4eafd80a85f4</nameIdentifier>
+      <role>
+        <roleTerm authority="username">M7684447</roleTerm>
+      </role>
+      <namePart type="given">Marijn</namePart>
+      <namePart type="family">Jongerden</namePart>
+    </name>
+    <name type="personal">
+      <role>
+        <roleTerm>author</roleTerm>
+      </role>
+      <nameIdentifier type="uuid">6ba5f910-6017-4ee7-9a61-c13d12ef4546</nameIdentifier>
+      <nameIdentifier type="isni">0000000114463952</nameIdentifier>
+      <nameIdentifier type="orcid">0000-0002-0654-0740</nameIdentifier>
+      <role>
+        <roleTerm authority="username">M7648604</roleTerm>
+      </role>
+      <namePart type="given">Boudewijn R.</namePart>
+      <namePart type="family">Haverkort</namePart>
+    </name>
+    <genre type="publicationType" authority="dct">Report</genre>
+    <physicalDescription>
+      <form authority="marcform">electronic</form>
+      <note type="title">Report</note>
+      <internetMediaType>application/pdf</internetMediaType>
+      <extent unit="bytes">276723</extent>
+      <note type="location" href="https://research.utwente.nl/files/5088030/paper.pdf"></note>
+      <note type="visibility">FREE</note>
+      <note type="version">publishersversion</note>
+      <note type="access">open</note>
+    </physicalDescription>
+    <note type="publication category">Professional</note>
+    <note type="publication workflow state">approved</note>
+    <originInfo>
+      <dateIssued>2015-10</dateIssued>
+      <dateOther type="published">2015-10</dateOther>
+      <place>
+        <placeTerm>Enschede</placeTerm>
+      </place>
+      <publisher>Centre for Telematics and Information Technology (CTIT)</publisher>
+    </originInfo>
+    <subject>
+      <topic>EC Grant Agreement nr.: FP7/2007-2013</topic>
+      <topic>EC Grant Agreement nr.: FP7/318490</topic>
+      <topic>Score function</topic>
+      <topic>Battery aging</topic>
+    </subject>
+    <identifier type="uri">https://research.utwente.nl/en/publications/da8886ad-0883-4bf0-8052-233b570f958b</identifier>
+    <language>
+      <languageTerm type="code">eng</languageTerm>
+    </language>
+    <abstract type="content" lang="eng">We propose a new score function to compare and evaluate the relative impact of state-of-charge profiles on overall battery lifetime. Our score function, based on on a discrete Fourier transform of the state-of-charge profile, formalizes and generalizes earlier ideas found in the literature, and can form an important help in optimizing overall life time for battery powered systems. In this paper we introduce and illustrate the method, and discuss its merits as well as open issues and related literature.</abstract>
+    <accessCondition></accessCondition>
+    <note type="metadata visibility">FREE</note>
+    <note type="creatorCount">3</note>
+    <relatedItem type="series">
+      <titleInfo>
+        <title>CTIT Technical Report Series</title>
+      </titleInfo>
+      <identifier type="issn">1381-3625</identifier>
+      <part>
+        <detail type="issue">
+          <number>15-06</number>
+          <caption>no.</caption>
+        </detail>
+      </part>
+    </relatedItem>
+    <note type="publicationStatus">published</note>
+  </record>
+  <resumptionToken cursor="0" completeListSize="188091">mods/188091/485920704/100/0/5090373/openaire_cris_publications/x/x</resumptionToken>
+</ListRecords>
