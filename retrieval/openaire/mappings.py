@@ -36,6 +36,9 @@ class OAIREMessage(Protocol):
     header: OAIREHeader
     results: list[OAIREResult]
 
+    @classmethod
+    def model_validate_json(cls, data: str) -> "OAIREMessage": ...
+
 
 ENDPOINT_TO_MESSAGECLASS: dict[OAIREEndpoint, OAIREMessage] = {
     OAIREEndpoint.RESEARCHPRODUCTS: ResearchProductMessage,

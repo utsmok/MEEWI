@@ -96,13 +96,13 @@ class ResultCountry(BaseModel):
 
 
 class CitationImpact(BaseModel):
-    influence: int | None = None
+    influence: float | int | None = None
     influenceClass: str | None = None
     citationCount: int | None = None
     citationClass: str | None = None
-    popularity: int | None = None
+    popularity: float | int | None = None
     popularityClass: str | None = None
-    impulse: int | None = None
+    impulse: float | int | None = None
     impulseClass: str | None = None
 
     class Config:
@@ -112,6 +112,18 @@ class CitationImpact(BaseModel):
 class UsageCounts(BaseModel):
     downloads: str | None = None
     views: str | None = None
+
+    @model_validator(mode="before")
+    @classmethod
+    def text_fix(cls, data) -> dict | Any:
+        if data is None:
+            data = {}
+        if isinstance(data, dict):
+            if not data.get("downloads") or not isinstance(data["downloads"], str):
+                data["downloads"] = "0"
+            if not data.get("views") or not isinstance(data["views"], str):
+                data["views"] = "0"
+        return data
 
     class Config:
         frozen = True
@@ -306,6 +318,10 @@ class ResearchProduct(BaseModel):
             "container": Container,
         }
 
+        data["publiclyFunded"] = (
+            str(data.get("publicyFunded")) if data.get("publicyFunded") else None
+        )
+
         for field, classtype in obj_fields.items():
             if data.get(field) is None:
                 data[field] = classtype()
@@ -332,11 +348,6 @@ class ResearchProduct(BaseModel):
 
 # Response wrapper classes
 class Header(BaseModel):
-    numfound: int
-    maxscore: int | None = None
-    querytime: int
-    page: int
-    pageSize: int | None = None
     nextCursor: str | None = None
 
     class Config:

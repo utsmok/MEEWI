@@ -78,8 +78,22 @@ class DuckDBInstance:
         ids = self.conn.fetchall()
         ids = [id[0] for id in ids]
         self.ids[table_name] = set(ids)
-        print(f"Retrieved {len(ids)} ids from {table_name} table.")
         return self.ids[table_name]
+
+    def get_ids(self, table_name: str, field: str = "id") -> set[str]:
+        """
+        For a given table, yield all ids in the table.
+        A different col can be specified using param 'field' (default is id);
+        make sure this is a VARCHAR col.
+        """
+        if not self.table_exists(table_name):
+            print(f"Table {table_name} does not exist in DuckDB instance.")
+            return set()
+
+        self.conn.execute(f"SELECT {field} FROM {table_name};")
+        ids = self.conn.fetchall()
+        ids = [id[0] for id in ids]
+        return set(ids)
 
     def store_results(
         self,
@@ -120,7 +134,6 @@ class DuckDBInstance:
         if data.is_empty():
             print(f"No new data to insert into {table_name}.")
             return self.ids[table_name]
-        print(f"inserting {len(data)} items into {table_name}")
         try:
             self.conn.register("data_view", data)
         except Exception as e:
@@ -135,6 +148,6 @@ class DuckDBInstance:
         except Exception as e:
             print(f"Error inserting data into {table_name}: {e}")
             return self.ids[table_name]
-        print(f"Done inserting {len(data)} items into {table_name}")
+        print(f"inserted {len(data)} items into {table_name}")
         self.retrieve_ids(table_name)
         return self.ids[table_name]

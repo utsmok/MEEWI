@@ -11,7 +11,7 @@ from collections.abc import Callable
 
 # Regular expressions for various identifier formats
 
-DOI_REGEX = re.compile(r"^10\.\d{4,9}/[-._;()/:A-Z0-9]+$", re.IGNORECASE)
+DOI_REGEX = re.compile(r"^10\.\d{4,9}/[-._;()/:A-Z0-9\+]+$", re.IGNORECASE)
 ORCID_REGEX = re.compile(r"^(\d{4}-\d{4}-\d{4}-\d{3}[X0-9])$")
 ISBN10_REGEX = re.compile(r"^(?:\d[- ]?){9}[\dxX]$")
 ISBN13_REGEX = re.compile(r"^(?:97(?:8|9)[- ]?)?(?:\d[- ]?){9}[\dxX]$")
@@ -97,6 +97,7 @@ def validate_doi(doi: str) -> str:
     Raises:
         ValueError: If the DOI is empty, None, or does not match the expected format.
     """
+
     try:
         doi = validate_input(doi)
     except ValueError as e:
