@@ -11,7 +11,7 @@ from .mappings import OAEndpoint, ID_TO_ENDPOINT
 from rich import print
 
 @dataclass
-class OAEnricher(BaseEnricher):
+class OAEnricher:
     """
     Class that has methods to create querysets to enrich existing data in a DuckDB instance with additional data from OpenAlex.
     """

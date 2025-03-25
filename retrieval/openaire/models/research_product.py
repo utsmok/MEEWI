@@ -1,6 +1,6 @@
 # https://graph.openaire.eu/docs/data-model/entities/research-product
 
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field, model_validator
 
@@ -10,6 +10,10 @@ The models are designed to be used with the OpenAIRE Graph API and are structure
 the expected JSON response format for Research Products.
 """
 
+# Add type literals for restricted values
+OpenAccessRouteType = Literal["gold", "green", "hybrid", "bronze"]
+RefereedType = Literal["peerReviewed", "nonPeerReviewed", "UNKNOWN"]
+ResearchProductType = Literal["publication", "data", "software", "other"]
 
 # Sub-models for nested structures
 class PidIdentifier(BaseModel):
@@ -95,15 +99,16 @@ class ResultCountry(BaseModel):
         frozen = True
 
 
+# Updated CitationImpact to match documentation
 class CitationImpact(BaseModel):
-    influence: float | int | None = None
-    influenceClass: str | None = None
+    influence: float | None = None
+    influenceClass: Literal["C1", "C2", "C3", "C4", "C5"] | None = None
     citationCount: int | None = None
-    citationClass: str | None = None
-    popularity: float | int | None = None
-    popularityClass: str | None = None
-    impulse: float | int | None = None
-    impulseClass: str | None = None
+    citationClass: Literal["C1", "C2", "C3", "C4", "C5"] | None = None
+    popularity: float | None = None
+    popularityClass: Literal["C1", "C2", "C3", "C4", "C5"] | None = None
+    impulse: float | None = None
+    impulseClass: Literal["C1", "C2", "C3", "C4", "C5"] | None = None
 
     class Config:
         frozen = True
@@ -149,10 +154,11 @@ class Indicator(BaseModel):
         frozen = True
 
 
+# Updated AccessRight model to include openAccessRoute
 class AccessRight(BaseModel):
     code: str | None = None
     label: str | None = None
-    openAccessRoute: str | None = None
+    openAccessRoute: OpenAccessRouteType | None = None
     scheme: str | None = None
 
     class Config:
@@ -175,6 +181,7 @@ class ResultPid(BaseModel):
         frozen = True
 
 
+# Updated Instance model to include all fields from docs
 class Instance(BaseModel):
     accessRight: AccessRight | None = None
     alternateIdentifiers: list[dict[str, str]] = Field(default_factory=list)
@@ -182,7 +189,7 @@ class Instance(BaseModel):
     license: str | None = None
     pids: list[ResultPid] = Field(default_factory=list)
     publicationDate: str | None = None
-    refereed: str | None = None
+    refereed: RefereedType | None = None
     type: str | None = None
     urls: list[str] = Field(default_factory=list)
 
@@ -259,10 +266,10 @@ class GeoLocation(BaseModel):
         frozen = True
 
 
-# Main ResearchProduct model
+# Update main ResearchProduct model
 class ResearchProduct(BaseModel):
     id: str | None = None
-    type: str | None = None
+    type: ResearchProductType | None = None
     originalIds: list[str] = Field(default_factory=list)
     mainTitle: str | None = None
     subTitle: str | None = None
