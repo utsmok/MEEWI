@@ -6,6 +6,7 @@ from db.duckdb import DuckDBInstance
 from retrieval.openaire import OAIREEndpoint, OAIREFilter, OAIREQuery, OAIREQuerySet
 from utils.validate import validate_doi
 
+print("starting")
 db = DuckDBInstance()
 processed = 0
 with httpx.Client() as client:
