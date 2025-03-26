@@ -42,18 +42,18 @@ class OAIREFilter:
 @dataclass
 class OAIREQuery:
     endpoint: OAIREEndpoint | str
+    client: httpx.Client
     per_page: int | None = 50
     search_term: str | None = field(default=None)
-    filters: list[OAIREFilter] | None = field(default_factory=list)
-    client: httpx.Client | None = field(default=None)
+    filters: list[OAIREFilter] = field(default_factory=list)
 
-    parent_queryset: "OAIREQuerySet" = field(default=None, init=False)
+    parent_queryset: "OAIREQuerySet" = field(init=False)
 
-    _results: list[BaseModel] | None = field(default_factory=list, init=False)
+    _results: list[BaseModel] = field(default_factory=list, init=False)
     cursor: str | None = field(default="*", init=False)
     count: int | None = field(default=None, init=False)
     total_retrieved: int = field(default=0, init=False)
-    messageclass: OAIREMessage | None = field(default=None, init=False)
+    messageclass: OAIREMessage = field(init=False)
 
     def __post_init__(self) -> None:
         if isinstance(self.endpoint, str):
@@ -64,12 +64,9 @@ class OAIREQuery:
                     f"Invalid endpoint: {self.endpoint}. Choose from one of the following values: {', '.join([e.value for e in OAIREEndpoint])}"
                 ) from e
 
-        self.messageclass = ENDPOINT_TO_MESSAGECLASS.get(self.endpoint)
-
-        if self.filters and not isinstance(self.filters, list):
-            self.filters = [self.filters]
-        if self.search_term:
-            self.filters.append(OAIREFilter({"search": self.search_term}))
+        messageclass = ENDPOINT_TO_MESSAGECLASS.get(self.endpoint)
+        if messageclass:
+            self.messageclass = messageclass
 
     def get_results(self, db: DuckDBInstance | None = None) -> None:
         """
@@ -85,8 +82,8 @@ class OAIREQuery:
                 break
             try:
                 # Fetch from API
-                data: str = self.client.get(self.get_url()).text
-                results: OAIREMessage = self.messageclass.model_validate_json(data)
+                data = self.client.get(self.get_url())
+                results: OAIREMessage = self.messageclass.model_validate_json(data.text)
 
                 self.cursor = results.header.nextCursor
 
@@ -185,7 +182,9 @@ class OAIREQuery:
         return self._results
 
     @property
-    def serialized_results(self) -> list[dict]:
+    def serialized_results(
+        self,
+    ) -> list[dict[str, int | str | BaseModel | list[BaseModel] | float | None]]:
         """
         Returns the results of the query as a list of dictionaries.
         """
@@ -223,18 +222,18 @@ class OAIREQuery:
 class OAIREQuerySet:
     endpoint: OAIREEndpoint
     client: httpx.Client
-    queries: list[OAIREQuery | None] = field(default_factory=list)
-    auth_expiry_time: datetime.datetime | None = field(default=None, init=False)
+    queries: list[OAIREQuery] = field(default_factory=list)
     client_id: str | None = field(default=None, init=False)
     client_secret: str | None = field(default=None, init=False)
+    result_store: list[BaseModel] = field(default_factory=list, init=False)
+    auth_expiry_time = datetime.datetime.now() - datetime.timedelta(hours=3)
 
     def __post_init__(self) -> None:
         if not self.queries:
             self.queries = []
         else:
-            self._authenticate(force=True)
-            if not isinstance(self.queries, list):
-                self.queries = [self.queries]
+            self.client = self._authenticate(force=True)
+
             for query in self.queries:
                 query.parent_queryset = self
                 query.client = self.client
@@ -261,17 +260,19 @@ class OAIREQuerySet:
         """
         Returns the results of all queries in the set as a list of pydantic models.
         """
-        results = []
+        results: list[BaseModel] = []
         for query in self.queries:
             results.extend(query.results)
         return results
 
     @property
-    def serialized_results(self) -> list[dict]:
+    def serialized_results(self) -> dict:
         """
         Returns the results of all queries in the set as a list of dictionaries.
         """
-        results = []
+        results: list[
+            dict[str, int | str | BaseModel | list[BaseModel] | float | None]
+        ] = []
         for query in self.queries:
             results.extend(query.serialized_results)
         return results
@@ -283,7 +284,7 @@ class OAIREQuerySet:
         if not self.queries:
             raise ValueError("No queries in the set.")
         for query in self.queries:
-            query.store_results(db)
+            query.get_results(db)
 
     def __len__(self) -> int:
         """

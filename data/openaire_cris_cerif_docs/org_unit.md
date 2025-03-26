@@ -1,0 +1,136 @@
+---
+title: "OrgUnit — OpenAIRE Guidelines for CRIS Managers 1.2.0 documentation"
+source: "https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/cerif_xml_organisation_entity.html"
+---
+| Description: | Organisation Unit: an organisation, a unit therein, a committee or any other group of people that has a collective goal. Organisation Units are not necessarily formalized as legal entities. In the research information domain Organisation Units typically represents: (1) organisations that perform research (universities, research institutes, corporations) and their subdivisions (faculties, schools, departments, research groups) and other associated bodies (boards, advisory bodies); (2) organisations that fund research (funders, their divisions and evaluation panels); (3) scientific associations and networks; (4) publishers, facility operators and other service providers in the research space; (5) authorities, such as patent offices and standardization or supervision bodies; and (6) other bodies: editorial boards, evaluation panels, or committees of all kinds. |
+| --- | --- |
+| Examples: | [openaire\_cerif\_xml\_example\_orgunits.xml](https://github.com/openaire/guidelines-cris-managers/blob/v1.2/samples/openaire_cerif_xml_example_orgunits.xml) |
+| Representation: | XML element `OrgUnit`; the rest of this section documents children of this element |
+| CERIF: | the OrganisationUnit entity ([https://w3id.org/cerif/model#OrganisationUnit](https://w3id.org/cerif/model#OrganisationUnit)) |
+
+## Internal Identifier[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#internal-identifier "Permalink to this headline")
+
+| Use: | mandatory (1) in top level entity. When embedded in other entities the Internal Identifier must be included only for managed information (i.e. entities that have a concrete record in the local CRIS system). See [Metadata representation in CERIF XML](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/implementation.html#metadata-representation-in-cerif-xml) |
+| --- | --- |
+| Representation: | XML attribute `id` |
+| CERIF: | the OrganisationUnitIdentifier attribute ([https://w3id.org/cerif/model#OrganisationUnit.OrganisationUnitIdentifier](https://w3id.org/cerif/model#OrganisationUnit.OrganisationUnitIdentifier)) |
+
+## Type[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#type "Permalink to this headline")
+
+| Description: | The type of the organisation unit |
+| --- | --- |
+| Use: | optional, possibly multiple (0..\*) |
+| Representation: | XML element `Type` containing the classification identifier and having a `scheme` attribute to specify the classification scheme identifier |
+| CERIF: | the OrganisationUnit\_Classification ([https://w3id.org/cerif/model#OrganisationUnit\_Classification](https://w3id.org/cerif/model#OrganisationUnit_Classification)) |
+
+## Acronym[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#acronym "Permalink to this headline")
+
+| Description: | The acronym of the organisation unit |
+| --- | --- |
+| Use: | optional (0..1) |
+| Representation: | XML element `Acronym` |
+| CERIF: | the OrganisationUnit.Acronym attribute ([https://w3id.org/cerif/model#OrganisationUnit.Acronym](https://w3id.org/cerif/model#OrganisationUnit.Acronym)) |
+
+## Name[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#name "Permalink to this headline")
+
+| Description: | The name of the organisation unit |
+| --- | --- |
+| Use: | optional, possibly multiple (0..\*) |
+| Representation: | XML element `Name` as a multilingual string |
+| CERIF: | the OrganisationUnit.Name attribute ([https://w3id.org/cerif/model#OrganisationUnit.Name](https://w3id.org/cerif/model#OrganisationUnit.Name)) |
+
+## RORID[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#rorid "Permalink to this headline")
+
+| Description: | The ROR identifier in case its value is certain or known to be a preferred one. |
+| --- | --- |
+| Use: | optional (0..1) |
+| Representation: | XML element `RORID` |
+| CERIF: | the FederatedIdentifier entity ([https://w3id.org/cerif/model#FederatedIdentifier](https://w3id.org/cerif/model#FederatedIdentifier)) |
+| Format: | regular expression `https:\/\/ror\.org\/0[\da-hj-km-np-tv-zA-HJ-KM-NP-TV-Z]{6}\d{2}` (as per [https://ror.org/facts/](https://ror.org/facts/)) |
+
+## AlternativeRORID[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#alternativerorid "Permalink to this headline")
+
+| Description: | The ROR identifiers in case the value is not certain, e.g. because there is a conflicting statement with a different value. This can also represent deprecated identifiers/profiles that have been merged into a single, current one that is preferred. |
+| --- | --- |
+| Use: | optional, possibly multiple (0..\*) |
+| Representation: | XML element `AlternativeRORID` |
+| CERIF: | the FederatedIdentifier entity ([https://w3id.org/cerif/model#FederatedIdentifier](https://w3id.org/cerif/model#FederatedIdentifier)) |
+| Format: | regular expression `https:\/\/ror\.org\/0[\da-hj-km-np-tv-zA-HJ-KM-NP-TV-Z]{6}\d{2}` (as per [https://ror.org/facts/](https://ror.org/facts/)) |
+
+## GRID[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#grid "Permalink to this headline")
+
+| Description: | The GRID identifier in case its value is certain or known to be a preferred one. Please note that GRID has been [discontinued](https://www.digital-science.com/news/grid-passes-torch-to-ror/) with ROR as the recommended successor. |
+| --- | --- |
+| Use: | optional (0..1) |
+| Representation: | XML element `GRID` |
+| CERIF: | the FederatedIdentifier entity ([https://w3id.org/cerif/model#FederatedIdentifier](https://w3id.org/cerif/model#FederatedIdentifier)) |
+| Format: | regular expression `grid\.\d{4,}\.[0-9a-f]{1,2}` (as per [https://www.wikidata.org/wiki/Property\_talk:P2427](https://www.wikidata.org/wiki/Property_talk:P2427)) |
+
+## AlternativeGRID[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#alternativegrid "Permalink to this headline")
+
+| Description: | The GRID identifier in case the value is not certain, e.g. because there is a conflicting statement with a different value. This can also represent deprecated identifiers/profiles that have been merged into a single, current one that is preferred. Please note that GRID has been [discontinued](https://www.digital-science.com/news/grid-passes-torch-to-ror/) with ROR as the recommended successor. |
+| --- | --- |
+| Use: | optional, possibly multiple (0..\*) |
+| Representation: | XML element `AlternativeGRID` |
+| CERIF: | the FederatedIdentifier entity ([https://w3id.org/cerif/model#FederatedIdentifier](https://w3id.org/cerif/model#FederatedIdentifier)) |
+| Format: | regular expression `grid\.\d{4,}\.[0-9a-f]{1,2}` (as per [https://www.wikidata.org/wiki/Property\_talk:P2427](https://www.wikidata.org/wiki/Property_talk:P2427)) |
+
+## ISNI[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#isni "Permalink to this headline")
+
+| Description: | The ISNI identifier in case its value is certain or known to be a preferred one. |
+| --- | --- |
+| Use: | optional (0..1) |
+| Representation: | XML element `ISNI` |
+| CERIF: | the FederatedIdentifier entity ([https://w3id.org/cerif/model#FederatedIdentifier](https://w3id.org/cerif/model#FederatedIdentifier)) |
+| Format: | regular expression `\d{4} \d{4} \d{4} \d{3}[\dX]` (as per [https://www.wikidata.org/wiki/Property:P213](https://www.wikidata.org/wiki/Property:P213)) |
+
+## AlternativeISNI[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#alternativeisni "Permalink to this headline")
+
+| Description: | The ISNI identifier in case the value is not certain, e.g. because there is a conflicting statement with a different value. This can also represent deprecated identifiers/profiles that have been merged into a single, current one that is preferred. |
+| --- | --- |
+| Use: | optional, possibly multiple (0..\*) |
+| Representation: | XML element `AlternativeISNI` |
+| CERIF: | the FederatedIdentifier entity ([https://w3id.org/cerif/model#FederatedIdentifier](https://w3id.org/cerif/model#FederatedIdentifier)) |
+| Format: | regular expression `\d{4} \d{4} \d{4} \d{3}[\dX]` (as per [https://www.wikidata.org/wiki/Property:P213](https://www.wikidata.org/wiki/Property:P213)) |
+
+## FundRefID[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#fundrefid "Permalink to this headline")
+
+| Description: | The FundRef Registry Identifier in case its value is certain or known to be a preferred one. |
+| --- | --- |
+| Use: | optional (0..1) |
+| Representation: | XML element `FundRefID` |
+| CERIF: | the FederatedIdentifier entity ([https://w3id.org/cerif/model#FederatedIdentifier](https://w3id.org/cerif/model#FederatedIdentifier)) |
+| Format: | regular expression `https:\/\/doi.org\/10\.13039\/\d+` (as per [https://www.crossref.org/display-guidelines/](https://www.crossref.org/display-guidelines/) [https://www.wikidata.org/wiki/Q19822542](https://www.wikidata.org/wiki/Q19822542)) |
+
+## AlternativeFundRefID[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#alternativefundrefid "Permalink to this headline")
+
+| Description: | The FundRef Registry Identifier in case the value is not certain, e.g. because there is a conflicting statement with a different value. This can also represent deprecated identifiers/profiles that have been merged into a single, current one that is preferred. |
+| --- | --- |
+| Use: | optional, possibly multiple (0..\*) |
+| Representation: | XML element `AlternativeFundRefID` |
+| CERIF: | the FederatedIdentifier entity ([https://w3id.org/cerif/model#FederatedIdentifier](https://w3id.org/cerif/model#FederatedIdentifier)) |
+| Format: | regular expression `https:\/\/doi.org\/10\.13039\/\d+` (as per [https://www.crossref.org/display-guidelines/](https://www.crossref.org/display-guidelines/) [https://www.wikidata.org/wiki/Q19822542](https://www.wikidata.org/wiki/Q19822542)) |
+
+## Identifier[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#identifier "Permalink to this headline")
+
+| Description: | A generic identifier, to be used only if your identifier does not fit in any of the above specific identifier types. |
+| --- | --- |
+| Use: | optional, possibly multiple (0..\*) |
+| Representation: | XML element `Identifier` with a required `type` attribute (the URI of the identifier scheme) |
+| CERIF: | the FederatedIdentifier entity ([https://w3id.org/cerif/model#FederatedIdentifier](https://w3id.org/cerif/model#FederatedIdentifier)) |
+
+## ElectronicAddress[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#electronicaddress "Permalink to this headline")
+
+| Description: | An electronic address associated with the organisation unit |
+| --- | --- |
+| Use: | optional, possibly multiple (0..\*) |
+| Representation: | XML element `ElectronicAddress` |
+| CERIF: | the ElectronicAddress entity ([https://w3id.org/cerif/model#ElectronicAddress](https://w3id.org/cerif/model#ElectronicAddress)) and the corresponding link ([https://w3id.org/cerif/model#OrganisationUnit\_ElectronicAddress](https://w3id.org/cerif/model#OrganisationUnit_ElectronicAddress)) |
+
+## PartOf[¶](https://openaire-guidelines-for-cris-managers.readthedocs.io/en/v1.2.0/#partof "Permalink to this headline")
+
+| Description: | Link to the larger unit that encompasses this unit. To be used for the immediate parents only. In order to represent the full path up through the hierarchy of an institution, use this construct recursively. In specific cases there may be several such parents at one time in parallel. An example: a interdisciplinary research centre within a university can be subordinated to several faculties. |
+| --- | --- |
+| Use: | optional, possibly multiple (0..\*) |
+| Representation: | XML element `PartOf` with embedded XML element `OrgUnit` |
+| CERIF: | the OrganisationUnit\_OrganisationUnit linking entity ([https://w3id.org/cerif/model#OrganisationUnit\_OrganisationUnit](https://w3id.org/cerif/model#OrganisationUnit_OrganisationUnit)) with the [https://w3id.org/cerif/vocab/InterOrganisationalStructure#Part](https://w3id.org/cerif/vocab/InterOrganisationalStructure#Part) semantics (direction :1) |

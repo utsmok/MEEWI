@@ -13,7 +13,8 @@ the expected JSON response format for Research Products.
 # Add type literals for restricted values
 OpenAccessRouteType = Literal["gold", "green", "hybrid", "bronze"]
 RefereedType = Literal["peerReviewed", "nonPeerReviewed", "UNKNOWN"]
-ResearchProductType = Literal["publication", "data", "software", "other"]
+ResearchProductType = Literal["publication", "dataset", "software", "other"]
+
 
 # Sub-models for nested structures
 class PidIdentifier(BaseModel):
@@ -184,10 +185,10 @@ class ResultPid(BaseModel):
 # Updated Instance model to include all fields from docs
 class Instance(BaseModel):
     accessRight: AccessRight | None = None
-    alternateIdentifiers: list[dict[str, str]] = Field(default_factory=list)
+    alternateIdentifier: list[dict[str, str]] = Field(default_factory=list)
     articleProcessingCharge: ArticleProcessingCharge | None = None
     license: str | None = None
-    pids: list[ResultPid] = Field(default_factory=list)
+    pid: list[ResultPid] = Field(default_factory=list)
     publicationDate: str | None = None
     refereed: RefereedType | None = None
     type: str | None = None
@@ -203,8 +204,8 @@ class Instance(BaseModel):
                 data["accessRight"] = AccessRight()
             if not data.get("articleProcessingCharge"):
                 data["articleProcessingCharge"] = ArticleProcessingCharge()
-            if not data.get("pids"):
-                data["pids"] = [ResultPid()]
+            if not data.get("pid"):
+                data["pid"] = [ResultPid()]
 
         return data
 
@@ -270,31 +271,31 @@ class GeoLocation(BaseModel):
 class ResearchProduct(BaseModel):
     id: str | None = None
     type: ResearchProductType | None = None
-    originalIds: list[str] = Field(default_factory=list)
+    originalId: list[str] = Field(default_factory=list)
     mainTitle: str | None = None
     subTitle: str | None = None
-    authors: list[Author] = Field(default_factory=list)
+    author: list[Author] = Field(default_factory=list)
     bestAccessRight: BestAccessRight | None = None
     contributors: list[str] = Field(default_factory=list)
-    countries: list[ResultCountry] = Field(default_factory=list)
+    country: list[ResultCountry] = Field(default_factory=list)
     coverages: list[str] = Field(default_factory=list)
     dateOfCollection: str | None = None
     descriptions: list[str] = Field(default_factory=list)
     embargoEndDate: str | None = None
     indicators: Indicator | None = None
-    instances: list[Instance] = Field(default_factory=list)
+    instance: list[Instance] = Field(default_factory=list)
     language: Language | None = None
     lastUpdateTimeStamp: int | None = None
-    pids: list[ResultPid] = Field(default_factory=list)
+    pid: list[ResultPid] = Field(default_factory=list)
     publicationDate: str | None = None
     publisher: str | None = None
-    sources: list[str] = Field(default_factory=list)
+    source: list[str] = Field(default_factory=list)
     formats: list[str] = Field(default_factory=list)
     subjects: list[Subject] = Field(default_factory=list)
     isGreen: bool | None = None
     openAccessColor: str | None = None
     isInDiamondJournal: bool | None = None
-    publiclyFunded: str | None = None
+    publiclyFunded: bool | None = None
 
     # for publications
     container: Container | None = None
@@ -325,8 +326,8 @@ class ResearchProduct(BaseModel):
             "container": Container,
         }
 
-        data["publiclyFunded"] = (
-            str(data.get("publicyFunded")) if data.get("publicyFunded") else None
+        data["publiclyFunded"] = bool(
+            data.get("publicyFunded") == "True" or data.get("publiclyFunded") == True
         )
 
         for field, classtype in obj_fields.items():
@@ -337,12 +338,12 @@ class ResearchProduct(BaseModel):
             "bestAccessRight": BestAccessRight,
             "indicators": Indicator,
             "language": Language,
-            "authors": Author,
-            "countries": ResultCountry,
-            "instances": Instance,
-            "pids": ResultPid,
+            "author": Author,
+            "country": ResultCountry,
+            "instance": Instance,
+            "pid": ResultPid,
             "subjects": Subject,
-            "geolocations": GeoLocation,
+            "geolocation": GeoLocation,
         }
         for field, classtype in obj_list_fields.items():
             if not data.get(field) or data.get(field) is None or data.get(field) == []:
